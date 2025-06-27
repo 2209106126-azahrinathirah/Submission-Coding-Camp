@@ -735,7 +735,6 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 - Baik fluktuasi maupun arah tren berhasil diikuti dengan sangat presisi.
 
 
-
 **KESIMPULAN HASIL EVALUASI**
 
 - **GRU** menunjukkan performa lebih baik dari **LSTM** untuk semua horizon prediksi (7, 30, 60 hari), berdasarkan MAE, RMSE, dan MAPE.
