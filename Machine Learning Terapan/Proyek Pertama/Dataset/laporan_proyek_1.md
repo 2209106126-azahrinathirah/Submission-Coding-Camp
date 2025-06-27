@@ -125,7 +125,7 @@ Berikut adalah penjelasan fitur-fitur yang tersedia dalam dataset:
 
 Beberapa langkah EDA dilakukan untuk memahami pola dan struktur data, antara lain:
 
-1. **EDA - Deskripsi Variable**
+#### 1. EDA - Deskripsi Variable
 
 Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan tipe data sebagai berikut:
 
@@ -181,8 +181,10 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 
 -  **Kesesuaian Fitur Harga**  
   Fitur `Open`, `High`, `Low`, dan `Close` memiliki pola distribusi yang sangat mirip, mendukung bahwa data saham ini **konsisten secara struktur** dan siap digunakan dalam analisis time series.
+
+---
   
-2. **EDA - Menangani Missing Value**
+#### 2. EDA - Menangani Missing Value
 
 | No | Kolom      | Jumlah Nilai Hilang |
 |----|------------|----------------------|
@@ -194,7 +196,9 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 | 6  | Open       | 0                    |
 | 7  | Volume     | 0                    |
 
-3. **EDA - Menangani Outlier**
+---
+
+#### 3. EDA - Menangani Outlier
    
 ### 🚨 Jumlah Outlier per Kolom (Metode IQR)
 
@@ -242,8 +246,9 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 ![image](https://github.com/user-attachments/assets/07757fee-14b7-414a-9935-7b8cf1987f5c)
 
 
+---
 
-4. **EDA - Univariate Analysis**
+#### 4. EDA - Univariate Analysis
 
 ![image](https://github.com/user-attachments/assets/99c549af-08bc-45b9-8c07-cb4ff1f15b8f)
 
@@ -290,8 +295,9 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 - Mulai tahun 2023, tren cenderung **menurun kembali**.
 - Harga `Open` dan `Close` sangat berdekatan, menunjukkan **selisih kecil dalam satu hari perdagangan**.
 
+---
 
-5. **EDA - Multivariate Analysis**
+#### 5. EDA - Multivariate Analysis
 
 ![image](https://github.com/user-attachments/assets/4752d126-fae3-4837-ac31-b814c78bcd47)
 
@@ -324,7 +330,6 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
   - Ini menunjukkan bahwa harga penutupan yang disesuaikan masih sangat terkait dengan harga aktual.
 
 - Volume_log menunjukkan korelasi negatif lemah terhadap semua fitur harga (sekitar -0.08 sampai -0.10).
-
 
 
 ---
