@@ -46,37 +46,107 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 [https://doi.org/10.21009/JSA.06113](https://doi.org/10.21009/JSA.06113)
 
 
+## 💼 Business Understanding
+
+### ❓ Problem Statements
+
+Berdasarkan latar belakang dan dinamika pasar modal Indonesia, proyek ini difokuskan untuk menjawab pertanyaan-pertanyaan berikut:
+
+1. Bagaimana kita dapat membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
+2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang lebih baik dibandingkan pendekatan statistik konvensional seperti ARIMA?
+3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari, 30 hari, dan 60 hari ke depan?
+
+---
+
+### 🎯 Goals
+
+Tujuan utama dari proyek ini meliputi:
+
+- Mengembangkan dan membandingkan dua model deep learning (LSTM dan GRU) untuk memprediksi harga saham TLKM berdasarkan data historis.
+- Menilai performa prediksi dari masing-masing model dengan menggunakan metrik evaluasi MAE (Mean Absolute Error), RMSE (Root Mean Square Error), dan MAPE (Mean Absolute Percentage Error).
+- Memberikan insight kepada investor atau analis pasar terhadap akurasi dan stabilitas model prediksi untuk pengambilan keputusan yang lebih informatif.
+
+---
+
+### 💡 Solution Statements
+
+Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama akan dilakukan:
+
+1. **Perbandingan Model Deep Learning**  
+   Membangun dua model prediksi berbasis jaringan saraf berulang (RNN):
+   - **Long Short-Term Memory (LSTM)**
+   - **Gated Recurrent Unit (GRU)**  
+   Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi: 7 hari, 30 hari, dan 60 hari.
+
+2. **Evaluasi dan Optimasi Model**  
+   Evaluasi dilakukan terhadap performa model dengan metrik:
+   - **MAE** – Rata-rata kesalahan absolut.
+   - **RMSE** – Akar dari rata-rata kuadrat error.
+   - **MAPE** – Persentase kesalahan absolut rata-rata.
+
+   Model terbaik kemudian dapat dioptimalkan melalui:
+   - **Tuning jumlah neuron, batch size, dan learning rate**
+   - **Eksperimen jumlah timestep/input window**  
+   untuk meningkatkan stabilitas dan akurasi prediksi.
+
+---
+
+### 📏 Evaluation Metrics
+
+- **Mean Absolute Error (MAE):**  
+  Mengukur rata-rata kesalahan absolut antara nilai aktual dan prediksi.
+- **Root Mean Square Error (RMSE):**  
+  Memberikan penalti lebih besar terhadap kesalahan besar.
+- **Mean Absolute Percentage Error (MAPE):**  
+  Mengukur kesalahan dalam bentuk persentase, berguna untuk interpretasi bisnis.
+
+---
+
+
 
 
 
 ## Business Understanding
 
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
-
 ### Problem Statements
 
-Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+Berdasarkan latar belakang, proyek ini difokuskan untuk menjawab pertanyaan-pertanyaan berikut:
+
+1. Bagaimana kita dapat membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
+2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang lebih baik dibandingkan pendekatan statistik konvensional seperti ARIMA?
+3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari, 30 hari, dan 60 hari ke depan?
 
 ### Goals
 
-Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+Tujuan utama dari proyek ini meliputi:
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+- Mengembangkan dan membandingkan dua model deep learning (LSTM dan GRU) untuk memprediksi harga saham TLKM berdasarkan data historis.
+- Menilai performa prediksi dari masing-masing model dengan menggunakan metrik evaluasi MAE (Mean Absolute Error), RMSE (Root Mean Square Error), dan MAPE (Mean Absolute Percentage Error).
+- Memberikan insight kepada investor atau analis pasar terhadap akurasi dan stabilitas model prediksi untuk pengambilan keputusan yang lebih informatif.
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
 
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
+### Solution statements
+
+Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama akan dilakukan:
+
+1. **Perbandingan Model Deep Learning**  
+   Membangun dua model prediksi berbasis jaringan saraf berulang (RNN):
+   - **Long Short-Term Memory (LSTM)**
+   - **Gated Recurrent Unit (GRU)**  
+   Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi: 7 hari, 30 hari, dan 60 hari.
+
+2. **Evaluasi dan Optimasi Model**  
+   Evaluasi dilakukan terhadap performa model dengan metrik:
+   - **MAE** – Rata-rata kesalahan absolut.
+   - **RMSE** – Akar dari rata-rata kuadrat error.
+   - **MAPE** – Persentase kesalahan absolut rata-rata.
+
+   Model terbaik kemudian dapat dioptimalkan melalui:
+   - **Tuning jumlah neuron, batch size, dan learning rate**
+   - **Eksperimen jumlah timestep/input window**  
+   untuk meningkatkan stabilitas dan akurasi prediksi.
 
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
