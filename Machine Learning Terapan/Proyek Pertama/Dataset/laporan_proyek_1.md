@@ -46,66 +46,6 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 [https://doi.org/10.21009/JSA.06113](https://doi.org/10.21009/JSA.06113)
 
 
-## 💼 Business Understanding
-
-### ❓ Problem Statements
-
-Berdasarkan latar belakang dan dinamika pasar modal Indonesia, proyek ini difokuskan untuk menjawab pertanyaan-pertanyaan berikut:
-
-1. Bagaimana kita dapat membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
-2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang lebih baik dibandingkan pendekatan statistik konvensional seperti ARIMA?
-3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari, 30 hari, dan 60 hari ke depan?
-
----
-
-### 🎯 Goals
-
-Tujuan utama dari proyek ini meliputi:
-
-- Mengembangkan dan membandingkan dua model deep learning (LSTM dan GRU) untuk memprediksi harga saham TLKM berdasarkan data historis.
-- Menilai performa prediksi dari masing-masing model dengan menggunakan metrik evaluasi MAE (Mean Absolute Error), RMSE (Root Mean Square Error), dan MAPE (Mean Absolute Percentage Error).
-- Memberikan insight kepada investor atau analis pasar terhadap akurasi dan stabilitas model prediksi untuk pengambilan keputusan yang lebih informatif.
-
----
-
-### 💡 Solution Statements
-
-Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama akan dilakukan:
-
-1. **Perbandingan Model Deep Learning**  
-   Membangun dua model prediksi berbasis jaringan saraf berulang (RNN):
-   - **Long Short-Term Memory (LSTM)**
-   - **Gated Recurrent Unit (GRU)**  
-   Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi: 7 hari, 30 hari, dan 60 hari.
-
-2. **Evaluasi dan Optimasi Model**  
-   Evaluasi dilakukan terhadap performa model dengan metrik:
-   - **MAE** – Rata-rata kesalahan absolut.
-   - **RMSE** – Akar dari rata-rata kuadrat error.
-   - **MAPE** – Persentase kesalahan absolut rata-rata.
-
-   Model terbaik kemudian dapat dioptimalkan melalui:
-   - **Tuning jumlah neuron, batch size, dan learning rate**
-   - **Eksperimen jumlah timestep/input window**  
-   untuk meningkatkan stabilitas dan akurasi prediksi.
-
----
-
-### 📏 Evaluation Metrics
-
-- **Mean Absolute Error (MAE):**  
-  Mengukur rata-rata kesalahan absolut antara nilai aktual dan prediksi.
-- **Root Mean Square Error (RMSE):**  
-  Memberikan penalti lebih besar terhadap kesalahan besar.
-- **Mean Absolute Percentage Error (MAPE):**  
-  Mengukur kesalahan dalam bentuk persentase, berguna untuk interpretasi bisnis.
-
----
-
-
-
-
-
 ## Business Understanding
 
 ### Problem Statements
