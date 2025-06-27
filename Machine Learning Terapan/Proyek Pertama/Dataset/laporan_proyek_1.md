@@ -732,7 +732,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 
 
-**Insight Evaluasi**
+**KESIMPULAN EVALUASI**
 
 - **GRU** menunjukkan performa lebih baik dari **LSTM** untuk semua horizon prediksi (7, 30, 60 hari), berdasarkan MAE, RMSE, dan MAPE.
 - Nilai **MAPE < 1%** menunjukkan bahwa kedua model sangat akurat dalam memprediksi harga saham TLKM.
