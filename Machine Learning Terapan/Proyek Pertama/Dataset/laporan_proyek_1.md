@@ -596,9 +596,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 **1. Prediksi 7 Hari ke Depan**
 
     - MAE & RMSE LSTM lebih tinggi, artinya LSTM membuat kesalahan sekitar 16–21 poin rata-rata dalam nilai prediksi.
-    
     - MAPE < 0.5%, menunjukkan bahwa kesalahan prediksi hanya 0.4–0.5% dari nilai aktual, cukup kecil secara proporsional.
-    
     - Namun, GRU lebih baik secara konsisten dalam ketiga metrik:
         - Lebih akurat (MAE lebih rendah)
         - Error lebih stabil (RMSE lebih kecil)
@@ -607,25 +605,17 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 **2. Prediksi 30 Hari ke Depan**
 
     - Selisih MAE dan RMSE antara LSTM dan GRU cukup kecil, namun GRU tetap lebih unggul.
-    
     - GRU menunjukkan performa yang lebih stabil dan konsisten, terutama saat mendekati hari ke-30.
-    
     - Meskipun LSTM cukup baik dalam menangkap tren naik di paruh kedua, GRU menghasilkan prediksi yang lebih akurat secara menyeluruh.
-    
     - Metrik mendukung hal ini:
-    
         - GRU memiliki MAE dan RMSE lebih rendah, artinya kesalahan rata-rata lebih kecil.
-        
         - MAPE GRU juga lebih kecil, menunjukkan prediksi lebih proporsional terhadap nilai aktual.
 
 **3. Prediksi 60 Hari ke Depan**
 
     - Pada horizon 60 hari, performa GRU unggul signifikan dibanding LSTM.
-    
     - MAE GRU lebih rendah sekitar 4.3 poin dibanding LSTM, menandakan prediksi GRU lebih dekat ke harga aktual rata-rata.
-    
     - RMSE GRU lebih rendah, menunjukkan error lebih stabil dan tidak menyebar.
-    
     - MAPE GRU hanya 0.51%, lebih rendah dari LSTM yang 0.62% — ini perbedaan penting untuk prediksi finansial jangka panjang.
 
 
