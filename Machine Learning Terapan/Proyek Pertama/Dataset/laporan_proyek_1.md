@@ -89,18 +89,54 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
    untuk meningkatkan stabilitas dan akurasi prediksi.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
-Selanjutnya uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+### Deskripsi Dataset
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+Dataset yang digunakan dalam proyek ini adalah data historis harga saham PT Telekomunikasi Indonesia Tbk (TLKM) yang diperoleh dari situs resmi Yahoo Finance. Data mencakup periode harian dari tahun 2016 hingga 2023, dan terdiri dari informasi harga saham yang biasa digunakan dalam analisis teknikal.
+
+🔗 **Sumber Data:**  
+[Yahoo Finance - TLKM.JK](https://finance.yahoo.com/quote/TLKM.JK/history)
+
+Dataset ini berisi total **1.700+ baris data** harian dengan 7 kolom (fitur utama), dan tidak mengandung nilai duplikat maupun missing value pada kolom waktu maupun harga utama. Data ini digunakan untuk membangun model prediksi time series.
+
+### Variabel / Fitur pada Dataset
+
+Berikut adalah penjelasan fitur-fitur yang tersedia dalam dataset:
+
+| Nama Fitur  | Deskripsi |
+|-------------|-----------|
+| `Date`      | Tanggal perdagangan (format YYYY-MM-DD) |
+| `Open`      | Harga pembukaan saham pada hari tersebut |
+| `High`      | Harga tertinggi saham pada hari tersebut |
+| `Low`       | Harga terendah saham pada hari tersebut |
+| `Close`     | Harga penutupan saham pada hari tersebut |
+| `Adj Close` | Harga penutupan yang telah disesuaikan (adjusted) terhadap dividen dan stock split |
+| `Volume`    | Jumlah saham yang diperdagangkan pada hari tersebut |
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
 
+### Exploratory Data Analysis (EDA)
+
+Beberapa langkah EDA dilakukan untuk memahami pola dan struktur data, antara lain:
+
+- **Visualisasi Tren Harga Saham TLKM**
+  - Plot harga penutupan (`Close`) untuk melihat tren jangka panjang dan volatilitas.
+
+- **Distribusi Volume Perdagangan**
+  - Menampilkan distribusi dan kemungkinan outlier pada data `Volume`.
+
+- **Korelasi Antar Fitur**
+  - Analisis korelasi antara `Open`, `High`, `Low`, `Close`, dan `Volume` untuk melihat hubungan antar variabel.
+
+- **Resampling Data**
+  - Data diringkas dalam interval mingguan dan bulanan untuk memahami pola musiman atau jangka panjang.
+
+**Contoh visualisasi yang dihasilkan:**
+- Line chart tren `Close` dari tahun ke tahun.
+- Boxplot volume perdagangan.
+- Heatmap korelasi antar harga.
+  
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
