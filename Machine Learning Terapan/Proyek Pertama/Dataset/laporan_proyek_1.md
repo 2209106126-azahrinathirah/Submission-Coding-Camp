@@ -120,7 +120,7 @@ Berikut adalah penjelasan fitur-fitur yang tersedia dalam dataset:
 
 Beberapa langkah EDA dilakukan untuk memahami pola dan struktur data, antara lain:
 
-- **EDA - Deskripsi Variable**
+1. **EDA - Deskripsi Variable**
 
 Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan tipe data sebagai berikut:
 
@@ -133,8 +133,14 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 | 5       | Low           | float64       |
 | 6       | Open          | float64       |
 | 7       | Volume        | object        |
-  
-- **EDA - Menangani Missing Value**
+
+**Penjelasan**
+
+- Seluruh kolom numerik (`Adj Close`, `Close`, `High`, `Low`, `Open`) sudah memiliki format data yang sesuai (float64).
+- Kolom `Date` dan `Volume` masih bertipe **object**.
+  - `Date` perlu dikonversi ke tipe data **datetime** untuk memungkinkan analisis berbasis waktu, seperti tren musiman atau harian.
+  - `Volume` perlu dikonversi ke format **numerik** agar dapat dianalisis lebih lanjut, termasuk dalam perhitungan statistik dan visualisasi.
+- Tidak terdapat nilai kosong (null) pada seluruh kolom, sehingga data ini siap untuk dianalisis setelah beberapa tahapan transformasi awal.
 
 | Statistik | Adj Close   | Close      | High       | Low        | Open       |
 |-----------|-------------|------------|------------|------------|------------|
@@ -147,13 +153,40 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 | 75%       | 3666.010000 | 4030.000000| 4060.000000| 3990.000000| 4030.000000|
 | Max       | 4295.700000 | 4770.000000| 4850.000000| 4720.000000| 4850.000000|
 
-- **EDA - Menangani Outlier**
+**Penjelasan**
+
+Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting mengenai distribusi harga saham TLKM:
+
+- **Jumlah Data Konsisten**  
+   Semua fitur (`Adj Close`, `Close`, `High`, `Low`, `Open`) memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
+
+- **Nilai Rata-Rata (Mean)**  
+  Harga penutupan (`Close`) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga pembukaan (`Open`) rata-rata sebesar **Rp 3.651**.  
+   - Hal ini menunjukkan bahwa secara umum, harga saham TLKM cenderung **stabil** atau mengalami kenaikan tipis dalam satu hari perdagangan.
+
+- **Volatilitas (Standar Deviasi)**  
+   Nilai `std` yang cukup tinggi (sekitar 500) menunjukkan bahwa **fluktuasi harian cukup besar**, mencerminkan dinamika pasar saham TLKM yang aktif dan berisiko sedang-tinggi.
+
+- **Rentang Harga (Min - Max)**
+  Harga terendah (`Low`) menyentuh **Rp 2.450**, sedangkan harga tertinggi (`High`) mencapai **Rp 4.850**, menunjukkan **rentang fluktuasi sekitar 98%** selama periode data.
+
+- **Distribusi Harga (25% - 75%)**  
+  Harga `Close` 50% dari data berada di antara **Rp 3.190** (Q1) dan **Rp 4.030** (Q3), dengan nilai tengah (median) di **Rp 3.720**.  
+   - Distribusi yang tidak terlalu simetris ini menunjukkan bahwa saham TLKM lebih sering berada dalam kisaran menengah ke atas dari rentang harganya.
+
+-  **Kesesuaian Fitur Harga**  
+  Fitur `Open`, `High`, `Low`, dan `Close` memiliki pola distribusi yang sangat mirip, mendukung bahwa data saham ini **konsisten secara struktur** dan siap digunakan dalam analisis time series.
+  
+2. **EDA - Menangani Missing Value**
 
 
-- **EDA - Univariate Analysis**
+3. **EDA - Menangani Outlier**
+
+
+4. **EDA - Univariate Analysis**
  
 
-- **EDA - Multivariate Analysis**
+5. **EDA - Multivariate Analysis**
   
 
 
