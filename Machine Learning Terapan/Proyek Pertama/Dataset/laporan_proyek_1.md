@@ -74,19 +74,19 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
 
 1. **Perbandingan Model Deep Learning**  
    Membangun dua model prediksi berbasis jaringan saraf berulang (RNN):
-   - **Long Short-Term Memory (LSTM)**
-   - **Gated Recurrent Unit (GRU)**  
+       - **Long Short-Term Memory (LSTM)**
+       - **Gated Recurrent Unit (GRU)**  
    Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi: 7 hari, 30 hari, dan 60 hari.
 
 2. **Evaluasi dan Optimasi Model**  
    Evaluasi dilakukan terhadap performa model dengan metrik:
-   - **MAE** – Rata-rata kesalahan absolut.
-   - **RMSE** – Akar dari rata-rata kuadrat error.
-   - **MAPE** – Persentase kesalahan absolut rata-rata.
+       - **MAE** – Rata-rata kesalahan absolut.
+       - **RMSE** – Akar dari rata-rata kuadrat error.
+       - **MAPE** – Persentase kesalahan absolut rata-rata.
 
    Model terbaik kemudian dapat dioptimalkan melalui:
-   - **Tuning jumlah neuron, batch size, dan learning rate**
-   - **Eksperimen jumlah timestep/input window**  
+       - **Tuning jumlah neuron, batch size, dan learning rate**
+       - **Eksperimen jumlah timestep/input window**  
    untuk meningkatkan stabilitas dan akurasi prediksi.
 
 ---
