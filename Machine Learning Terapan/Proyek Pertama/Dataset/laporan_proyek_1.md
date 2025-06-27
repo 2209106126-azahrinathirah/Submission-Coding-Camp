@@ -30,8 +30,6 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 
 ## Hasil Riset Terkait (Referensi)
 
----
-
 <a name="1">[1]</a> T. Prasetyo dan M. Faisal, *Penerapan Data Mining dalam Prediksi Harga Saham di Indonesia Menggunakan Algoritma LSTM*, IJCIT, vol. 4, no. 2, pp. 116–120, 2019.  
 [https://doi.org/10.31294/ijcit.v4i2.7712](https://doi.org/10.31294/ijcit.v4i2.7712)
 
