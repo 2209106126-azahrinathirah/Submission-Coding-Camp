@@ -1,7 +1,7 @@
 # Laporan Proyek Machine Learning - Andi Zahrina Athirah Ahmad
-
-## Domain Proyek
 ---
+## Domain Proyek
+
 **Latar Belakang**
 Prediksi harga saham merupakan tantangan penting dalam dunia keuangan, khususnya di pasar modal Indonesia yang terus berkembang pesat dalam beberapa dekade terakhir. Fluktuasi harga saham yang tinggi disebabkan oleh berbagai faktor seperti kondisi ekonomi makro, kinerja perusahaan, sentimen pelaku pasar, serta situasi geopolitik, menjadikan investasi di pasar saham penuh risiko <a href="#1">[1]</a>. Ketidakstabilan ini menyulitkan investor dalam mengambil keputusan yang optimal, terutama untuk jangka menengah dan panjang. Oleh karena itu, dibutuhkan pendekatan prediktif yang mampu mengenali pola-pola kompleks dalam data historis harga saham guna mendukung pengambilan keputusan yang lebih akurat dan berbasis data <a href="#1">[1]</a>.
 
@@ -45,6 +45,7 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 <a name="5">[5]</a> N. A. Nilsen, *Perbandingan Model RNN, Model LSTM, dan Model GRU dalam Memprediksi Harga Saham-Saham LQ45*, Jurnal Statistika dan Aplikasinya, vol. 6, no. 1, 2022.  
 [https://doi.org/10.21009/JSA.06113](https://doi.org/10.21009/JSA.06113)
 
+---
 
 ## Business Understanding
 
@@ -87,6 +88,8 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
    - **Tuning jumlah neuron, batch size, dan learning rate**
    - **Eksperimen jumlah timestep/input window**  
    untuk meningkatkan stabilitas dan akurasi prediksi.
+
+---
 
 ## Data Understanding
 
@@ -254,6 +257,7 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 ![image](https://github.com/user-attachments/assets/21002587-cf79-4a04-8dc5-04f78ffea7e0)
 
 
+---
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
@@ -284,6 +288,8 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 - Menjelaskan proses data preparation yang dilakukan
 - Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
 
+---
+
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
@@ -291,6 +297,8 @@ Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyel
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
 - Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
 - Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+
+---
 
 ## Evaluation
 
