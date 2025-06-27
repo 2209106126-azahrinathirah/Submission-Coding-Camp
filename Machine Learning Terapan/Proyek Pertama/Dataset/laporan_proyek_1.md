@@ -443,16 +443,12 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 #### Visualisasi Hasil Evaluasi 
 
-- Prediksi 7 hari ke depan
-LTSM
 ![image](https://github.com/user-attachments/assets/c4963d47-b0f1-4738-be40-80e62ff91990)
 
-GRU
 ![image](https://github.com/user-attachments/assets/570b6e29-a56d-44a4-a2c3-40c7d5c3f729)
 
 ---
 
-- Prediksi 30 hari ke depan
 LTSM
 ![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
 
@@ -461,7 +457,6 @@ GRU
 
 ---
 
-- Prediksi 60 hari ke depan
 LTSM
 ![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
 
