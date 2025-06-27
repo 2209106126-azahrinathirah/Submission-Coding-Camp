@@ -818,7 +818,7 @@ $$
 - Mengambil akar kuadrat dari rata-rata untuk mengembalikan ke skala asli.
 
 **Interpretasi**
-Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
+- Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
 
 
 #### 3. Mean Absolute Percentage Error (MAPE)
