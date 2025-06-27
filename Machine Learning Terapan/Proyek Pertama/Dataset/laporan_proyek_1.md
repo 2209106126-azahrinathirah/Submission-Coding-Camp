@@ -656,17 +656,37 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 ![image](https://github.com/user-attachments/assets/c4963d47-b0f1-4738-be40-80e62ff91990)
 
+**Insight:** 
+- Model LSTM mampu mengikuti tren secara umum, namun terjadi underestimation di hari ke-4 dan overestimation pada hari ke-6 dan 7.
+- Prediksi terlihat lebih stabil, cenderung rata di bawah harga aktual mulai hari ke-5 sampai 7.
+- Model LSTM untuk horizon pendek (7 hari) cukup responsif tetapi kurang akurat saat terjadi perubahan tajam.
+
 ![image](https://github.com/user-attachments/assets/570b6e29-a56d-44a4-a2c3-40c7d5c3f729)
+
+**Insight:** 
+- GRU juga menangkap pola secara keseluruhan, tetapi memiliki error yang lebih rendah di hari ke-6 dan 7 dibanding LSTM.
+- Pola fluktuasi GRU lebih mirip dengan tren aktual, terutama pada hari ke-3 sampai 5.
+- GRU memberikan prediksi yang lebih dekat dengan kenyataan untuk jangka pendek dibandingkan LSTM.
 
 
 ![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
 
+**Insight:** 
+- Model LSTM menangkap pola kenaikan tren jangka menengah, meskipun ada beberapa deviasi kecil di beberapa titik (misalnya hari ke-5, ke-10, dan ke-26).
+- Prediksi LSTM cukup baik untuk trend menaik secara bertahap, meski kadang kurang presisi dalam menangkap titik balik.
+- Untuk jangka menengah (30 hari), LSTM cukup andal dalam memprediksi arah tren meskipun akurasi titik harga tidak selalu tepat.
+  
 ![image](https://github.com/user-attachments/assets/f96a43d0-1692-4e53-87d3-e29db3ae7741)
 
+**Insight:** 
 
 ![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
 
+**Insight:** 
+
 ![image](https://github.com/user-attachments/assets/44fc9da5-76e9-474d-9d67-5173b26d910d)
+
+**Insight:** 
 
 
 **Insight Evaluasi**
