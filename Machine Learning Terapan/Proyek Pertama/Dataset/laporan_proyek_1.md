@@ -147,6 +147,8 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
   - `Volume` perlu dikonversi ke format **numerik** agar dapat dianalisis lebih lanjut, termasuk dalam perhitungan statistik dan visualisasi.
 - Tidak terdapat nilai kosong (null) pada seluruh kolom, sehingga data ini siap untuk dianalisis setelah beberapa tahapan transformasi awal.
 
+**Deskripsi Statistik**
+
 | Statistik | Adj Close   | Close      | High       | Low        | Open       |
 |-----------|-------------|------------|------------|------------|------------|
 | Count     | 1212.000000 | 1212.000000| 1212.000000| 1212.000000| 1212.000000|
@@ -162,25 +164,25 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 
 Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting mengenai distribusi harga saham TLKM:
 
-- **Jumlah Data Konsisten**  
-   Semua fitur harga memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
+- **Jumlah Data Konsisten**
+  Semua fitur harga memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
 
 - **Nilai Rata-Rata (Mean)**  
-  Harga penutupan (`Close`) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga pembukaan (`Open`) rata-rata sebesar **Rp 3.651**.  
+  - Harga penutupan (`Close`) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga open rata-rata sebesar **Rp 3.651**.  
    - Hal ini menunjukkan bahwa secara umum, harga saham TLKM cenderung **stabil** atau mengalami kenaikan tipis dalam satu hari perdagangan.
 
 - **Volatilitas (Standar Deviasi)**  
    Nilai `std` yang cukup tinggi (sekitar 500) menunjukkan bahwa **fluktuasi harian cukup besar**, mencerminkan dinamika pasar saham TLKM yang aktif dan berisiko sedang-tinggi.
 
 - **Rentang Harga (Min - Max)**
-  Harga terendah (`Low`) menyentuh **Rp 2.450**, sedangkan harga tertinggi (`High`) mencapai **Rp 4.850**, menunjukkan **rentang fluktuasi sekitar 98%** selama periode data.
+  Harga terendah (`Low`) menyentuh **Rp 2.450**, sedangkan harga tertinggi (High) mencapai **Rp 4.850**, menunjukkan rentang fluktuasi sekitar **98%** selama periode data.
 
 - **Distribusi Harga (25% - 75%)**  
-  Harga `Close` 50% dari data berada di antara **Rp 3.190** (Q1) dan **Rp 4.030** (Q3), dengan nilai tengah (median) di **Rp 3.720**.  
+  - Harga `Close` 50% dari data berada di antara **Rp 3.190** (Q1) dan **Rp 4.030** (Q3), dengan nilai tengah (median) di **Rp 3.720**.  
    - Distribusi yang tidak terlalu simetris ini menunjukkan bahwa saham TLKM lebih sering berada dalam kisaran menengah ke atas dari rentang harganya.
 
 -  **Kesesuaian Fitur Harga**  
-  Fitur `Open`, `High`, `Low`, dan `Close` memiliki pola distribusi yang sangat mirip, mendukung bahwa data saham ini **konsisten secara struktur** dan siap digunakan dalam analisis time series.
+  Fitur harga memiliki pola distribusi yang sangat mirip, mendukung bahwa data saham ini **konsisten secara struktur** dan siap digunakan dalam analisis time series.
 
 ---
   
@@ -195,6 +197,11 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 | 5  | Low        | 0                    |
 | 6  | Open       | 0                    |
 | 7  | Volume     | 0                    |
+
+**Insight**
+
+Dari table diatas menunjukkan bahwa tidak terdapat nilai yang hilang pada seluruh kolom dalam dataset.
+Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke tahapan berikutnya tanpa perlu melakukan penanganan khusus terhadap data yang tidak lengkap.
 
 ---
 
