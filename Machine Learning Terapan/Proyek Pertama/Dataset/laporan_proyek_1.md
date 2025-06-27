@@ -311,9 +311,9 @@ Ketiga metrik tersebut dipilih karena mampu memberikan pemahaman yang baik tenta
 #### 1. Mean Absolute Error (MAE)
 MAE mengukur rata-rata kesalahan absolut antara nilai aktual (yᵢ) dan prediksi (ŷᵢ). Metrik ini memberikan gambaran langsung seberapa jauh model meleset dari nilai sebenarnya, tanpa memperhatikan arah kesalahan.
 
-\[
+$$
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
-\]
+$$
 
 **Cara kerja:**
 - MAE menghitung selisih absolut dari setiap prediksi terhadap data aktual, lalu dirata-rata.
@@ -324,9 +324,9 @@ MAE mengukur rata-rata kesalahan absolut antara nilai aktual (yᵢ) dan prediksi
 #### 2. Root Mean Squared Error (RMSE)
 RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai aktual dan prediksi. Metrik ini lebih sensitif terhadap error besar.
 
-\[
+$$
 \text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
-\]
+$$
 
 **Cara kerja:**
 - Setiap error dikuadratkan (untuk menekankan error besar), lalu dirata-rata dan diakarkan.
@@ -337,9 +337,9 @@ RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai aktual dan pred
 #### 3. Mean Absolute Percentage Error (MAPE)
 MAPE menyatakan kesalahan prediksi dalam bentuk persentase dari nilai aktual, sehingga memudahkan pemahaman dalam konteks bisnis.
 
-\[
-\text{MAPE} = \frac{100\%}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
-\]
+$$
+\text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
+$$
 
 **Cara kerja:**
 - Mengukur seberapa besar prediksi meleset secara proporsional.
