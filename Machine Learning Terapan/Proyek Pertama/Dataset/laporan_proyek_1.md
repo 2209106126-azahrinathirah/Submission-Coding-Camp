@@ -52,7 +52,7 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 
 Berdasarkan latar belakang, proyek ini difokuskan untuk menjawab pertanyaan-pertanyaan berikut:
 
-1. Bagaimana kita dapat membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
+1. Bagaimana membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
 2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang lebih baik dibandingkan pendekatan statistik konvensional seperti ARIMA?
 3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari, 30 hari, dan 60 hari ke depan?
 
@@ -95,9 +95,9 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
 Dataset yang digunakan dalam proyek ini adalah data historis harga saham PT Telekomunikasi Indonesia Tbk (TLKM) yang diperoleh dari situs resmi Yahoo Finance. Data mencakup periode harian dari tahun 2016 hingga 2023, dan terdiri dari informasi harga saham yang biasa digunakan dalam analisis teknikal.
 
 🔗 **Sumber Data:**  
-[Yahoo Finance - TLKM.JK](https://finance.yahoo.com/quote/TLKM.JK/history)
+[Dataset Saham Bursa Efek - Kaggle (oleh Agung Pambudi)](https://www.kaggle.com/datasets/agungpambudi/dataset-saham-bursa-efek/data)
 
-Dataset ini berisi total **1.700+ baris data** harian dengan 7 kolom (fitur utama), dan tidak mengandung nilai duplikat maupun missing value pada kolom waktu maupun harga utama. Data ini digunakan untuk membangun model prediksi time series.
+Dataset ini berisi total **1212 baris data** harian dengan 7 kolom (fitur utama), dan tidak mengandung nilai duplikat maupun missing value pada kolom waktu maupun harga utama. Data ini digunakan untuk membangun model prediksi time series dan forecasting.
 
 ### Variabel / Fitur pada Dataset
 
@@ -120,22 +120,43 @@ Berikut adalah penjelasan fitur-fitur yang tersedia dalam dataset:
 
 Beberapa langkah EDA dilakukan untuk memahami pola dan struktur data, antara lain:
 
-- **Visualisasi Tren Harga Saham TLKM**
-  - Plot harga penutupan (`Close`) untuk melihat tren jangka panjang dan volatilitas.
+- **EDA - Deskripsi Variable**
 
-- **Distribusi Volume Perdagangan**
-  - Menampilkan distribusi dan kemungkinan outlier pada data `Volume`.
+Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan tipe data sebagai berikut:
 
-- **Korelasi Antar Fitur**
-  - Analisis korelasi antara `Open`, `High`, `Low`, `Close`, dan `Volume` untuk melihat hubungan antar variabel.
+| **No.** | **Fitur**     | **Tipe Data** |
+|--------:|---------------|---------------|
+| 1       | Date          | object        |
+| 2       | Adj Close     | float64       |
+| 3       | Close         | float64       |
+| 4       | High          | float64       |
+| 5       | Low           | float64       |
+| 6       | Open          | float64       |
+| 7       | Volume        | object        |
+  
+- **EDA - Menangani Missing Value**
 
-- **Resampling Data**
-  - Data diringkas dalam interval mingguan dan bulanan untuk memahami pola musiman atau jangka panjang.
+| Statistik | Adj Close   | Close      | High       | Low        | Open       |
+|-----------|-------------|------------|------------|------------|------------|
+| Count     | 1212.000000 | 1212.000000| 1212.000000| 1212.000000| 1212.000000|
+| Mean      | 3232.919909 | 3647.978548| 3690.998350| 3607.483498| 3650.981848|
+| Std       |  506.366462 |  510.865708|  508.614228|  508.024318|  508.843617|
+| Min       | 2070.660000 | 2560.000000| 2590.000000| 2450.000000| 2550.000000|
+| 25%       | 2835.450000 | 3190.000000| 3250.000000| 3150.000000| 3200.000000|
+| 50%       | 3228.050000 | 3720.000000| 3765.000000| 3690.000000| 3720.000000|
+| 75%       | 3666.010000 | 4030.000000| 4060.000000| 3990.000000| 4030.000000|
+| Max       | 4295.700000 | 4770.000000| 4850.000000| 4720.000000| 4850.000000|
 
-**Contoh visualisasi yang dihasilkan:**
-- Line chart tren `Close` dari tahun ke tahun.
-- Boxplot volume perdagangan.
-- Heatmap korelasi antar harga.
+- **EDA - Menangani Outlier**
+
+
+- **EDA - Univariate Analysis**
+ 
+
+- **EDA - Multivariate Analysis**
+  
+
+
   
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
@@ -166,7 +187,4 @@ Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, probl
 
 **---Ini adalah bagian akhir laporan---**
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
 
