@@ -487,8 +487,6 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
    - **Validation Split**: 10 % data latih  
    - **Callback**: EarlyStopping  
 
----
-
 **Parameter Model GRU**
 
 | Parameter          | Nilai                                   |
