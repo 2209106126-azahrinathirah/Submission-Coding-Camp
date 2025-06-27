@@ -170,11 +170,11 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
   Semua fitur harga memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
 
 - **Nilai Rata-Rata (Mean)**  
-  - Harga penutupan (`Close`) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga open rata-rata sebesar **Rp 3.651**.  
+  - Harga penutupan (Close) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga open rata-rata sebesar **Rp 3.651**.  
    - Hal ini menunjukkan bahwa secara umum, harga saham TLKM cenderung stabil atau mengalami kenaikan tipis dalam satu hari perdagangan.
 
 - **Volatilitas (Standar Deviasi)**  
-   Nilai `std` yang cukup tinggi (sekitar 500) menunjukkan bahwa fluktuasi harian cukup besar, mencerminkan dinamika pasar saham TLKM yang aktif dan berisiko sedang-tinggi.
+   Nilai std yang cukup tinggi (sekitar 500) menunjukkan bahwa fluktuasi harian cukup besar, mencerminkan dinamika pasar saham TLKM yang aktif dan berisiko sedang-tinggi.
 
 - **Rentang Harga (Min - Max)**
   Harga terendah (Low) menyentuh **Rp 2.450**, sedangkan harga tertinggi (High) mencapai **Rp 4.850**, menunjukkan rentang fluktuasi sekitar **98%** selama periode data.
