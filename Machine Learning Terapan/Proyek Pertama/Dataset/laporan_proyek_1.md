@@ -473,19 +473,19 @@ Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik
 
 | Model | Data         | MAE (↓) | MSE (↓)  |
 |-------|--------------|---------|----------|
-| LSTM  | Scaled       | 0.0377  | 0.0466   |
-| GRU   | Scaled       | 0.0145  | 0.0202   |
+| LSTM  | Scaled       | 0.0260  | 0.0327   |
+| GRU   | Scaled       | 0.0117  | 0.0173   |
 
 **Data Asli**
 
 | Model    | Horizon    | MAE (↓) | RMSE / √MSE (↓) | MAPE (↓) |
 |----------|------------|---------|-----------------|----------|
-| **LSTM** | 7 hari     | 28.75   | 5.57            | 0.80%    |
-| **GRU**  | 7 hari     | 18.55   | 4.80            | 0.51%    |
-| **LSTM** | 30 hari    | 24.11   | 5.59            | 0.65%    |
-| **GRU**  | 30 hari    | 23.00   | 5.36            | 0.62%    |
-| **LSTM** | 60 hari    | 23.58   | 5.45            | 0.62%    |
-| **GRU**  | 60 hari    | 22.12   | 5.20            | 0.58%    |
+| **LSTM** | 7 hari     | 16.43   | 21.41           | 0.45%    |
+| **GRU**  | 7 hari     | 15.00   | 19.57           | 0.42%    |
+| **LSTM** | 30 hari    | 23.09   | 30.16           | 0.62%    |
+| **GRU**  | 30 hari    | 22.27   | 28.46           | 0.60%    |
+| **LSTM** | 60 hari    | 23.90   | 29.91           | 0.62%    |
+| **GRU**  | 60 hari    | 19.57   | 25.07           | 0.51%    |
 
 #### Model Terbaik: **GRU**
 
@@ -567,8 +567,8 @@ Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxSca
 
 | Model | Data         | MAE (↓) | MSE (↓)  |
 |-------|--------------|---------|----------|
-| LSTM  | Scaled       | 0.0377  | 0.0466   |
-| GRU   | Scaled       | 0.0145  | 0.0202   |
+| LSTM  | Scaled       | 0.0260  | 0.0327   |
+| GRU   | Scaled       | 0.0117  | 0.0173   |
 
 
 **2. Evaluasi Matriks (Data Asli)**
@@ -577,12 +577,12 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 | Model    | Horizon    | MAE (↓) | RMSE / √MSE (↓) | MAPE (↓) |
 |----------|------------|---------|-----------------|----------|
-| **LSTM** | 7 hari     | 28.75   | 5.57            | 0.80%    |
-| **GRU**  | 7 hari     | 18.55   | 4.80            | 0.51%    |
-| **LSTM** | 30 hari    | 24.11   | 5.59            | 0.65%    |
-| **GRU**  | 30 hari    | 23.00   | 5.36            | 0.62%    |
-| **LSTM** | 60 hari    | 23.58   | 5.45            | 0.62%    |
-| **GRU**  | 60 hari    | 22.12   | 5.20            | 0.58%    |
+| **LSTM** | 7 hari     | 16.43   | 21.41           | 0.45%    |
+| **GRU**  | 7 hari     | 15.00   | 19.57           | 0.42%    |
+| **LSTM** | 30 hari    | 23.09   | 30.16           | 0.62%    |
+| **GRU**  | 30 hari    | 22.27   | 28.46           | 0.60%    |
+| **LSTM** | 60 hari    | 23.90   | 29.91           | 0.62%    |
+| **GRU**  | 60 hari    | 19.57   | 25.07           | 0.51%    |
 
 > *Catatan: Nilai RMSE dihitung dari akar kuadrat MSE.*
 
