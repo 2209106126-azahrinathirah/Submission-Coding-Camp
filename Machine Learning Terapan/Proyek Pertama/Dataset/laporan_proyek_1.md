@@ -449,18 +449,14 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 ---
 
-LTSM
 ![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
 
-GRU
 ![image](https://github.com/user-attachments/assets/f96a43d0-1692-4e53-87d3-e29db3ae7741)
 
 ---
 
-LTSM
 ![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
 
-GRU
 ![image](https://github.com/user-attachments/assets/44fc9da5-76e9-474d-9d67-5173b26d910d)
 
 
