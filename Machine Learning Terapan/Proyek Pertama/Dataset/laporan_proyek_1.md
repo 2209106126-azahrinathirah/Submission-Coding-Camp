@@ -13,6 +13,8 @@ Salah satu saham yang menarik untuk dianalisis adalah PT Telekomunikasi Indonesi
 Model statistik tradisional seperti ARIMA atau regresi linear sering kali tidak mampu menangkap pola nonlinier dan dependensi jangka panjang dalam data time series saham <a href="#3">[3]</a>. Untuk menjawab tantangan tersebut, pendekatan berbasis deep learning seperti Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) menjadi solusi yang menjanjikan karena kemampuannya dalam mempelajari urutan data historis dan mengingat informasi jangka panjang <a href="#4">[4]</a>.
 
 Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untuk memprediksi harga penutupan saham TLKM, dengan fokus pada tiga skenario waktu ke depan: 7 hari, 30 hari, dan 60 hari. Evaluasi dilakukan menggunakan metrik MAE, RMSE, dan MAPE untuk menilai sejauh mana model dapat memberikan hasil prediksi yang akurat dan stabil <a href="#5">[5]</a>.
+
+---
     
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
@@ -30,6 +32,10 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
    - 7 hari (jangka pendek)
    - 30 hari (jangka menengah)
    - 60 hari (jangka panjang)
+  
+---
+  
+**Rubrik/Kriteria Tambahan (Opsional)**:
 
 ## Hasil Riset Terkait (Referensi)
 
