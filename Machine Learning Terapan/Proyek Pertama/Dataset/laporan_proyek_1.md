@@ -13,12 +13,12 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
     
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
-**❓ Mengapa Masalah Ini Harus Diselesaikan**
+**Mengapa Masalah Ini Harus Diselesaikan❓**
 1. Fluktuasi harga saham TLKM yang tinggi membuat investor membutuhkan strategi prediktif berbasis data untuk memaksimalkan return dan meminimalkan risiko.
 2. Model statistik konvensional seperti ARIMA atau regresi linear belum mampu menangani data saham yang kompleks, nonlinier, dan bergantung pada urutan waktu.
 3. Di era digital, pengambilan keputusan finansial berbasis data dan kecerdasan buatan telah menjadi praktik umum secara global, dan perlu lebih banyak diterapkan di pasar saham Indonesia.
 
-**❓ Bagaimana Masalah Ini Harus Diselesaikan**
+**Bagaimana Masalah Ini Harus Diselesaikan❓**
 1. Mengumpulkan data historis harga saham TLKM dari sumber resmi seperti Yahoo Finance atau Bursa Efek Indonesia.
 2. Melakukan preprocessing data time series, termasuk normalisasi dan pembuatan window sekuensial.
 3. Membangun dua model deep learning: Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) untuk mempelajari pola historis.
