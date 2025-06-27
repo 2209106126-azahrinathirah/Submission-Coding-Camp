@@ -745,6 +745,14 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 ---
 
 ## Conclusion
+1. Proyek berhasil membangun dua model deep learning berbasis time series, yaitu LSTM dan GRU, untuk memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) menggunakan data historis.
+2. Evaluasi model dilakukan dengan metrik MAE, RMSE, dan MAPE untuk mengukur akurasi dan stabilitas prediksi. Hasilnya menunjukkan bahwa:
+3. Kedua model memiliki performa prediksi yang baik.
+    - GRU menunjukkan efisiensi lebih tinggi dari segi waktu pelatihan.
+    - LSTM lebih unggul dalam menangkap pola jangka panjang.
+4. Prediksi dilakukan untuk tiga skenario waktu: 7 hari, 30 hari, dan 60 hari ke depan, yang menunjukkan bahwa model mampu beradaptasi dengan horizon waktu berbeda.
+5. Hasil prediksi menunjukkan bahwa model dapat menangkap tren harga dengan cukup baik, dan prediksi mendekati nilai aktual, terutama dalam jangka pendek (7 hari).
+6. Kedua model memberikan insight yang berguna bagi investor dan analis pasar, khususnya dalam pengambilan keputusan berbasis data yang lebih akurat dan informatif.
 
 **---Ini adalah bagian akhir laporan---**
 
