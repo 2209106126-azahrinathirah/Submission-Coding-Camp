@@ -348,17 +348,9 @@ MAPE menyatakan kesalahan prediksi dalam bentuk persentase dari nilai aktual, se
  
 ### Hasil proyek Berdasarkan Metrik evaluasi
 
-Evaluasi dilakukan terhadap dua model: **LSTM** dan **GRU**, dengan tiga horizon waktu prediksi:
+#### Tabel Hasil Evaluasi
 
-- 7 hari
-- 30 hari
-- 60 hari
-
-Berikut adalah hasil evaluasi masing-masing model berdasarkan MAE, RMSE, dan MAPE:
-
-#### 📋 Tabel Evaluasi Model
-
-**Table Hasil Evaluasi Matriks (Data Scaled)**
+**Evaluasi Matriks (Data Scaled)**
 
 Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxScaler), berikut adalah hasil metrik pada data uji:
 
@@ -368,7 +360,7 @@ Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxSca
 | GRU   | Scaled       | 0.0145  | 0.0202   |
 
 
-**Table Hasil Evaluasi Matriks (Data Asli)**
+**Evaluasi Matriks (Data Asli)**
 
 Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dalam tiga skenario horizon waktu:
 
@@ -383,7 +375,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 > *Catatan: Nilai RMSE dihitung dari akar kuadrat MSE.*
 
-**Table Hasil Prediksi (60 hari kedepan)**
+#### Table Hasil Prediksi (60 hari kedepan)
 
 | Hari ke- | Harga Aktual | Prediksi GRU | Prediksi LSTM |
 |----------|--------------|--------------|---------------|
@@ -449,31 +441,32 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 | 60       | 3980.00      | 3949.17      | 3928.52       |
 
 
-**Visualisasi Evaluasi**
+#### Visualisasi Hasil Evaluasi 
 
-- Prediksi 7 hari
+- Prediksi 7 hari ke depan
 LTSM
 ![image](https://github.com/user-attachments/assets/c4963d47-b0f1-4738-be40-80e62ff91990)
 
 GRU
 ![image](https://github.com/user-attachments/assets/570b6e29-a56d-44a4-a2c3-40c7d5c3f729)
 
+---
 
-- Prediksi 30 hari
+- Prediksi 30 hari ke depan
 LTSM
 ![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
 
 GRU
 ![image](https://github.com/user-attachments/assets/f96a43d0-1692-4e53-87d3-e29db3ae7741)
 
-- Prediksi 60 hari
+---
+
+- Prediksi 60 hari ke depan
 LTSM
 ![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
 
 GRU
 ![image](https://github.com/user-attachments/assets/44fc9da5-76e9-474d-9d67-5173b26d910d)
-
-
 
 
 **Insight Evaluasi**
@@ -483,9 +476,6 @@ GRU
 - Perbedaan nilai MAE dan RMSE menunjukkan bahwa **kesalahan besar** (outlier) dapat dikendalikan cukup baik oleh model.
 - Model tetap stabil saat prediksi diperluas dari 7 ke 60 hari, menandakan potensi penggunaan untuk prediksi menengah.
 
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
 
 **---Ini adalah bagian akhir laporan---**
 
