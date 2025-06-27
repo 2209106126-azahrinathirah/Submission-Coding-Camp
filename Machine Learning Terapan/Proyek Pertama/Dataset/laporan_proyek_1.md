@@ -101,6 +101,7 @@ Dataset yang digunakan dalam proyek ini adalah data historis harga saham PT Tele
 [Dataset Saham Bursa Efek - Kaggle (oleh Agung Pambudi)](https://www.kaggle.com/datasets/agungpambudi/dataset-saham-bursa-efek/data)
 
 Nama Folder : Data Tambahan
+
 Nama File   : TLKM.csv
 
 Dataset ini berisi total **1212 baris data** harian dengan 7 kolom (fitur utama), dan tidak mengandung nilai duplikat maupun missing value pada kolom waktu maupun harga utama. Data ini digunakan untuk membangun model prediksi time series dan forecasting.
