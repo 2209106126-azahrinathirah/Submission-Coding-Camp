@@ -784,6 +784,8 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 - Prediksi sangat mendekati nilai aktual dari awal hingga akhir.
 - Baik fluktuasi maupun arah tren berhasil diikuti dengan sangat presisi.
 
+---
+
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
 ### Penjelasan Metrik (Formula & Cara Kerja)
