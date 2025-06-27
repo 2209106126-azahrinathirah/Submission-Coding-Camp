@@ -596,18 +596,17 @@ Dengan pertimbangan performa dan efisiensi, **model GRU dipilih sebagai model te
 ### Metrik Evaluasi yang Digunakan
 Dalam proyek ini, jenis data yang digunakan adalah **time series** berupa harga historis saham harian PT Telekomunikasi Indonesia Tbk (TLKM). Oleh karena itu, metrik evaluasi yang digunakan harus mampu mengukur **akurasi numerik** dari nilai yang diprediksi terhadap nilai aktual dalam dimensi waktu.
 
-Untuk itu, proyek ini menggunakan tiga metrik evaluasi yang sesuai:
+Pemilihan metrik dilakukan berdasarkan kesesuaian dengan konteks data, rumusan permasalahan (problem statement), dan solusi yang ingin dicapai, yaitu prediksi nilai kontinu (harga saham). Untuk itu, proyek ini menggunakan tiga metrik evaluasi berikut:
 
 - **MAE (Mean Absolute Error)**
 - **RMSE (Root Mean Squared Error)**
 - **MAPE (Mean Absolute Percentage Error)**
 
-Ketiga metrik tersebut dipilih karena mampu memberikan pemahaman yang baik tentang kesalahan prediksi harga saham, serta digunakan secara luas dalam konteks forecasting dan analisis finansial.
+Dengan menggunakan ketiga metrik ini secara bersamaan, evaluasi model menjadi lebih komprehensif dan relevan untuk tujuan bisnis, dan mampu memberikan pemahaman yang baik tentang kesalahan prediksi harga saham, serta digunakan secara luas dalam konteks forecasting dan analisis finansial.
 
 ---
 
-
-### Hasil proyek Berdasarkan Metrik evaluasi
+### Hasil Proyek Berdasarkan Metrik evaluasi
 
 #### Tabel Hasil Evaluasi
 
@@ -788,7 +787,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
-### Penjelasan Metrik (Formula & Cara Kerja)
+### Penjelasan Metrik Evaluasi (Formula, Cara Kerja, Interpretasi)
 
 #### 1. Mean Absolute Error (MAE)
 MAE mengukur rata-rata kesalahan absolut antara nilai aktual (yᵢ) dan prediksi (ŷᵢ). Metrik ini memberikan gambaran langsung seberapa jauh model meleset dari nilai sebenarnya, tanpa memperhatikan arah kesalahan.
