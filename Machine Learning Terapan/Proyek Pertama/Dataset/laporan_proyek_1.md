@@ -127,6 +127,8 @@ Beberapa langkah EDA dilakukan untuk memahami pola dan struktur data, antara lai
 
 #### 1. EDA - Deskripsi Variable
 
+**Informasi Dataset**
+
 Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan tipe data sebagai berikut:
 
 | **No.** | **Fitur**     | **Tipe Data** |
@@ -139,13 +141,13 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 | 6       | Open          | float64       |
 | 7       | Volume        | object        |
 
-**Penjelasan**
+**Insight**
 
-- Seluruh kolom numerik (`Adj Close`, `Close`, `High`, `Low`, `Open`) sudah memiliki format data yang sesuai (float64).
+- Seluruh kolom harga sudah memiliki tipe data yang sesuai numerik (float64).
 - Kolom `Date` dan `Volume` masih bertipe **object**.
   - `Date` perlu dikonversi ke tipe data **datetime** untuk memungkinkan analisis berbasis waktu, seperti tren musiman atau harian.
   - `Volume` perlu dikonversi ke format **numerik** agar dapat dianalisis lebih lanjut, termasuk dalam perhitungan statistik dan visualisasi.
-- Tidak terdapat nilai kosong (null) pada seluruh kolom, sehingga data ini siap untuk dianalisis setelah beberapa tahapan transformasi awal.
+    
 
 **Deskripsi Statistik**
 
