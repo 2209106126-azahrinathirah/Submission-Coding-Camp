@@ -3,6 +3,9 @@
 ## Domain Proyek
 
 **Latar Belakang**
+
+![image](https://github.com/user-attachments/assets/0566578b-1f9a-4654-ba85-c157a1f85c5a)
+
 Prediksi harga saham merupakan tantangan penting dalam dunia keuangan, khususnya di pasar modal Indonesia yang terus berkembang pesat dalam beberapa dekade terakhir. Fluktuasi harga saham yang tinggi disebabkan oleh berbagai faktor seperti kondisi ekonomi makro, kinerja perusahaan, sentimen pelaku pasar, serta situasi geopolitik, menjadikan investasi di pasar saham penuh risiko <a href="#1">[1]</a>. Ketidakstabilan ini menyulitkan investor dalam mengambil keputusan yang optimal, terutama untuk jangka menengah dan panjang. Oleh karena itu, dibutuhkan pendekatan prediktif yang mampu mengenali pola-pola kompleks dalam data historis harga saham guna mendukung pengambilan keputusan yang lebih akurat dan berbasis data <a href="#1">[1]</a>.
 
 Salah satu saham yang menarik untuk dianalisis adalah PT Telekomunikasi Indonesia Tbk (TLKM), sebuah perusahaan telekomunikasi milik negara yang termasuk dalam kategori saham blue chip. Saham TLKM aktif diperdagangkan di Bursa Efek Indonesia (BEI) dan memiliki pengaruh besar terhadap indeks utama seperti IHSG dan LQ45 <a href="#2">[2]</a>. Kemampuan untuk memprediksi harga penutupan saham TLKM secara akurat dapat membantu investor, analis pasar, dan pembuat kebijakan dalam membuat keputusan yang lebih rasional dan berbasis data.
@@ -83,11 +86,6 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
    - **MAE** – Rata-rata kesalahan absolut.
    - **RMSE** – Akar dari rata-rata kuadrat error.
    - **MAPE** – Persentase kesalahan absolut rata-rata.
-
-   Model terbaik kemudian dapat dioptimalkan melalui:
-   - **Tuning jumlah neuron, batch size, dan learning rate**
-   - **Eksperimen jumlah timestep/input window**  
-   untuk meningkatkan stabilitas dan akurasi prediksi.
 
 ---
 
