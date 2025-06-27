@@ -126,7 +126,7 @@ Beberapa langkah EDA dilakukan untuk memahami pola dan struktur data, antara lai
 
 **Informasi Dataset**
 
-Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan tipe data sebagai berikut:
+Dataset ini terdiri dari **1212 baris** dan **7 kolom** utama dengan tipe data sebagai berikut:
 
 | **No.** | **Fitur**     | **Tipe Data** |
 |--------:|---------------|---------------|
