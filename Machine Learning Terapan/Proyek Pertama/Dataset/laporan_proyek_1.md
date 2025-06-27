@@ -305,6 +305,7 @@ Untuk itu, proyek ini menggunakan tiga metrik evaluasi yang sesuai:
 
 Ketiga metrik tersebut dipilih karena mampu memberikan pemahaman yang baik tentang kesalahan prediksi harga saham, serta digunakan secara luas dalam konteks forecasting dan analisis finansial.
 
+---
 
 ### Penjelasan Metrik (Formula & Cara Kerja)
 
@@ -316,10 +317,10 @@ $$
 $$
 
 **Cara kerja:**
-- MAE menghitung selisih absolut dari setiap prediksi terhadap data aktual, lalu dirata-rata.
-- **Semakin kecil MAE**, semakin akurat prediksi model.
+- Menghitung selisih absolut antara prediksi dan nilai aktual untuk setiap data.
+- Mengambil rata-rata dari semua selisih tersebut.
+- Semakin kecil MAE, semakin akurat model dalam memprediksi.
 
----
 
 #### 2. Root Mean Squared Error (RMSE)
 RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai aktual dan prediksi. Metrik ini lebih sensitif terhadap error besar.
@@ -329,10 +330,11 @@ $$
 $$
 
 **Cara kerja:**
-- Setiap error dikuadratkan (untuk menekankan error besar), lalu dirata-rata dan diakarkan.
-- **Semakin kecil RMSE**, semakin stabil dan presisi model dalam menangani fluktuasi harga.
+- Mengkuadratkan selisih antara prediksi dan nilai aktual untuk menekankan kesalahan besar.
+- Menghitung rata-rata dari kuadrat selisih tersebut.
+- Mengambil akar kuadrat dari rata-rata untuk mengembalikan ke skala asli.
+- Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
 
----
 
 #### 3. Mean Absolute Percentage Error (MAPE)
 MAPE menyatakan kesalahan prediksi dalam bentuk persentase dari nilai aktual, sehingga memudahkan pemahaman dalam konteks bisnis.
@@ -342,10 +344,13 @@ $$
 $$
 
 **Cara kerja:**
-- Mengukur seberapa besar prediksi meleset secara proporsional.
-- **Semakin kecil MAPE**, semakin baik akurasi model dalam bentuk persen.
+- Menghitung selisih absolut antara prediksi dan nilai aktual, lalu dibagi nilai aktual untuk mendapatkan proporsi kesalahan.
+- Mengambil rata-rata dari proporsi kesalahan tersebut.
+- Dikalikan 100% agar hasilnya dalam persentase.
+- Semakin kecil MAPE, semakin baik akurasi model dalam bentuk persentase kesalahan.
 
- 
+---
+
 ### Hasil proyek Berdasarkan Metrik evaluasi
 
 #### Tabel Hasil Evaluasi
@@ -447,13 +452,11 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 ![image](https://github.com/user-attachments/assets/570b6e29-a56d-44a4-a2c3-40c7d5c3f729)
 
----
 
 ![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
 
 ![image](https://github.com/user-attachments/assets/f96a43d0-1692-4e53-87d3-e29db3ae7741)
 
----
 
 ![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
 
