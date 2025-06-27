@@ -496,6 +496,13 @@ Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik
 
 Dengan pertimbangan performa dan efisiensi, **model GRU dipilih sebagai model terbaik** untuk menyelesaikan permasalahan prediksi harga saham pada proyek ini.
 
+
+**KESIMPULAN MODELING**
+- Dua model dibangun: LSTM dan GRU untuk prediksi harga saham berbasis data historis.
+- Keduanya memakai input sekuensial 60 hari dan dievaluasi dengan MAE, RMSE, dan MAPE.
+- GRU unggul dalam akurasi (error lebih kecil), efisiensi waktu training, dan stabilitas prediksi.
+- GRU dipilih sebagai model terbaik karena lebih cepat, ringan, dan akurat dalam memprediksi harga saham TLKM.
+
 ---
 
 ## Evaluation
