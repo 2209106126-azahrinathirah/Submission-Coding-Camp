@@ -291,12 +291,210 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 ---
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM** dan **GRU**, untuk memprediksi harga saham menggunakan data historis.
+
+### Model 1: LSTM (Long Short-Term Memory)
+
+**Tahapan Pemodelan**
+1. Persiapan Data Input
+    - Input berbentuk data sekuensial: setiap sampel memuat **60 hari terakhir** data harga saham.
+    - Bentuk input (`X_train_lstm`): `(jumlah_sampel, 60, jumlah_fitur)`
+    - Target (`y_train_lstm`): harga saham hari ke-61.
+  
+2. Membangun Arsitektur Model
+   
+   ![image](https://github.com/user-attachments/assets/495ff868-4982-48c2-8308-9d4cc3df200e)
+
+   Model disusun dengan layer sebagai berikut:
+   - **LSTM Layer**: 64 unit, `return_sequences=False`
+     Tidak perlu output sequence karena hanya memprediksi 1 nilai.
+   - **Dropout Layer**: 0.2 (20%) untuk mencegah overfitting.
+   - **Dense Layer**: 1 unit (regresi harga saham).
+  
+4. Kompilasi Model
+
+   ![image](https://github.com/user-attachments/assets/d7276206-2e66-4ffd-993f-27ca4d1a398f)
+   
+   Model dikompilasi dengan:
+   - Loss Function: Mean Squared Error (MSE)
+     -> Karena ini adalah regresi numerik.
+   - Optimizer: Adam dengan learning rate 0.0005
+     -> Adam menggabungkan keunggulan dari RMSprop dan momentum.
+  
+5. EarlyStopping Callback
+   
+   ![image](https://github.com/user-attachments/assets/6aa88ab2-5f6d-48b6-9eec-efe3c96fc9cc)
+
+   Untuk mencegah overfitting:
+   - Mengamati val_loss
+   - Menghentikan pelatihan jika val_loss tidak membaik selama 5 epoch berturut-turut.
+   - Mengembalikan bobot model terbaik dari epoch sebelumnya..
+
+6. Training Model
+
+   ![image](https://github.com/user-attachments/assets/2af83d98-31a9-4a2b-940e-13988d5cabc2)
+   
+   Model dilatih dengan parameter:
+   - Epochs: Maksimal 60
+   - Batch Size: 16
+   - Validation Split: 10% dari data latih
+   - Callback: EarlyStopping
+
+**Parameter Model**
+
+| Parameter             | Nilai                         |
+|-----------------------|-------------------------------|
+| Model Type            | LSTM                          |
+| Hidden Units          | 64                            |
+| Dropout Rate          | 0.2                           |
+| Loss Function         | Mean Squared Error (MSE)      |
+| Optimizer             | Adam                          |
+| Learning Rate         | 0.0005                        |
+| Epochs                | 60                            |
+| Batch Size            | 16                            |
+| Early Stopping        | Patience = 5, Restore Best    |
+| Validation Split      | 10%                           |
+| Input Shape           | (60, 1)                       |
+
+---
+
+### Model 2: GRU (Gated Recurrent Unit)
+
+**Tahapan Pemodelan**
+
+1. **Persiapan Data Input**  
+   - Input berbentuk data sekuensial: setiap sampel memuat **60 hari terakhir** data harga saham.  
+   - Bentuk input (`X_train_gru`): `(jumlah_sampel, 60, jumlah_fitur)`  
+   - Target (`y_train_gru`): harga saham hari ke-61.  
+
+2. **Membangun Arsitektur Model**  
+
+   ![image](https://github.com/user-attachments/assets/fe14cbcb-1690-4012-9fda-da77139b41cf)
+
+   Model disusun dengan layer sebagai berikut:  
+   - **GRU Layer**: 64 unit, `return_sequences=False` (output satu nilai).  
+   - **Dropout Layer**: 0.2 (20 %) untuk mengurangi overfitting.  
+   - **Dense Layer**: 1 unit (regresi harga saham).  
+
+3. **Kompilasi Model**  
+
+   ![image](https://github.com/user-attachments/assets/bd689bad-a828-4d63-bf6b-0ec2628386f4)
+
+   Model dikompilasi dengan:  
+   - **Loss Function**: Mean Squared Error (MSE) → cocok untuk regresi numerik.  
+   - **Optimizer**: Adam dengan learning rate 0.0005 → adaptif & cepat konvergen.  
+
+4. **EarlyStopping Callback**  
+
+   ![image](https://github.com/user-attachments/assets/8fb2325a-7d97-4de0-9f19-385fb2f4b813)
+
+   Untuk mencegah overfitting:  
+   - Memantau `val_loss`.  
+   - Menghentikan pelatihan apabila `val_loss` tidak membaik selama **5 epoch**.  
+   - Mengembalikan bobot terbaik secara otomatis (`restore_best_weights=True`).  
+
+5. **Training Model**  
+
+   ![image](https://github.com/user-attachments/assets/fcaad88a-c321-4664-8678-04eb40ac2823)
+
+   Model dilatih dengan parameter:  
+   - **Epochs**: maksimum 60  
+   - **Batch Size**: 16  
+   - **Validation Split**: 10 % data latih  
+   - **Callback**: EarlyStopping  
+
+---
+
+**Parameter Model GRU**
+
+| Parameter          | Nilai                                   |
+|--------------------|-----------------------------------------|
+| Model Type         | GRU                                     |
+| Hidden Units       | 64                                      |
+| Dropout Rate       | 0.2                                     |
+| Loss Function      | Mean Squared Error (MSE)                |
+| Optimizer          | Adam                                    |
+| Learning Rate      | 0.0005                                  |
+| Epochs             | 60                                      |
+| Batch Size         | 16                                      |
+| Early Stopping     | Patience = 5, Restore Best              |
+| Validation Split   | 10 %                                    |
+| Input Shape        | (60, 1)                                 |
+
+---
+
+### Perbandingan Arsitektur GRU vs LSTM
+
+| **Aspek**                     | **LSTM**                                                  | **GRU**                                                 |
+|------------------------------|-----------------------------------------------------------|---------------------------------------------------------|
+| **Unit Sel**                 | Memiliki *cell state* dan *hidden state*                  | Hanya *hidden state*                                    |
+| **Jumlah Gate**              | 3 gate: input, forget, output                             | 2 gate: reset dan update                                |
+| **Kompleksitas Arsitektur**  | Lebih kompleks, jumlah parameter lebih banyak             | Lebih sederhana dan ringan                              |
+| **Kinerja pada Data Panjang**| Unggul untuk urutan panjang & pola kompleks               | Cocok untuk data lebih pendek, cepat konvergen          |
+| **Waktu Training**           | Relatif lebih lama karena arsitektur lebih kompleks       | Lebih cepat karena struktur ringan                      |
+
+---
+
+### Kelebihan dan Kekurangan Model
+
+#### 🔷 LSTM (Long Short-Term Memory)
+
+**Kelebihan:**
+- Mampu menangani *long-term dependencies* dengan baik.
+- Cocok untuk time series dengan pola jangka panjang dan kompleks.
+- Lebih akurat pada urutan data yang panjang.
+
+**Kekurangan:**
+- Proses training lebih lambat karena arsitektur kompleks.
+- Memiliki lebih banyak parameter, sehingga rawan overfitting jika data sedikit.
+
+
+#### 🔷 GRU (Gated Recurrent Unit)
+
+**Kelebihan:**
+- Lebih cepat dilatih karena struktur lebih sederhana.
+- Performa mendekati LSTM tetapi dengan komputasi yang lebih ringan.
+- Cocok untuk dataset kecil atau dengan urutan pendek.
+
+**Kekurangan:**
+- Tidak memiliki *cell state*, hanya menggunakan *hidden state*.
+- Bisa kurang presisi untuk data dengan urutan yang sangat panjang.
+
+---
+
+### Pemilihan Model Terbaik dan Alasannya
+
+Dalam proyek ini, digunakan dua model deep learning berbasis Recurrent Neural Network (RNN), yaitu **LSTM (Long Short-Term Memory)** dan **GRU (Gated Recurrent Unit)**. Kedua model dilatih menggunakan data historis harga saham untuk memprediksi harga masa depan.
+
+Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik evaluasi seperti **MAE, RMSE, dan MAPE**, diperoleh hasil sebagai berikut (contoh):
+
+**Data Scaled**
+
+| Model | Data         | MAE (↓) | MSE (↓)  |
+|-------|--------------|---------|----------|
+| LSTM  | Scaled       | 0.0377  | 0.0466   |
+| GRU   | Scaled       | 0.0145  | 0.0202   |
+
+**Data Asli**
+
+| Model    | Horizon    | MAE (↓) | RMSE / √MSE (↓) | MAPE (↓) |
+|----------|------------|---------|-----------------|----------|
+| **LSTM** | 7 hari     | 28.75   | 5.57            | 0.80%    |
+| **GRU**  | 7 hari     | 18.55   | 4.80            | 0.51%    |
+| **LSTM** | 30 hari    | 24.11   | 5.59            | 0.65%    |
+| **GRU**  | 30 hari    | 23.00   | 5.36            | 0.62%    |
+| **LSTM** | 60 hari    | 23.58   | 5.45            | 0.62%    |
+| **GRU**  | 60 hari    | 22.12   | 5.20            | 0.58%    |
+
+#### Model Terbaik: **GRU**
+
+**Alasan Pemilihan:**
+- GRU memberikan hasil **error yang lebih rendah** pada ketiga metrik utama (MAE, RMSE, dan MAPE), menunjukkan performa prediksi yang lebih akurat dan stabil.
+- GRU memiliki arsitektur yang **lebih sederhana dan lebih cepat dilatih** dibanding LSTM, namun tetap mampu menangkap pola urutan data dengan baik.
+- GRU lebih **efisien secara komputasi** dan cocok untuk penggunaan produksi atau deployment karena waktu inferensi yang lebih cepat.
+
+Dengan pertimbangan performa dan efisiensi, **model GRU dipilih sebagai model terbaik** untuk menyelesaikan permasalahan prediksi harga saham pada proyek ini.
 
 ---
 
@@ -478,6 +676,9 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 - Perbedaan nilai MAE dan RMSE menunjukkan bahwa **kesalahan besar** (outlier) dapat dikendalikan cukup baik oleh model.
 - Model tetap stabil saat prediksi diperluas dari 7 ke 60 hari, menandakan potensi penggunaan untuk prediksi menengah.
 
+---
+
+## Conclusion
 
 **---Ini adalah bagian akhir laporan---**
 
