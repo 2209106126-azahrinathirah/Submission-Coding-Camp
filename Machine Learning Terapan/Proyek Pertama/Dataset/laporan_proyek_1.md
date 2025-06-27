@@ -74,6 +74,7 @@ Tujuan utama dari proyek ini meliputi:
 - Menilai performa prediksi dari masing-masing model dengan menggunakan metrik evaluasi MAE (Mean Absolute Error), RMSE (Root Mean Square Error), dan MAPE (Mean Absolute Percentage Error).
 - Memberikan insight kepada investor atau analis pasar terhadap akurasi dan stabilitas model prediksi untuk pengambilan keputusan yang lebih informatif.
 
+---
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
@@ -121,6 +122,7 @@ Berikut adalah penjelasan fitur-fitur yang tersedia dalam dataset:
 | `Adj Close` | Harga penutupan yang telah disesuaikan (adjusted) terhadap dividen dan stock split |
 | `Volume`    | Jumlah saham yang diperdagangkan pada hari tersebut |
 
+---
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 
