@@ -19,7 +19,7 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 3. Di era digital, pengambilan keputusan finansial berbasis data dan kecerdasan buatan telah menjadi praktik umum secara global, dan perlu lebih banyak diterapkan di pasar saham Indonesia.
 
 **Bagaimana Masalah Ini Harus Diselesaikan❓**
-1. Mengumpulkan data historis harga saham TLKM dari sumber resmi seperti Yahoo Finance atau Bursa Efek Indonesia.
+1. Mengumpulkan data historis harga saham TLKM dari sumber resmi kaggle Bursa Efek Indonesia.
 2. Melakukan preprocessing data time series, termasuk normalisasi dan pembuatan window sekuensial.
 3. Membangun dua model deep learning: Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) untuk mempelajari pola historis.
 4. Mengevaluasi performa model menggunakan metrik MAE, RMSE, dan MAPE untuk mengukur akurasi prediksi.
@@ -53,7 +53,7 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 Berdasarkan latar belakang, proyek ini difokuskan untuk menjawab pertanyaan-pertanyaan berikut:
 
 1. Bagaimana membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
-2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang lebih baik dibandingkan pendekatan statistik konvensional seperti ARIMA?
+2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang akurat
 3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari, 30 hari, dan 60 hari ke depan?
 
 ### Goals
@@ -153,7 +153,7 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 | 75%       | 3666.010000 | 4030.000000| 4060.000000| 3990.000000| 4030.000000|
 | Max       | 4295.700000 | 4770.000000| 4850.000000| 4720.000000| 4850.000000|
 
-**Penjelasan**
+**Insight**
 
 Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting mengenai distribusi harga saham TLKM:
 
