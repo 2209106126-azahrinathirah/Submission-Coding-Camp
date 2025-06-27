@@ -355,7 +355,7 @@ $$
 
 #### Tabel Hasil Evaluasi
 
-**Evaluasi Matriks (Data Scaled)**
+**1. Evaluasi Matriks (Data Scaled)**
 
 Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxScaler), berikut adalah hasil metrik pada data uji:
 
@@ -365,7 +365,7 @@ Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxSca
 | GRU   | Scaled       | 0.0145  | 0.0202   |
 
 
-**Evaluasi Matriks (Data Asli)**
+**2. Evaluasi Matriks (Data Asli)**
 
 Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dalam tiga skenario horizon waktu:
 
