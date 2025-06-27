@@ -247,16 +247,84 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 
 ![image](https://github.com/user-attachments/assets/99c549af-08bc-45b9-8c07-cb4ff1f15b8f)
 
+**Insight**
+
+- **Close, Open, High, Low, Adj Close**
+   - Memiliki pola distribusi **bimodal** (dua puncak).
+   - Hal ini menunjukkan kemungkinan adanya dua kelompok harga yang dominan selama periode data.
+   - Kemungkinan disebabkan oleh perubahan tren besar, seperti stock split, pergantian harga saham yang signifikan, atau masa sebelum dan sesudah krisis pasar.
+
+- **Volume**
+   - Distribusi bersifat **positively skewed** (kemencengan ke kanan).
+   - Mayoritas volume transaksi harian berada di angka rendah, sementara terdapat sedikit hari dengan lonjakan volume yang tinggi.
+   - Hal ini menunjukkan adanya **aktivitas perdagangan tidak merata**.
+
+
 ![image](https://github.com/user-attachments/assets/aa0506f2-aa5d-47d7-9a76-3e089cb88d34)
 
+**Insight**:
+
+- **Distribusi per Tahun**:
+   - Data dari tahun **2019** sangat sedikit karena hanya mencakup sebagian tahun.
+   - Tahun **2020 hingga 2022** memiliki jumlah data paling lengkap dan seimbang.
+   - Data tahun **2024** belum lengkap (hanya sampai sebagian kuartal ke-2 atau ke-3), sehingga jumlah datanya lebih rendah.
+
+- **Distribusi per Bulan**:
+   - Distribusi data per bulan terlihat **cukup merata**, menunjukkan **tidak ada bulan yang secara signifikan kehilangan data**.
+   - Ini mengindikasikan bahwa data saham dikumpulkan secara konsisten sepanjang tahun.
+
+- **Distribusi per Hari (Weekday)**:
+   - Hari Senin sampai Jumat memiliki jumlah data yang hampir sama.
+   - Hal ini **konsisten dengan jadwal pasar saham** yang hanya buka pada hari kerja (Senin–Jumat), dan **tidak ada data untuk Sabtu & Minggu**.
+
+- **Distribusi per Kuartal**:
+   - Data per kuartal menunjukkan **konsistensi jumlah data tiap kuartal**, terutama dari 2020Q1 hingga 2023Q4.
+   - Kuartal awal (2019Q4) dan akhir (2024Q2–Q4) memiliki jumlah data lebih sedikit karena cakupan waktunya tidak penuh.
+
 ![image](https://github.com/user-attachments/assets/6df65556-0e81-4fe2-9eaf-8c9dc6a9c7e0)
+
+**Insight**
+
+- Terjadi penurunan tajam harga saham pada awal 2020.
+- Tren harga meningkat stabil dari akhir 2020 hingga 2022.
+- Mulai tahun 2023, tren cenderung **menurun kembali**.
+- Harga `Open` dan `Close` sangat berdekatan, menunjukkan **selisih kecil dalam satu hari perdagangan**.
 
 
 5. **EDA - Multivariate Analysis**
 
 ![image](https://github.com/user-attachments/assets/4752d126-fae3-4837-ac31-b814c78bcd47)
 
+**Insight**:
+
+- **Korelasi Tinggi antar Harga (`Open`, `High`, `Low`, `Close`, `Adj Close`)**
+   - Terdapat **korelasi linier yang sangat kuat** antara `Open`, `High`, `Low`, `Close`, dan `Adj Close`, terlihat dari scatter plot yang membentuk garis diagonal rapat.
+   - Hal ini wajar, karena kelima fitur tersebut merepresentasikan harga pada titik waktu berbeda dalam satu hari dan saling berkaitan.
+
+- **`Volume` Tidak Berkorelasi Kuat dengan Harga**
+   - Tidak tampak pola hubungan yang jelas antara `Volume` dengan fitur harga (`Open`, `Close`, dst).
+   - Menunjukkan bahwa **volume perdagangan tidak selalu sejalan dengan fluktuasi harga**, dan perlu dianalisis terpisah.
+
+- **Distribusi Bimodal**
+   - Diagonal histogram untuk beberapa fitur harga menunjukkan pola **bimodal**, konsisten dengan analisis univariat sebelumnya.
+   - Ini menunjukkan kemungkinan adanya dua periode harga dominan dalam data.
+     
+
 ![image](https://github.com/user-attachments/assets/21002587-cf79-4a04-8dc5-04f78ffea7e0)
+
+**Insight**:
+- Open, High, Low, dan Close memiliki korelasi yang sangat tinggi satu sama lain (nilai mendekati atau sama dengan 1).
+
+  - pergerakan harga pada satu titik waktu sangat memengaruhi harga pada titik lainnya.
+
+  - Hal ini umum terjadi pada data saham karena harga pembukaan, tertinggi, dan penutupan biasanya bergerak searah.
+
+- Adj Close juga memiliki korelasi tinggi (sekitar 0.91) terhadap Open, High, Low, dan Close.
+
+  - Ini menunjukkan bahwa harga penutupan yang disesuaikan masih sangat terkait dengan harga aktual.
+
+- Volume_log menunjukkan korelasi negatif lemah terhadap semua fitur harga (sekitar -0.08 sampai -0.10).
+
 
 
 ---
