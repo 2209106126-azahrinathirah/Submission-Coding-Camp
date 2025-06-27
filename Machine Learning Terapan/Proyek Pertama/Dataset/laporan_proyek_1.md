@@ -145,8 +145,8 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 
 - Seluruh kolom harga sudah memiliki tipe data yang sesuai numerik (float64).
 - Kolom Date dan Volume masih bertipe object.
-  - Date` perlu dikonversi ke tipe data datetime untuk memungkinkan analisis berbasis waktu, seperti tren musiman atau harian.
-  - `Volume` perlu dikonversi ke format numerik agar dapat dianalisis lebih lanjut, termasuk dalam perhitungan statistik dan visualisasi.
+  - **Date** perlu dikonversi ke tipe data datetime untuk memungkinkan analisis berbasis waktu, seperti tren musiman atau harian.
+  - **Volume** perlu dikonversi ke format numerik agar dapat dianalisis lebih lanjut, termasuk dalam perhitungan statistik dan visualisasi.
     
 
 **Deskripsi Statistik**
