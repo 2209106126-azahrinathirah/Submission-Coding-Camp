@@ -357,7 +357,7 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 | 2019 | 11    | 12  | 3303.57   | 4180.0       | 4050.0 | 4190.0 | 4050.0 | 18.295697   |
 | 2019 | 11    | 13  | 3279.86   | 4150.0       | 4130.0 | 4170.0 | 4100.0 | 18.336491   |
 
-📌 **Catatan:**
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan proses data preparation yang dilakukan
@@ -511,6 +511,8 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 ---
 
+**Rubrik/Kriteria Tambahan (Opsional)**:
+
 ### Kelebihan dan Kekurangan Model
 
 #### 🔷 LSTM (Long Short-Term Memory)
@@ -537,6 +539,8 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 - Bisa kurang presisi untuk data dengan urutan yang sangat panjang.
 
 ---
+
+**Rubrik/Kriteria Tambahan (Opsional)**:
 
 ### Pemilihan Model Terbaik dan Alasannya
 
@@ -596,49 +600,6 @@ Ketiga metrik tersebut dipilih karena mampu memberikan pemahaman yang baik tenta
 
 ---
 
-### Penjelasan Metrik (Formula & Cara Kerja)
-
-#### 1. Mean Absolute Error (MAE)
-MAE mengukur rata-rata kesalahan absolut antara nilai aktual (yᵢ) dan prediksi (ŷᵢ). Metrik ini memberikan gambaran langsung seberapa jauh model meleset dari nilai sebenarnya, tanpa memperhatikan arah kesalahan.
-
-$$
-\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
-$$
-
-**Cara kerja:**
-- Menghitung selisih absolut antara prediksi dan nilai aktual untuk setiap data.
-- Mengambil rata-rata dari semua selisih tersebut.
-- Semakin kecil MAE, semakin akurat model dalam memprediksi.
-
-
-#### 2. Root Mean Squared Error (RMSE)
-RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai aktual dan prediksi. Metrik ini lebih sensitif terhadap error besar.
-
-$$
-\text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
-$$
-
-**Cara kerja:**
-- Mengkuadratkan selisih antara prediksi dan nilai aktual untuk menekankan kesalahan besar.
-- Menghitung rata-rata dari kuadrat selisih tersebut.
-- Mengambil akar kuadrat dari rata-rata untuk mengembalikan ke skala asli.
-- Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
-
-
-#### 3. Mean Absolute Percentage Error (MAPE)
-MAPE menyatakan kesalahan prediksi dalam bentuk persentase dari nilai aktual, sehingga memudahkan pemahaman dalam konteks bisnis.
-
-$$
-\text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
-$$
-
-**Cara kerja:**
-- Menghitung selisih absolut antara prediksi dan nilai aktual, lalu dibagi nilai aktual untuk mendapatkan proporsi kesalahan.
-- Mengambil rata-rata dari proporsi kesalahan tersebut.
-- Dikalikan 100% agar hasilnya dalam persentase.
-- Semakin kecil MAPE, semakin baik akurasi model dalam bentuk persentase kesalahan.
-
----
 
 ### Hasil proyek Berdasarkan Metrik evaluasi
 
@@ -817,6 +778,51 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 - Prediksi sangat mendekati nilai aktual dari awal hingga akhir.
 - Baik fluktuasi maupun arah tren berhasil diikuti dengan sangat presisi.
 
+**Rubrik/Kriteria Tambahan (Opsional)**:
+
+### Penjelasan Metrik (Formula & Cara Kerja)
+
+#### 1. Mean Absolute Error (MAE)
+MAE mengukur rata-rata kesalahan absolut antara nilai aktual (yᵢ) dan prediksi (ŷᵢ). Metrik ini memberikan gambaran langsung seberapa jauh model meleset dari nilai sebenarnya, tanpa memperhatikan arah kesalahan.
+
+$$
+\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
+$$
+
+**Cara kerja:**
+- Menghitung selisih absolut antara prediksi dan nilai aktual untuk setiap data.
+- Mengambil rata-rata dari semua selisih tersebut.
+- Semakin kecil MAE, semakin akurat model dalam memprediksi.
+
+
+#### 2. Root Mean Squared Error (RMSE)
+RMSE menghitung akar dari rata-rata kuadrat selisih antara nilai aktual dan prediksi. Metrik ini lebih sensitif terhadap error besar.
+
+$$
+\text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
+$$
+
+**Cara kerja:**
+- Mengkuadratkan selisih antara prediksi dan nilai aktual untuk menekankan kesalahan besar.
+- Menghitung rata-rata dari kuadrat selisih tersebut.
+- Mengambil akar kuadrat dari rata-rata untuk mengembalikan ke skala asli.
+- Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
+
+
+#### 3. Mean Absolute Percentage Error (MAPE)
+MAPE menyatakan kesalahan prediksi dalam bentuk persentase dari nilai aktual, sehingga memudahkan pemahaman dalam konteks bisnis.
+
+$$
+\text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
+$$
+
+**Cara kerja:**
+- Menghitung selisih absolut antara prediksi dan nilai aktual, lalu dibagi nilai aktual untuk mendapatkan proporsi kesalahan.
+- Mengambil rata-rata dari proporsi kesalahan tersebut.
+- Dikalikan 100% agar hasilnya dalam persentase.
+- Semakin kecil MAPE, semakin baik akurasi model dalam bentuk persentase kesalahan.
+
+---
 
 **KESIMPULAN HASIL EVALUASI**
 
