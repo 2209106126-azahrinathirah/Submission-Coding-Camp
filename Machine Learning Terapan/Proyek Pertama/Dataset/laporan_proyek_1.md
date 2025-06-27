@@ -158,7 +158,7 @@ Dataset ini terdiri dari **1212 baris data** harian dan **7 kolom** utama dengan
 Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting mengenai distribusi harga saham TLKM:
 
 - **Jumlah Data Konsisten**  
-   Semua fitur (`Adj Close`, `Close`, `High`, `Low`, `Open`) memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
+   Semua fitur harga memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
 
 - **Nilai Rata-Rata (Mean)**  
   Harga penutupan (`Close`) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga pembukaan (`Open`) rata-rata sebesar **Rp 3.651**.  
@@ -179,20 +179,106 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
   
 2. **EDA - Menangani Missing Value**
 
+| No | Kolom      | Jumlah Nilai Hilang |
+|----|------------|----------------------|
+| 1  | Date       | 0                    |
+| 2  | Adj Close  | 0                    |
+| 3  | Close      | 0                    |
+| 4  | High       | 0                    |
+| 5  | Low        | 0                    |
+| 6  | Open       | 0                    |
+| 7  | Volume     | 0                    |
 
 3. **EDA - Menangani Outlier**
+   
+### 🚨 Jumlah Outlier per Kolom (Metode IQR)
+
+| No | Kolom      | Jumlah Outlier |
+|----|------------|----------------|
+| 1  | Adj Close  | 0              |
+| 2  | Close      | 0              |
+| 3  | High       | 0              |
+| 4  | Low        | 0              |
+| 5  | Open       | 0              |
+| 6  | Volume     | 64             |
+
+![image](https://github.com/user-attachments/assets/604a170a-78f3-445d-ba06-44c801828f39)
+
+![image](https://github.com/user-attachments/assets/370aa8a2-83f0-4275-80ee-2fa3fd67723f)
+
+![image](https://github.com/user-attachments/assets/7b7d0a6b-e560-4d38-9b74-37139762f486)
+
+### Jumlah Outlier `Close` per Bulan dan Tahun
+
+| No | Tahun | Bulan | Jumlah Outlier |
+|----|-------|-------|----------------|
+| 1  | 2020  | 4     | 1              |
+| 2  | 2021  | 1     | 1              |
+| 3  | 2021  | 2     | 4              |
+| 4  | 2021  | 4     | 1              |
+| 5  | 2021  | 5     | 1              |
+| 6  | 2021  | 10    | 1              |
+| 7  | 2021  | 11    | 2              |
+| 8  | 2022  | 3     | 1              |
+| 9  | 2022  | 6     | 1              |
+| 10 | 2022  | 11    | 1              |
+| 11 | 2022  | 12    | 2              |
+| 12 | 2023  | 1     | 1              |
+| 13 | 2023  | 2     | 1              |
+| 14 | 2023  | 4     | 2              |
+| 15 | 2023  | 9     | 1              |
+| 16 | 2023  | 11    | 2              |
+| 17 | 2023  | 12    | 2              |
+| 18 | 2024  | 1     | 2              |
+| 19 | 2024  | 3     | 4              |
+
+![image](https://github.com/user-attachments/assets/46b1b068-32ff-4e40-a1ee-639b90bdfd7e)
+
+![image](https://github.com/user-attachments/assets/07757fee-14b7-414a-9935-7b8cf1987f5c)
+
 
 
 4. **EDA - Univariate Analysis**
- 
+
+![image](https://github.com/user-attachments/assets/99c549af-08bc-45b9-8c07-cb4ff1f15b8f)
+
+![image](https://github.com/user-attachments/assets/aa0506f2-aa5d-47d7-9a76-3e089cb88d34)
+
+![image](https://github.com/user-attachments/assets/6df65556-0e81-4fe2-9eaf-8c9dc6a9c7e0)
+
 
 5. **EDA - Multivariate Analysis**
-  
+
+![image](https://github.com/user-attachments/assets/4752d126-fae3-4837-ac31-b814c78bcd47)
+
+![image](https://github.com/user-attachments/assets/21002587-cf79-4a04-8dc5-04f78ffea7e0)
 
 
-  
+
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+
+### 🧪 Contoh Data Setelah Pra-Pemrosesan (`df_final_scaled` - untuk LSTM/GRU)
+
+| Year | Month     | Day       | Adj Close | Close_Capped | Open     | High     | Low      | Volume_log |
+|------|-----------|-----------|-----------|--------------|----------|----------|----------|------------|
+| 0.0  | 0.909091  | 0.200000  | 0.515033  | 0.683258     | 0.695652 | 0.690265 | 0.678414 | 0.893524   |
+| 0.0  | 0.909091  | 0.233333  | 0.529240  | 0.701357     | 0.634783 | 0.676991 | 0.678414 | 0.865904   |
+| 0.0  | 0.909091  | 0.333333  | 0.525689  | 0.696833     | 0.647826 | 0.676991 | 0.700441 | 0.855849   |
+| 0.0  | 0.909091  | 0.366667  | 0.554107  | 0.733032     | 0.652174 | 0.707965 | 0.704846 | 0.876730   |
+| 0.0  | 0.909091  | 0.400000  | 0.543451  | 0.719457     | 0.686957 | 0.699115 | 0.726872 | 0.878685   |
+
+### 🌲 Contoh Data Setelah Pra-Pemrosesan (`df_final_tree` - untuk XGBoost/LightGBM)
+
+| Year | Month | Day | Adj Close | Close_Capped | Open   | High   | Low    | Volume_log |
+|------|-------|-----|-----------|--------------|--------|--------|--------|-------------|
+| 2019 | 11    | 7   | 3216.63   | 4070.0       | 4150.0 | 4150.0 | 3990.0 | 18.646151   |
+| 2019 | 11    | 8   | 3248.24   | 4110.0       | 4010.0 | 4120.0 | 3990.0 | 18.069772   |
+| 2019 | 11    | 11  | 3240.34   | 4100.0       | 4040.0 | 4120.0 | 4040.0 | 17.859961   |
+| 2019 | 11    | 12  | 3303.57   | 4180.0       | 4050.0 | 4190.0 | 4050.0 | 18.295697   |
+| 2019 | 11    | 13  | 3279.86   | 4150.0       | 4130.0 | 4170.0 | 4100.0 | 18.336491   |
+
+📌 **Catatan:**
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan proses data preparation yang dilakukan
