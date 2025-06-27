@@ -797,9 +797,11 @@ $$
 \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
 $$
 
-**Cara kerja:**
+**Cara Metriks Bekerja:**
 - Menghitung selisih absolut antara prediksi dan nilai aktual untuk setiap data.
 - Mengambil rata-rata dari semua selisih tersebut.
+
+**Interpretasi**
 - Semakin kecil MAE, semakin akurat model dalam memprediksi.
 
 
@@ -810,24 +812,28 @@ $$
 \text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
 $$
 
-**Cara kerja:**
+**Cara Metriks Bekerja:**
 - Mengkuadratkan selisih antara prediksi dan nilai aktual untuk menekankan kesalahan besar.
 - Menghitung rata-rata dari kuadrat selisih tersebut.
 - Mengambil akar kuadrat dari rata-rata untuk mengembalikan ke skala asli.
-- Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
+
+**Interpretasi**
+Semakin kecil RMSE, semakin presisi model, terutama dalam menghindari kesalahan besar.
 
 
 #### 3. Mean Absolute Percentage Error (MAPE)
 MAPE menyatakan kesalahan prediksi dalam bentuk persentase dari nilai aktual, sehingga memudahkan pemahaman dalam konteks bisnis.
 
 $$
-\text{RMSE} = \sqrt{ \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 }
+\text{MAPE} = \frac{100\%}{n} \sum_{i=1}^{n} \left| \frac{y_i - \hat{y}_i}{y_i} \right|
 $$
 
-**Cara kerja:**
+**Cara Metriks Bekerja:**
 - Menghitung selisih absolut antara prediksi dan nilai aktual, lalu dibagi nilai aktual untuk mendapatkan proporsi kesalahan.
 - Mengambil rata-rata dari proporsi kesalahan tersebut.
 - Dikalikan 100% agar hasilnya dalam persentase.
+
+**Interpretasi**
 - Semakin kecil MAPE, semakin baik akurasi model dalam bentuk persentase kesalahan.
 
 ---
