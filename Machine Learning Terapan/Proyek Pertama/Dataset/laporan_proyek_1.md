@@ -592,6 +592,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 > *Catatan: Nilai RMSE dihitung dari akar kuadrat MSE.*
 
 **Insight:**
+
 **1. Prediksi 7 Hari ke Depan**
     - MAE & RMSE LSTM lebih tinggi, artinya LSTM membuat kesalahan sekitar 16–21 poin rata-rata dalam nilai prediksi.
     - MAPE < 0.5%, menunjukkan bahwa kesalahan prediksi hanya 0.4–0.5% dari nilai aktual, cukup kecil secara proporsional.
