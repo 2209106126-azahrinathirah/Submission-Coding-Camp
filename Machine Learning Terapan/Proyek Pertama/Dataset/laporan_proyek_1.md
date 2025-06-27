@@ -570,6 +570,11 @@ Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxSca
 | LSTM  | Scaled       | 0.0260  | 0.0327   |
 | GRU   | Scaled       | 0.0117  | 0.0173   |
 
+**Insight**
+- MAE GRU jauh lebih rendah dari LSTM (0.0117 vs 0.0260), menunjukkan bahwa GRU menghasilkan prediksi rata-rata yang jauh lebih dekat ke nilai aktual.
+- MSE GRU juga lebih kecil (0.0173 vs 0.0327), menandakan bahwa penyebaran error GRU lebih kecil dan lebih stabil dibandingkan LSTM.
+- Secara keseluruhan, GRU lebih unggul pada data yang telah dinormalisasi, baik dalam hal akurasi (MAE) maupun stabilitas error (MSE).
+
 
 **2. Evaluasi Matriks (Data Asli)**
 
@@ -585,6 +590,30 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 | **GRU**  | 60 hari    | 19.57   | 25.07           | 0.51%    |
 
 > *Catatan: Nilai RMSE dihitung dari akar kuadrat MSE.*
+
+**Insight:**
+1. Prediksi 7 Hari ke Depan
+- MAE & RMSE LSTM lebih tinggi, artinya LSTM membuat kesalahan sekitar 16–21 poin rata-rata dalam nilai prediksi.
+- MAPE < 0.5%, menunjukkan bahwa kesalahan prediksi hanya 0.4–0.5% dari nilai aktual, cukup kecil secara proporsional.
+- Namun, GRU lebih baik secara konsisten dalam ketiga metrik:
+    - Lebih akurat (MAE lebih rendah)
+    - Error lebih stabil (RMSE lebih kecil)
+    - Proporsi kesalahan lebih kecil (MAPE lebih rendah)
+
+2. Prediksi 30 Hari ke Depan (fokus sekitar hari ke-30)
+- Selisih MAE dan RMSE antara LSTM dan GRU cukup kecil, namun GRU tetap lebih unggul.
+- GRU menunjukkan performa yang lebih stabil dan konsisten, terutama saat mendekati hari ke-30.
+- Meskipun LSTM cukup baik dalam menangkap tren naik di paruh kedua, GRU menghasilkan prediksi yang lebih akurat secara menyeluruh.
+- Metrik mendukung hal ini:
+    - GRU memiliki MAE dan RMSE lebih rendah, artinya kesalahan rata-rata lebih kecil.
+    - MAPE GRU juga lebih kecil, menunjukkan prediksi lebih proporsional terhadap nilai aktual.
+
+3. Prediksi 60 Hari ke Depan
+- Pada horizon 60 hari, performa GRU unggul signifikan dibanding LSTM.
+- MAE GRU lebih rendah sekitar 4.3 poin dibanding LSTM, menandakan prediksi GRU lebih dekat ke harga aktual rata-rata.
+- RMSE GRU lebih rendah, menunjukkan error lebih stabil dan tidak menyebar.
+- MAPE GRU hanya 0.51%, lebih rendah dari LSTM yang 0.62% — ini perbedaan penting untuk prediksi finansial jangka panjang.
+
 
 #### Table Hasil Prediksi (60 hari kedepan)
 
@@ -657,36 +686,50 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 ![image](https://github.com/user-attachments/assets/c4963d47-b0f1-4738-be40-80e62ff91990)
 
 **Insight:** 
-- Model LSTM mampu mengikuti tren secara umum, namun terjadi underestimation di hari ke-4 dan overestimation pada hari ke-6 dan 7.
-- Prediksi terlihat lebih stabil, cenderung rata di bawah harga aktual mulai hari ke-5 sampai 7.
-- Model LSTM untuk horizon pendek (7 hari) cukup responsif tetapi kurang akurat saat terjadi perubahan tajam.
+- Prediksi LSTM tidak akurat untuk jangka pendek.
+- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
+- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
+
 
 ![image](https://github.com/user-attachments/assets/570b6e29-a56d-44a4-a2c3-40c7d5c3f729)
 
 **Insight:** 
-- GRU juga menangkap pola secara keseluruhan, tetapi memiliki error yang lebih rendah di hari ke-6 dan 7 dibanding LSTM.
-- Pola fluktuasi GRU lebih mirip dengan tren aktual, terutama pada hari ke-3 sampai 5.
-- GRU memberikan prediksi yang lebih dekat dengan kenyataan untuk jangka pendek dibandingkan LSTM.
+- GRU lebih akurat daripada LSTM untuk jangka pendek.
+- Mampu menangkap pola naik-turun dengan baik di hampir semua hari.
+- Prediksi GRU mendekati nilai aktual, terutama di hari ke-6 dan 7.
 
 
 ![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
 
 **Insight:** 
-- Model LSTM menangkap pola kenaikan tren jangka menengah, meskipun ada beberapa deviasi kecil di beberapa titik (misalnya hari ke-5, ke-10, dan ke-26).
-- Prediksi LSTM cukup baik untuk trend menaik secara bertahap, meski kadang kurang presisi dalam menangkap titik balik.
-- Untuk jangka menengah (30 hari), LSTM cukup andal dalam memprediksi arah tren meskipun akurasi titik harga tidak selalu tepat.
+- LSTM mampu menangkap tren jangka panjang dengan cukup baik, terutama tren naik di hari ke-15 hingga 30.
+- Beberapa penyimpangan terjadi di awal (hari ke-5 hingga 10), tetapi secara umum arah trennya sesuai.
+- Prediksi mendekati harga aktual di paruh akhir periode.
+
   
 ![image](https://github.com/user-attachments/assets/f96a43d0-1692-4e53-87d3-e29db3ae7741)
 
 **Insight:** 
+- GRU sangat akurat untuk jangka menengah.
+- Mampu mengikuti arah tren dan menangkap fluktuasi dengan baik, terutama setelah hari ke-10.
+- Prediksi sangat mendekati harga aktual hingga akhir periode.
+
 
 ![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
 
 **Insight:** 
+- LSTM cukup baik dalam mengenali tren naik yang panjang (hari ke-10 hingga 35).
+- Namun, akurasi menurun di akhir periode, prediksi mulai bergejolak dan tidak stabil.
+- Beberapa puncak dan lembah gagal ditangkap dengan tepat.
+
 
 ![image](https://github.com/user-attachments/assets/44fc9da5-76e9-474d-9d67-5173b26d910d)
 
 **Insight:** 
+- GRU menunjukkan performa paling stabil dan akurat.
+- Prediksi sangat mendekati nilai aktual dari awal hingga akhir.
+- Baik fluktuasi maupun arah tren berhasil diikuti dengan sangat presisi.
+
 
 
 **Insight Evaluasi**
