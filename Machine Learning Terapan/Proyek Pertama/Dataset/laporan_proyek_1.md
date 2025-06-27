@@ -24,12 +24,18 @@
    - 30 hari (jangka menengah)
    - 60 hari (jangka panjang)
 
-**Hasil Riset Terkait (Referensi)**
-[1] T. Prasetyo and M. Faisal, “Penerapan Data Mining dalam Prediksi Harga Saham di Indonesia Menggunakan Algoritma LSTM,” *Indonesian Journal on Computer and Information Technology (IJCIT)*, vol. 4, no. 2, pp. 116–120, Nov. 2019. doi: 10.31294/ijcit.v4i2.7712.
-[2] H. K. Alfredo, “Analysis of Fama and French 3-Factor Model Variables in the Formation of Expected Stock Returns (Issuers of LQ-45 Index Member Stocks for the Period 2020–2022),” *Edunity: Social and Educational Studies*, vol. 2, no. 7, 2023. doi: https://doi.org/10.57096/edunity.v2i7.122
-[3] Ridwan, M., Sadik, K., & Afendi, F. (2023). Comparison of ARIMA and GRU Models for High-Frequency Time Series Forecasting. Scientific Journal of Informatics, 10(3), 389–400. doi: https://doi.org/10.15294/sji.v10i3.45965 
-[4] Yavasani, R., & Wang, F. (2023). Comparative Analysis of LSTM, GRU, and ARIMA Models for Stock Market Price Prediction. Journal of Student Research, 12(4). https://doi.org/10.47611/jsrhs.v12i4.5888
-[5] N. A. Nilsen, "Perbandingan Model RNN, Model LSTM, dan Model GRU dalam Memprediksi Harga Saham-Saham LQ45," Jurnal Statistika dan Aplikasinya, vol. 6, no. 1, pp. 137–147, 2022, doi: https://doi.org/10.21009/JSA.06113
+## Hasil Riset Terkait (Referensi)
+
+- <a id="ref1"></a> [1] T. Prasetyo and M. Faisal, “Penerapan Data Mining dalam Prediksi Harga Saham di Indonesia Menggunakan Algoritma LSTM,” *IJCIT*, vol. 4, no. 2, pp. 116–120, 2019. [doi:10.31294/ijcit.v4i2.7712](https://doi.org/10.31294/ijcit.v4i2.7712)
+
+- <a id="ref2"></a> [2] H. K. Alfredo, “Analysis of Fama and French 3-Factor Model Variables...,” *Edunity*, vol. 2, no. 7, 2023. [doi:10.57096/edunity.v2i7.122](https://doi.org/10.57096/edunity.v2i7.122)
+
+- <a id="ref3"></a> [3] M. Ridwan et al., “Comparison of ARIMA and GRU...,” *Scientific Journal of Informatics*, vol. 10, no. 3, 2023. [doi:10.15294/sji.v10i3.45965](https://doi.org/10.15294/sji.v10i3.45965)
+
+- <a id="ref4"></a> [4] R. Yavasani and F. Wang, “Comparative Analysis...,” *Journal of Student Research*, vol. 12, no. 4, 2023. [doi:10.47611/jsrhs.v12i4.5888](https://doi.org/10.47611/jsrhs.v12i4.5888)
+
+- <a id="ref5"></a> [5] N. A. Nilsen, "Perbandingan Model...," *Jurnal Statistika dan Aplikasinya*, vol. 6, no. 1, 2022. [doi:10.21009/JSA.06113](https://doi.org/10.21009/JSA.06113)
+
 
 
 
