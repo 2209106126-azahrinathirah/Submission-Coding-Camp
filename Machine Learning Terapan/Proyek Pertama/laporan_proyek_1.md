@@ -546,7 +546,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
    ![training model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/training_model_lstm.png)
    
    Model dilatih dengan parameter:  
-   - Epochs: maksimum 60 iterasi pelatihan.
+   - Epochs: maksimum 100 iterasi pelatihan.
    - Batch Size: 16 (jumlah data dalam satu mini-batch).
    - Validation Split: 10% dari data pelatihan digunakan sebagai data validasi.
    - Callback: EarlyStopping digunakan untuk mengontrol proses pelatihan.
@@ -617,7 +617,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
    ![training model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/training_model_gru.png)
 
    Model dilatih dengan parameter:  
-   - Epochs: maksimum 60 iterasi pelatihan.
+   - Epochs: maksimum 100 iterasi pelatihan.
    - Batch Size: 16 (jumlah data dalam satu mini-batch).
    - Validation Split: 10% dari data pelatihan digunakan sebagai data validasi.
    - Callback: EarlyStopping digunakan untuk mengontrol proses pelatihan.
