@@ -4,7 +4,7 @@
 
 **Latar Belakang**
 
-![image](https://github.com/user-attachments/assets/972724c2-99cb-4a71-bbbc-b7a557bca366)
+![Latar Belakang](images/Latar_Belakang.png)
 
 Prediksi harga saham merupakan tantangan penting dalam dunia keuangan, khususnya di pasar modal Indonesia yang terus berkembang pesat dalam beberapa dekade terakhir. Fluktuasi harga saham yang tinggi disebabkan oleh berbagai faktor seperti kondisi ekonomi makro, kinerja perusahaan, sentimen pelaku pasar, serta situasi geopolitik, menjadikan investasi di pasar saham penuh risiko <a href="#1">[1]</a>. Ketidakstabilan ini menyulitkan investor dalam mengambil keputusan yang optimal, terutama untuk jangka menengah dan panjang. Oleh karena itu, dibutuhkan pendekatan prediktif yang mampu mengenali pola-pola kompleks dalam data historis harga saham guna mendukung pengambilan keputusan yang lebih akurat dan berbasis data <a href="#1">[1]</a>.
 
@@ -554,23 +554,23 @@ Dalam proyek ini, digunakan dua model deep learning berbasis Recurrent Neural Ne
 
 Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik evaluasi seperti **MAE, RMSE, dan MAPE**, diperoleh hasil sebagai berikut (contoh):
 
-**Data Scaled**
+**Data Normalisasi**
 
 | Model | Data         | MAE     | MSE      |
 |-------|--------------|---------|----------|
-| LSTM  | Scaled       | 0.0260  | 0.0327   |
-| GRU   | Scaled       | 0.0117  | 0.0173   |
+| LSTM  | Scaled       | 0.0183  | 0.0244   |
+| GRU   | Scaled       | 0.0114  | 0.0171   |
 
 **Data Asli**
 
 | Model    | Horizon    | MAE     | RMSE    | MAPE     |
 |----------|------------|---------|---------|----------|
-| **LSTM** | 7 hari     | 16.43   | 21.41   | 0.45%    |
-| **GRU**  | 7 hari     | 15.00   | 19.57   | 0.42%    |
-| **LSTM** | 30 hari    | 23.09   | 30.16   | 0.62%    |
-| **GRU**  | 30 hari    | 22.27   | 28.46   | 0.60%    |
-| **LSTM** | 60 hari    | 23.90   | 29.91   | 0.62%    |
-| **GRU**  | 60 hari    | 19.57   | 25.07   | 0.51%    |
+| **LSTM** | 7 hari     | 18.07   | 22.80   | 0.50%    |
+| **GRU**  | 7 hari     | 15.93   | 19.98   | 0.44%    |
+| **LSTM** | 30 hari    | 21.58   | 26.79   | 0.58%    |
+| **GRU**  | 30 hari    | 21.61   | 27.29   | 0.58%    |
+| **LSTM** | 60 hari    | 19.57   | 24.24   | 0.51%    |
+| **GRU**  | 60 hari    | 19.09   | 24.15   | 0.50%    |
 
 
 #### Model Terbaik: **GRU**
@@ -616,13 +616,13 @@ Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxSca
 
 | Model | Data         | MAE     | MSE      |
 |-------|--------------|---------|----------|
-| LSTM  | Scaled       | 0.0260  | 0.0327   |
-| GRU   | Scaled       | 0.0117  | 0.0173   |
+| LSTM  | Scaled       | 0.0183  | 0.0244   |
+| GRU   | Scaled       | 0.0114  | 0.0171   |
 
 **Insight**
-- MAE GRU jauh lebih rendah dari LSTM (0.0117 vs 0.0260), menunjukkan bahwa GRU menghasilkan prediksi rata-rata yang jauh lebih dekat ke nilai aktual.
-- MSE GRU juga lebih kecil (0.0173 vs 0.0327), menandakan bahwa penyebaran error GRU lebih kecil dan lebih stabil dibandingkan LSTM.
-- Secara keseluruhan, GRU lebih unggul pada data yang telah dinormalisasi, baik dalam hal akurasi (MAE) maupun stabilitas error (MSE).
+- MAE GRU lebih rendah dibandingkan LSTM (0.0114 vs 0.0183), menunjukkan bahwa rata-rata kesalahan prediksi GRU lebih kecil, sehingga hasil prediksinya lebih dekat ke nilai aktual.
+- MSE GRU juga lebih kecil dari LSTM (0.0171 vs 0.0244), yang berarti penyimpangan kuadrat error GRU lebih kecil, menandakan bahwa prediksinya lebih konsisten dan stabil, serta kurang sensitif terhadap outlier dibandingkan LSTM.
+- Secara keseluruhan, model GRU menunjukkan performa yang lebih unggul dibanding LSTM dalam memodelkan data yang telah dinormalisasi, baik dari segi akurasi rata-rata (MAE) maupun distribusi error (MSE).
 
 
 **2. Evaluasi Matriks (Data Asli)**
@@ -631,12 +631,12 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 | Model    | Horizon    | MAE     | RMSE    | MAPE     |
 |----------|------------|---------|---------|----------|
-| **LSTM** | 7 hari     | 16.43   | 21.41   | 0.45%    |
-| **GRU**  | 7 hari     | 15.00   | 19.57   | 0.42%    |
-| **LSTM** | 30 hari    | 23.09   | 30.16   | 0.62%    |
-| **GRU**  | 30 hari    | 22.27   | 28.46   | 0.60%    |
-| **LSTM** | 60 hari    | 23.90   | 29.91   | 0.62%    |
-| **GRU**  | 60 hari    | 19.57   | 25.07   | 0.51%    |
+| **LSTM** | 7 hari     | 18.07   | 22.80   | 0.50%    |
+| **GRU**  | 7 hari     | 15.93   | 19.98   | 0.44%    |
+| **LSTM** | 30 hari    | 21.58   | 26.79   | 0.58%    |
+| **GRU**  | 30 hari    | 21.61   | 27.29   | 0.58%    |
+| **LSTM** | 60 hari    | 19.57   | 24.24   | 0.51%    |
+| **GRU**  | 60 hari    | 19.09   | 24.15   | 0.50%    |
 
 > *Catatan: Nilai RMSE dihitung dari akar kuadrat MSE.*
 
@@ -644,94 +644,92 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 **1. Prediksi 7 Hari ke Depan**
 
-- MAE & RMSE LSTM lebih tinggi, artinya LSTM membuat kesalahan sekitar 16–21 poin rata-rata dalam nilai prediksi.
-- MAPE < 0.5%, menunjukkan bahwa kesalahan prediksi hanya 0.4–0.5% dari nilai aktual, cukup kecil secara proporsional.
-- Namun, GRU lebih baik secara konsisten dalam ketiga metrik:
-    - Lebih akurat (MAE lebih rendah)
-    - Error lebih stabil (RMSE lebih kecil)
-    - Proporsi kesalahan lebih kecil (MAPE lebih rendah)
+- GRU menghasilkan prediksi yang lebih akurat dan stabil dibanding LSTM:
+    - MAE GRU lebih rendah (15.93 vs 18.07), menunjukkan rata-rata kesalahan lebih kecil.
+    - RMSE GRU juga lebih rendah (19.98 vs 22.80), menandakan penyebaran error lebih kecil.
+    - MAPE GRU lebih kecil (0.44% vs 0.50%), artinya kesalahan relatif terhadap nilai aktual lebih rendah.
+- Dengan demikian, GRU unggul secara konsisten dalam ketiga metrik untuk prediksi jangka pendek.
 
 **2. Prediksi 30 Hari ke Depan**
 
-- Selisih MAE dan RMSE antara LSTM dan GRU cukup kecil, namun GRU tetap lebih unggul.
-- GRU menunjukkan performa yang lebih stabil dan konsisten, terutama saat mendekati hari ke-30.
-- Meskipun LSTM cukup baik dalam menangkap tren naik di paruh kedua, GRU menghasilkan prediksi yang lebih akurat secara menyeluruh.
-- Metrik mendukung hal ini:
-    - GRU memiliki MAE dan RMSE lebih rendah, artinya kesalahan rata-rata lebih kecil.
-    - MAPE GRU juga lebih kecil, menunjukkan prediksi lebih proporsional terhadap nilai aktual.
+- Perbedaan performa LSTM dan GRU sangat tipis, tetapi GRU masih sedikit lebih baik:
+    - MAE dan RMSE GRU sedikit lebih rendah dari LSTM (21.61 vs 21.58 dan 27.29 vs 26.79).
+    - MAPE keduanya sama di 0.58%, menunjukkan akurasi relatif setara.
+- GRU tetap menunjukkan keunggulan dalam konsistensi dan stabilitas prediksi meskipun margin perbedaannya kecil.
 
 **3. Prediksi 60 Hari ke Depan**
 
-- Pada horizon 60 hari, performa GRU unggul signifikan dibanding LSTM.
-- MAE GRU lebih rendah sekitar 4.3 poin dibanding LSTM, menandakan prediksi GRU lebih dekat ke harga aktual rata-rata.
-- RMSE GRU lebih rendah, menunjukkan error lebih stabil dan tidak menyebar.
-- MAPE GRU hanya 0.51%, lebih rendah dari LSTM yang 0.62% — ini perbedaan penting untuk prediksi finansial jangka panjang.
+- Untuk jangka panjang, GRU kembali lebih unggul:
+    - MAE GRU lebih rendah (19.09 vs 19.57), menandakan prediksi lebih mendekati nilai aktual.
+    - RMSE GRU juga sedikit lebih kecil (24.15 vs 24.24), menunjukkan error yang lebih stabil.
+    - MAPE GRU lebih kecil (0.50% vs 0.51%), penting dalam konteks prediksi finansial jangka panjang.
+- GRU mempertahankan keunggulan baik dalam akurasi maupun kestabilan error hingga 60 hari ke depan.
 
 
 #### Table Hasil Prediksi (60 hari kedepan)
 
 | Hari ke- | Harga Aktual | Prediksi GRU | Prediksi LSTM |
-|----------|--------------|--------------|---------------|
-| 1        | 3620.00      | 3629.27      | 3641.71       |
-| 2        | 3620.00      | 3660.51      | 3664.86       |
-| 3        | 3570.00      | 3581.88      | 3596.62       |
-| 4        | 3650.00      | 3614.98      | 3626.59       |
-| 5        | 3570.00      | 3581.35      | 3595.04       |
-| 6        | 3520.00      | 3515.77      | 3537.82       |
-| 7        | 3530.00      | 3519.96      | 3543.64       |
-| 8        | 3550.00      | 3515.92      | 3538.18       |
-| 9        | 3520.00      | 3544.92      | 3562.26       |
-| 10       | 3500.00      | 3509.59      | 3533.39       |
-| 11       | 3550.00      | 3532.75      | 3554.20       |
-| 12       | 3540.00      | 3531.81      | 3550.95       |
-| 13       | 3550.00      | 3515.71      | 3537.34       |
-| 14       | 3590.00      | 3562.16      | 3579.56       |
-| 15       | 3620.00      | 3591.68      | 3605.51       |
-| 16       | 3610.00      | 3604.69      | 3616.56       |
-| 17       | 3600.00      | 3604.69      | 3616.56       |
-| 18       | 3620.00      | 3591.47      | 3604.67       |
-| 19       | 3680.00      | 3665.54      | 3673.71       |
-| 20       | 3725.00      | 3715.89      | 3719.96       |
-| 21       | 3720.00      | 3734.03      | 3731.77       |
-| 22       | 3725.00      | 3764.99      | 3762.09       |
-| 23       | 3847.50      | 3801.42      | 3794.33       |
-| 24       | 3847.50      | 3820.84      | 3809.96       |
-| 25       | 3850.00      | 3820.91      | 3810.41       |
-| 26       | 3920.00      | 3901.97      | 3885.19       |
-| 27       | 3910.00      | 3921.20      | 3900.26       |
-| 28       | 3940.00      | 3921.27      | 3900.70       |
-| 29       | 3980.00      | 3896.30      | 3882.50       |
-| 30       | 3910.00      | 3921.42      | 3901.10       |
-| 31       | 3920.00      | 3881.88      | 3867.28       |
-| 32       | 3940.00      | 3902.56      | 3887.29       |
-| 33       | 3980.00      | 3935.44      | 3915.20       |
-| 34       | 3970.00      | 3942.08      | 3921.25       |
-| 35       | 3970.00      | 3948.64      | 3926.86       |
-| 36       | 3960.00      | 3965.71      | 3942.98       |
-| 37       | 3950.00      | 3948.42      | 3926.01       |
-| 38       | 3960.00      | 3965.11      | 3940.88       |
-| 39       | 3940.00      | 3965.18      | 3940.85       |
-| 40       | 3960.00      | 3951.82      | 3929.24       |
-| 41       | 3950.00      | 3955.36      | 3932.88       |
-| 42       | 3990.00      | 3955.74      | 3934.13       |
-| 43       | 3960.00      | 3971.84      | 3946.91       |
-| 44       | 3970.00      | 3972.06      | 3947.76       |
-| 45       | 3903.75      | 3928.28      | 3907.50       |
-| 46       | 3903.75      | 3884.82      | 3868.79       |
-| 47       | 3960.00      | 3939.05      | 3919.27       |
-| 48       | 4000.00      | 3999.43      | 3973.64       |
-| 49       | 3990.00      | 4019.12      | 3990.16       |
-| 50       | 4010.00      | 3979.38      | 3955.90       |
-| 51       | 4000.00      | 4015.71      | 3986.91       |
-| 52       | 4010.00      | 4005.79      | 3978.44       |
-| 53       | 3990.00      | 3988.92      | 3963.08       |
-| 54       | 3950.00      | 3972.13      | 3947.73       |
-| 55       | 3940.00      | 3928.13      | 3907.10       |
-| 56       | 3980.00      | 3979.16      | 3955.05       |
-| 57       | 3950.00      | 3968.50      | 3943.64       |
-| 58       | 3970.00      | 3948.79      | 3927.26       |
-| 59       | 3980.00      | 3975.61      | 3951.41       |
-| 60       | 3980.00      | 3949.17      | 3928.52       |
+|----------|--------------|--------------|----------------|
+| 1        | 3620.00      | 3632.38      | 3631.33        |
+| 2        | 3620.00      | 3655.37      | 3664.42        |
+| 3        | 3570.00      | 3579.28      | 3586.08        |
+| 4        | 3650.00      | 3615.99      | 3618.64        |
+| 5        | 3570.00      | 3578.15      | 3586.26        |
+| 6        | 3520.00      | 3515.35      | 3521.94        |
+| 7        | 3530.00      | 3522.34      | 3524.91        |
+| 8        | 3550.00      | 3514.81      | 3521.85        |
+| 9        | 3520.00      | 3540.58      | 3550.80        |
+| 10       | 3500.00      | 3511.34      | 3515.49        |
+| 11       | 3550.00      | 3534.75      | 3537.84        |
+| 12       | 3540.00      | 3529.23      | 3538.01        |
+| 13       | 3550.00      | 3512.62      | 3521.85        |
+| 14       | 3590.00      | 3562.22      | 3566.79        |
+| 15       | 3620.00      | 3592.47      | 3595.97        |
+| 16       | 3610.00      | 3604.41      | 3608.98        |
+| 17       | 3600.00      | 3604.41      | 3608.98        |
+| 18       | 3620.00      | 3590.27      | 3595.97        |
+| 19       | 3680.00      | 3668.46      | 3667.34        |
+| 20       | 3725.00      | 3719.38      | 3716.51        |
+| 21       | 3720.00      | 3731.05      | 3736.88        |
+| 22       | 3725.00      | 3766.56      | 3766.56        |
+| 23       | 3847.50      | 3803.46      | 3803.45        |
+| 24       | 3847.50      | 3816.85      | 3823.61        |
+| 25       | 3850.00      | 3819.63      | 3823.69        |
+| 26       | 3920.00      | 3901.08      | 3904.55        |
+| 27       | 3910.00      | 3915.67      | 3925.21        |
+| 28       | 3940.00      | 3918.48      | 3925.30        |
+| 29       | 3980.00      | 3897.47      | 3897.35        |
+| 30       | 3910.00      | 3917.91      | 3925.20        |
+| 31       | 3920.00      | 3883.76      | 3884.28        |
+| 32       | 3940.00      | 3904.96      | 3904.41        |
+| 33       | 3980.00      | 3933.35      | 3938.64        |
+| 34       | 3970.00      | 3942.51      | 3945.63        |
+| 35       | 3970.00      | 3948.87      | 3952.54        |
+| 36       | 3960.00      | 3966.98      | 3969.61        |
+| 37       | 3950.00      | 3946.64      | 3952.56        |
+| 38       | 3960.00      | 3963.09      | 3969.75        |
+| 39       | 3940.00      | 3959.71      | 3969.57        |
+| 40       | 3960.00      | 3950.94      | 3956.01        |
+| 41       | 3950.00      | 3954.66      | 3959.35        |
+| 42       | 3990.00      | 3956.31      | 3959.23        |
+| 43       | 3960.00      | 3968.88      | 3976.58        |
+| 44       | 3970.00      | 3971.11      | 3976.56        |
+| 45       | 3903.75      | 3923.11      | 3931.88        |
+| 46       | 3903.75      | 3883.60      | 3887.73        |
+| 47       | 3960.00      | 3939.87      | 3942.07        |
+| 48       | 4000.00      | 3998.75      | 4003.91        |
+| 49       | 3990.00      | 4015.08      | 4024.74        |
+| 50       | 4010.00      | 3980.79      | 3983.25        |
+| 51       | 4000.00      | 4010.77      | 4021.26        |
+| 52       | 4010.00      | 4002.90      | 4010.89        |
+| 53       | 3990.00      | 3987.00      | 3993.71        |
+| 54       | 3950.00      | 3967.73      | 3976.38        |
+| 55       | 3940.00      | 3923.68      | 3931.99        |
+| 56       | 3980.00      | 3978.56      | 3983.28        |
+| 57       | 3950.00      | 3961.19      | 3972.94        |
+| 58       | 3970.00      | 3948.30      | 3952.44        |
+| 59       | 3980.00      | 3974.84      | 3979.92        |
+| 60       | 3980.00      | 3949.95      | 3952.32        |
 
 
 #### Visualisasi Hasil Evaluasi 
