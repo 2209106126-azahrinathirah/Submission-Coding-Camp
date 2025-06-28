@@ -225,11 +225,11 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 | 5  | Open       | 0              |
 | 6  | Volume     | 64             |
 
-![image](https://github.com/user-attachments/assets/604a170a-78f3-445d-ba06-44c801828f39)
+![BoxPlot Outlier Volume](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/BoxPlot_Outlier_Volume.png)
 
-![image](https://github.com/user-attachments/assets/370aa8a2-83f0-4275-80ee-2fa3fd67723f)
+![ScatterPlot Outlier Volume Before](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/ScatterPlot_Outlier_Volume_Before.png)
 
-![image](https://github.com/user-attachments/assets/7b7d0a6b-e560-4d38-9b74-37139762f486)
+![ScatterPlot Outlier Volume After](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/ScatterPlot_Outlier_Volume_After.png)
 
 ### Jumlah Outlier `Close` per Bulan dan Tahun
 
@@ -255,16 +255,16 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 | 18 | 2024  | 1     | 2              |
 | 19 | 2024  | 3     | 4              |
 
-![image](https://github.com/user-attachments/assets/46b1b068-32ff-4e40-a1ee-639b90bdfd7e)
+![LinePlot Oulier Before vs After](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/LinePlot_Oulier_Before_vs_After.png)
 
-![image](https://github.com/user-attachments/assets/07757fee-14b7-414a-9935-7b8cf1987f5c)
+![LinePlot Distribuasi Date](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/LinePlot_Distribuasi_Date.png)
 
 
 ---
 
 #### 4. EDA - Univariate Analysis
 
-![image](https://github.com/user-attachments/assets/99c549af-08bc-45b9-8c07-cb4ff1f15b8f)
+![Histogram Fitur Numerik](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Histogram_Fitur_Numerik.png)
 
 **Insight**
 
@@ -279,7 +279,7 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
    - Hal ini menunjukkan adanya aktivitas perdagangan tidak merata.
 
 
-![image](https://github.com/user-attachments/assets/aa0506f2-aa5d-47d7-9a76-3e089cb88d34)
+![Barplot Distribusi Data Waktu](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Barplot_Distribusi_Data_Waktu.png)
 
 **Insight**:
 
@@ -300,7 +300,7 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
    - Data per kuartal menunjukkan konsistensi jumlah data tiap kuartal, terutama dari 2020Q1 hingga 2023Q4.
    - Kuartal awal (2019Q4) dan akhir (2024Q2–Q4) memiliki jumlah data lebih sedikit karena cakupan waktunya tidak penuh.
 
-![image](https://github.com/user-attachments/assets/6df65556-0e81-4fe2-9eaf-8c9dc6a9c7e0)
+![LinePlot Tren Harga Open vs Close](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/LinePlot_Tren_Harga_Open_vs_Close.png)
 
 **Insight**
 
@@ -313,7 +313,7 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 
 #### 5. EDA - Multivariate Analysis
 
-![image](https://github.com/user-attachments/assets/4752d126-fae3-4837-ac31-b814c78bcd47)
+![Pairplot Fitur Numerik](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Pairplot_Fitur_Numerik.png)
 
 **Insight**:
 
@@ -327,7 +327,7 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
    - Diagonal histogram untuk beberapa fitur harga menunjukkan pola bimodal, konsisten dengan analisis univariat sebelumnya. Ini menunjukkan kemungkinan adanya dua periode harga dominan dalam data.
      
 
-![image](https://github.com/user-attachments/assets/21002587-cf79-4a04-8dc5-04f78ffea7e0)
+![Heatmap Fitur Numerik](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Heatmap_Fitur_Numerik.png)
 
 **Insight**:
 - Open, High, Low, dan Close memiliki korelasi yang sangat tinggi satu sama lain (nilai mendekati atau sama dengan 1).
@@ -736,46 +736,47 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 
 #### Visualisasi Hasil Evaluasi 
 
-![image](https://github.com/user-attachments/assets/c4963d47-b0f1-4738-be40-80e62ff91990)
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
 
 **Insight:** 
 - Prediksi LSTM tidak akurat untuk jangka pendek.
 - Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
 - Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
+  
 
-
-![image](https://github.com/user-attachments/assets/570b6e29-a56d-44a4-a2c3-40c7d5c3f729)
+![Grafik Evaluasi Aktual vs GRU Next7ays](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next7Days.png)
 
 **Insight:** 
 - GRU lebih akurat daripada LSTM untuk jangka pendek.
 - Mampu menangkap pola naik-turun dengan baik di hampir semua hari.
 - Prediksi GRU mendekati nilai aktual, terutama di hari ke-6 dan 7.
+  
 
-
-![image](https://github.com/user-attachments/assets/6e75196a-6034-4b86-83b2-62b1bd9be4ab)
+![Grafik Evaluasi Aktual vs LSTM Next30Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next30Days.png)
 
 **Insight:** 
 - LSTM mampu menangkap tren jangka panjang dengan cukup baik, terutama tren naik di hari ke-15 hingga 30.
 - Beberapa penyimpangan terjadi di awal (hari ke-5 hingga 10), tetapi secara umum arah trennya sesuai.
 - Prediksi mendekati harga aktual di paruh akhir periode.
+  
 
-![Grafik Evaluasi Aktual vs GRU Next60Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next60Days.png)
+![Grafik Evaluasi Aktual vs GRU Next30Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next30Days.png)
 
 **Insight:** 
 - GRU sangat akurat untuk jangka menengah.
 - Mampu mengikuti arah tren dan menangkap fluktuasi dengan baik, terutama setelah hari ke-10.
 - Prediksi sangat mendekati harga aktual hingga akhir periode.
+  
 
-
-![image](https://github.com/user-attachments/assets/86faa7f3-cb5b-44fc-8990-36fe31c05e6e)
+![Grafik Evaluasi Aktual vs LSTM Next60Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next60Days.png)
 
 **Insight:** 
 - LSTM cukup baik dalam mengenali tren naik yang panjang (hari ke-10 hingga 35).
 - Namun, akurasi menurun di akhir periode, prediksi mulai bergejolak dan tidak stabil.
 - Beberapa puncak dan lembah gagal ditangkap dengan tepat.
+  
 
-
-![image](https://github.com/user-attachments/assets/44fc9da5-76e9-474d-9d67-5173b26d910d)
+![Grafik Evaluasi Aktual vs GRU Next60Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next60Days.png)
 
 **Insight:** 
 - GRU menunjukkan performa paling stabil dan akurat.
