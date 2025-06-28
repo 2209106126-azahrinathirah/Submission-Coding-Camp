@@ -39,8 +39,8 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 
 ## Hasil Riset Terkait (Referensi)
 
-<a name="1">[1]</a> T. Prasetyo dan M. Faisal, *Penerapan Data Mining dalam Prediksi Harga Saham di Indonesia Menggunakan Algoritma LSTM*, IJCIT, vol. 4, no. 2, pp. 116–120, 2019.  
-[https://repository.bsi.ac.id/repo/51717/](https://repository.bsi.ac.id/repo/51717/)
+<a name="1">[1]</a> G. Adiatmaja and R. Indraswari, "Comparative Analysis of LSTM and GRU Models for Indonesian Stock Price Prediction with Integrated Technical and Fundamental Indicators," 2024 International Conference on Information Technology Systems and Innovation (ICITSI), Bandung, Indonesia, 2024, pp. 206-211.10.1109/ICITSI65188.2024.10929370.  
+[https://doi.org/10.1109/ICITSI65188.2024.10929370](https://doi.org/10.1109/ICITSI65188.2024.10929370)
 
 <a name="2">[2]</a> H. K. Alfredo, *Analysis of Fama and French 3-Factor Model Variables in the Formation of Expected Stock Returns (Issuers of LQ-45 Index Member Stocks for the Period 2020–2022)*, Edunity, vol. 2, no. 7, 2023.  
 [https://doi.org/10.57096/edunity.v2i7.122](https://doi.org/10.57096/edunity.v2i7.122)
