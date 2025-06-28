@@ -452,7 +452,7 @@ Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci 
 
 1. **Pemilihan Fitur dan Target**
    - Fitur yang digunakan untuk pelatihan adalah `Open`, `High`, dan `Low`.
-   - Target yang akan diprediksi adalah `Close_Capped` (harga penutupan yang telah dikap).
+   - Target yang akan diprediksi adalah `Close_Capped`
 
 2. **Pemisahan Data Berdasarkan Waktu**
    - Data dibagi menjadi dua subset:
@@ -477,10 +477,10 @@ Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci 
 **Proses:**
 
 - Data diubah menjadi bentuk urutan (sequence) agar sesuai dengan format input model LSTM atau GRU.
-- Setiap sampel input (`X`) dibentuk dari 60 langkah waktu sebelumnya. Misalnya, `X[60]` berisi data dari waktu ke-0 hingga ke-59, dan targetnya adalah `y[60]`.
+- Setiap sampel input (X) dibentuk dari 60 langkah waktu sebelumnya. Misalnya, X[60] berisi data dari waktu ke-0 hingga ke-59, dan targetnya adalah y[60].
 - Fungsi `create_sequences` membentuk pasangan input-output dalam bentuk array tiga dimensi:
-  - `X_train_seq`: `(jumlah sample, 60, 3)` — 60 langkah, 3 fitur.
-  - `y_train_seq`: `(jumlah sample, 1)` — target yang sesuai.
+  - X_train_seq: (jumlah sample, 60, 3) — 60 langkah, 3 fitur.
+  - y_train_seq`: (jumlah sample, 1) — target yang sesuai.
   - Hal yang sama dilakukan pada data testing.
 
 **Alasan:**
@@ -493,10 +493,10 @@ Setelah semua tahap preparation selesai, struktur akhir data adalah sebagai beri
 
 | Dataset       | Shape (Contoh)             |
 |---------------|-----------------------------|
-| X_train_seq   | (936, 60, 3)                |
-| y_train_seq   | (936, 1)                    |
-| X_test_seq    | (234, 60, 3)                |
-| y_test_seq    | (234, 1)                    |
+| X_train_seq   | (909, 60, 3)                |
+| y_train_seq   | (909, 1)                    |
+| X_test_seq    | (183, 60, 3)                |
+| y_test_seq    | (183, 1)                    |
 
 
 ---
