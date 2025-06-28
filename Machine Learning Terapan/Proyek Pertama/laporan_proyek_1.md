@@ -554,23 +554,19 @@ Dalam proyek ini, digunakan dua model deep learning berbasis Recurrent Neural Ne
 
 Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik evaluasi seperti **MAE, RMSE, dan MAPE**, diperoleh hasil sebagai berikut (contoh):
 
-**Data Scaled**
+**Data Normalisasi**
 
-| Model | Data         | MAE     | MSE      |
-|-------|--------------|---------|----------|
-| LSTM  | Scaled       | 0.0260  | 0.0327   |
-| GRU   | Scaled       | 0.0117  | 0.0173   |
+| Model |     MAE      |     RMSE      |
+|-------|--------------|---------------|
+| LSTM  |    0.0257    |    0.0324     |
+| GRU   |    0.0265    |    0.0334     |
 
 **Data Asli**
 
-| Model    | Horizon    | MAE     | RMSE    | MAPE     |
-|----------|------------|---------|---------|----------|
-| **LSTM** | 7 hari     | 16.43   | 21.41   | 0.45%    |
-| **GRU**  | 7 hari     | 15.00   | 19.57   | 0.42%    |
-| **LSTM** | 30 hari    | 23.09   | 30.16   | 0.62%    |
-| **GRU**  | 30 hari    | 22.27   | 28.46   | 0.60%    |
-| **LSTM** | 60 hari    | 23.90   | 29.91   | 0.62%    |
-| **GRU**  | 60 hari    | 19.57   | 25.07   | 0.51%    |
+| Model | MAE (Rupiah) | RMSE (Rupiah) | MAPE (%) |
+|-------|--------------|---------------|----------|
+| LSTM  |     56.75    |     71.71     |   1.82   |
+| GRU   |     58.61    |     73.91     |   1.88   |
 
 
 #### Model Terbaik: **GRU**
@@ -614,124 +610,58 @@ Dengan menggunakan ketiga metrik ini secara bersamaan, evaluasi model menjadi le
 
 Untuk perbandingan performa model terhadap data yang telah diskalakan (MinMaxScaler), berikut adalah hasil metrik pada data uji:
 
-| Model | Data         | MAE     | MSE      |
-|-------|--------------|---------|----------|
-| LSTM  | Scaled       | 0.0260  | 0.0327   |
-| GRU   | Scaled       | 0.0117  | 0.0173   |
+| Model |     MAE      |     RMSE      |
+|-------|--------------|---------------|
+| LSTM  |    0.0384    |    0.0469     |
+| GRU   |    0.0245    |    0.0313     |
 
 **Insight**
-- MAE GRU jauh lebih rendah dari LSTM (0.0117 vs 0.0260), menunjukkan bahwa GRU menghasilkan prediksi rata-rata yang jauh lebih dekat ke nilai aktual.
-- MSE GRU juga lebih kecil (0.0173 vs 0.0327), menandakan bahwa penyebaran error GRU lebih kecil dan lebih stabil dibandingkan LSTM.
-- Secara keseluruhan, GRU lebih unggul pada data yang telah dinormalisasi, baik dalam hal akurasi (MAE) maupun stabilitas error (MSE).
+
+- GRU memiliki MAE lebih rendah daripada LSTM (0.0245 vs 0.0384), menunjukkan bahwa secara rata-rata, prediksi GRU lebih dekat ke nilai aktual dibandingkan LSTM.
+- RMSE GRU juga lebih kecil dibandingkan LSTM (0.0313 vs 0.0469), mengindikasikan bahwa prediksi GRU lebih konsisten dan lebih stabil terhadap fluktuasi data.
+- Secara keseluruhan, GRU unggul tipis dari LSTM dalam hal akurasi dan stabilitas pada data yang telah dinormalisasi, menjadikannya pilihan yang lebih baik untuk model saat ini.
 
 
 **2. Evaluasi Matriks (Data Asli)**
 
-Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dalam tiga skenario horizon waktu:
+Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji menggunakan skala asli :
 
-| Model    | Horizon    | MAE     | RMSE    | MAPE     |
-|----------|------------|---------|---------|----------|
-| **LSTM** | 7 hari     | 16.43   | 21.41   | 0.45%    |
-| **GRU**  | 7 hari     | 15.00   | 19.57   | 0.42%    |
-| **LSTM** | 30 hari    | 23.09   | 30.16   | 0.62%    |
-| **GRU**  | 30 hari    | 22.27   | 28.46   | 0.60%    |
-| **LSTM** | 60 hari    | 23.90   | 29.91   | 0.62%    |
-| **GRU**  | 60 hari    | 19.57   | 25.07   | 0.51%    |
+| Model | MAE (Rupiah) | RMSE (Rupiah) | MAPE (%) |
+|-------|--------------|---------------|----------|
+| LSTM  |     84.76    |     103.71    |   2.69   |
+| GRU   |     54.18    |     69.13     |   1.73   |
 
 > *Catatan: Nilai RMSE dihitung dari akar kuadrat MSE.*
 
 **Insight:**
 
-**1. Prediksi 7 Hari ke Depan**
+- Model GRU menunjukkan performa lebih baik dibandingkan LSTM di seluruh metrik:
+    - MAE GRU lebih rendah (54.18 vs 84.76 Rupiah), artinya secara rata-rata prediksi GRU lebih dekat ke nilai aktual.
+    - RMSE GRU juga lebih kecil (69.13 vs 103.71 Rupiah), menunjukkan bahwa error GRU lebih stabil dan tidak menyimpang jauh.
+    - MAPE GRU juga lebih rendah (1.73% vs 2.69%), berarti prediksi GRU secara relatif lebih akurat terhadap nilai aktual.
+- Secara keseluruhan, GRU lebih unggul dalam memprediksi harga saham pada data asli, sehingga layak dipertimbangkan untuk forecasting jangka pendek.
+  
 
-- MAE & RMSE LSTM lebih tinggi, artinya LSTM membuat kesalahan sekitar 16–21 poin rata-rata dalam nilai prediksi.
-- MAPE < 0.5%, menunjukkan bahwa kesalahan prediksi hanya 0.4–0.5% dari nilai aktual, cukup kecil secara proporsional.
-- Namun, GRU lebih baik secara konsisten dalam ketiga metrik:
-    - Lebih akurat (MAE lebih rendah)
-    - Error lebih stabil (RMSE lebih kecil)
-    - Proporsi kesalahan lebih kecil (MAPE lebih rendah)
+#### Table Hasil Forecasting (7 hari kedepan)
 
-**2. Prediksi 30 Hari ke Depan**
-
-- Selisih MAE dan RMSE antara LSTM dan GRU cukup kecil, namun GRU tetap lebih unggul.
-- GRU menunjukkan performa yang lebih stabil dan konsisten, terutama saat mendekati hari ke-30.
-- Meskipun LSTM cukup baik dalam menangkap tren naik di paruh kedua, GRU menghasilkan prediksi yang lebih akurat secara menyeluruh.
-- Metrik mendukung hal ini:
-    - GRU memiliki MAE dan RMSE lebih rendah, artinya kesalahan rata-rata lebih kecil.
-    - MAPE GRU juga lebih kecil, menunjukkan prediksi lebih proporsional terhadap nilai aktual.
-
-**3. Prediksi 60 Hari ke Depan**
-
-- Pada horizon 60 hari, performa GRU unggul signifikan dibanding LSTM.
-- MAE GRU lebih rendah sekitar 4.3 poin dibanding LSTM, menandakan prediksi GRU lebih dekat ke harga aktual rata-rata.
-- RMSE GRU lebih rendah, menunjukkan error lebih stabil dan tidak menyebar.
-- MAPE GRU hanya 0.51%, lebih rendah dari LSTM yang 0.62% — ini perbedaan penting untuk prediksi finansial jangka panjang.
+| Hari ke- | Harga Aktual  | Prediksi GRU | Prediksi LSTM  |
+|----------|---------------|--------------|----------------|
+| 1        | 2900.0        | 2785.0       | 2851.5         |
+| 2        | 2900.0        | 2771.8       | 2840.1         |
+| 3        | 2820.0        | 2761.9       | 2831.6         |
+| 4        | 2780.0        | 2753.1       | 2824.7         |
+| 5        | 2800.0        | 2744.7       | 2818.9         |
+| 6        | 2770.0        | 2736.5       | 2813.8         |
+| 7        | 2740.0        | 2728.4       | 2809.3         |
 
 
-#### Table Hasil Prediksi (60 hari kedepan)
+**Insight:**
 
-| Hari ke- | Harga Aktual | Prediksi GRU | Prediksi LSTM |
-|----------|--------------|--------------|---------------|
-| 1        | 3620.00      | 3629.27      | 3641.71       |
-| 2        | 3620.00      | 3660.51      | 3664.86       |
-| 3        | 3570.00      | 3581.88      | 3596.62       |
-| 4        | 3650.00      | 3614.98      | 3626.59       |
-| 5        | 3570.00      | 3581.35      | 3595.04       |
-| 6        | 3520.00      | 3515.77      | 3537.82       |
-| 7        | 3530.00      | 3519.96      | 3543.64       |
-| 8        | 3550.00      | 3515.92      | 3538.18       |
-| 9        | 3520.00      | 3544.92      | 3562.26       |
-| 10       | 3500.00      | 3509.59      | 3533.39       |
-| 11       | 3550.00      | 3532.75      | 3554.20       |
-| 12       | 3540.00      | 3531.81      | 3550.95       |
-| 13       | 3550.00      | 3515.71      | 3537.34       |
-| 14       | 3590.00      | 3562.16      | 3579.56       |
-| 15       | 3620.00      | 3591.68      | 3605.51       |
-| 16       | 3610.00      | 3604.69      | 3616.56       |
-| 17       | 3600.00      | 3604.69      | 3616.56       |
-| 18       | 3620.00      | 3591.47      | 3604.67       |
-| 19       | 3680.00      | 3665.54      | 3673.71       |
-| 20       | 3725.00      | 3715.89      | 3719.96       |
-| 21       | 3720.00      | 3734.03      | 3731.77       |
-| 22       | 3725.00      | 3764.99      | 3762.09       |
-| 23       | 3847.50      | 3801.42      | 3794.33       |
-| 24       | 3847.50      | 3820.84      | 3809.96       |
-| 25       | 3850.00      | 3820.91      | 3810.41       |
-| 26       | 3920.00      | 3901.97      | 3885.19       |
-| 27       | 3910.00      | 3921.20      | 3900.26       |
-| 28       | 3940.00      | 3921.27      | 3900.70       |
-| 29       | 3980.00      | 3896.30      | 3882.50       |
-| 30       | 3910.00      | 3921.42      | 3901.10       |
-| 31       | 3920.00      | 3881.88      | 3867.28       |
-| 32       | 3940.00      | 3902.56      | 3887.29       |
-| 33       | 3980.00      | 3935.44      | 3915.20       |
-| 34       | 3970.00      | 3942.08      | 3921.25       |
-| 35       | 3970.00      | 3948.64      | 3926.86       |
-| 36       | 3960.00      | 3965.71      | 3942.98       |
-| 37       | 3950.00      | 3948.42      | 3926.01       |
-| 38       | 3960.00      | 3965.11      | 3940.88       |
-| 39       | 3940.00      | 3965.18      | 3940.85       |
-| 40       | 3960.00      | 3951.82      | 3929.24       |
-| 41       | 3950.00      | 3955.36      | 3932.88       |
-| 42       | 3990.00      | 3955.74      | 3934.13       |
-| 43       | 3960.00      | 3971.84      | 3946.91       |
-| 44       | 3970.00      | 3972.06      | 3947.76       |
-| 45       | 3903.75      | 3928.28      | 3907.50       |
-| 46       | 3903.75      | 3884.82      | 3868.79       |
-| 47       | 3960.00      | 3939.05      | 3919.27       |
-| 48       | 4000.00      | 3999.43      | 3973.64       |
-| 49       | 3990.00      | 4019.12      | 3990.16       |
-| 50       | 4010.00      | 3979.38      | 3955.90       |
-| 51       | 4000.00      | 4015.71      | 3986.91       |
-| 52       | 4010.00      | 4005.79      | 3978.44       |
-| 53       | 3990.00      | 3988.92      | 3963.08       |
-| 54       | 3950.00      | 3972.13      | 3947.73       |
-| 55       | 3940.00      | 3928.13      | 3907.10       |
-| 56       | 3980.00      | 3979.16      | 3955.05       |
-| 57       | 3950.00      | 3968.50      | 3943.64       |
-| 58       | 3970.00      | 3948.79      | 3927.26       |
-| 59       | 3980.00      | 3975.61      | 3951.41       |
-| 60       | 3980.00      | 3949.17      | 3928.52       |
+- Kedua model (GRU dan LSTM) menghasilkan prediksi yang cenderung stabil di kisaran 2780-an, sedangkan harga aktual mengalami penurunan bertahap dari 2900 ke 2740.
+- GRU cenderung underpredict (meremehkan) harga di awal (Hari ke-1 dan ke-2), tetapi tetap mendekati tren penurunan.
+- LSTM juga underpredict namun sedikit lebih responsif terhadap perubahan arah tren, terutama dari Hari ke-3 ke bawah.
+- Meskipun kedua model belum mengikuti penurunan aktual secara tajam, LSTM menunjukkan pola prediksi yang lebih adaptif dibandingkan GRU.
+- **Kesimpulan**: Untuk horizon 7 hari ke depan, LSTM memberikan prediksi yang sedikit lebih dinamis, sedangkan GRU menghasilkan output yang lebih konservatif dan stabil, namun kurang mengikuti penurunan aktual secara tajam.
 
 
 #### Visualisasi Hasil Evaluasi 
@@ -742,46 +672,47 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 - Prediksi LSTM tidak akurat untuk jangka pendek.
 - Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
 - Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
-  
 
-![Grafik Evaluasi Aktual vs GRU Next7ays](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next7Days.png)
 
-**Insight:** 
-- GRU lebih akurat daripada LSTM untuk jangka pendek.
-- Mampu menangkap pola naik-turun dengan baik di hampir semua hari.
-- Prediksi GRU mendekati nilai aktual, terutama di hari ke-6 dan 7.
-  
-
-![Grafik Evaluasi Aktual vs LSTM Next30Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next30Days.png)
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
 
 **Insight:** 
-- LSTM mampu menangkap tren jangka panjang dengan cukup baik, terutama tren naik di hari ke-15 hingga 30.
-- Beberapa penyimpangan terjadi di awal (hari ke-5 hingga 10), tetapi secara umum arah trennya sesuai.
-- Prediksi mendekati harga aktual di paruh akhir periode.
+- Prediksi LSTM tidak akurat untuk jangka pendek.
+- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
+- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
   
-
-![Grafik Evaluasi Aktual vs GRU Next30Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next30Days.png)
+  
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
 
 **Insight:** 
-- GRU sangat akurat untuk jangka menengah.
-- Mampu mengikuti arah tren dan menangkap fluktuasi dengan baik, terutama setelah hari ke-10.
-- Prediksi sangat mendekati harga aktual hingga akhir periode.
+- Prediksi LSTM tidak akurat untuk jangka pendek.
+- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
+- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
   
-
-![Grafik Evaluasi Aktual vs LSTM Next60Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next60Days.png)
+  
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
 
 **Insight:** 
-- LSTM cukup baik dalam mengenali tren naik yang panjang (hari ke-10 hingga 35).
-- Namun, akurasi menurun di akhir periode, prediksi mulai bergejolak dan tidak stabil.
-- Beberapa puncak dan lembah gagal ditangkap dengan tepat.
-  
+- Prediksi LSTM tidak akurat untuk jangka pendek.
+- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
+- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
+- 
 
-![Grafik Evaluasi Aktual vs GRU Next60Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next60Days.png)
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
 
 **Insight:** 
-- GRU menunjukkan performa paling stabil dan akurat.
-- Prediksi sangat mendekati nilai aktual dari awal hingga akhir.
-- Baik fluktuasi maupun arah tren berhasil diikuti dengan sangat presisi.
+- Prediksi LSTM tidak akurat untuk jangka pendek.
+- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
+- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
+
+---
+
+
+#### Visualisasi Hasil Forecasting
+
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
+
+![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
 
 ---
 
