@@ -28,10 +28,7 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 2. Melakukan preprocessing data time series, termasuk normalisasi dan pembuatan window sekuensial.
 3. Membangun dua model deep learning: Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) untuk mempelajari pola historis.
 4. Mengevaluasi performa model menggunakan metrik MAE, RMSE, dan MAPE untuk mengukur akurasi prediksi.
-5. Melakukan eksperimen prediksi harga penutupan saham TLKM untuk tiga horizon waktu ke depan:
-   - 7 hari (jangka pendek)
-   - 30 hari (jangka menengah)
-   - 60 hari (jangka panjang)
+5. Melakukan eksperimen prediksi harga penutupan saham TLKM untuk 7 hari ke depan
   
 ---
   
@@ -80,19 +77,15 @@ Tujuan utama dari proyek ini meliputi:
 
 ### Solution statements
 
-Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama akan dilakukan:
+Untuk menyelesaikan permasalahan prediksi harga saham TLKM secara akurat, dua algoritma deep learning berbasis Recurrent Neural Network (RNN) digunakan sebagai solusi utama:
 
-1. **Perbandingan Model Deep Learning**  
-   Membangun dua model prediksi berbasis jaringan saraf berulang (RNN):
-   - **Long Short-Term Memory (LSTM)**
-   - **Gated Recurrent Unit (GRU)**  
-   Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi 7 hari ke depan?
+**1. Long Short-Term Memory (LSTM)**
+LSTM dirancang untuk mengatasi permasalahan long-term dependency pada data deret waktu. Algoritma ini menggunakan empat gerbang (input, forget, output, dan cell state) yang memungkinkan model mempertahankan informasi penting dari data historis harga saham untuk membuat prediksi yang lebih akurat.
 
-2. **Evaluasi dan Optimasi Model**  
-   Evaluasi dilakukan terhadap performa model dengan metrik:
-   - **MAE** – Rata-rata kesalahan absolut.
-   - **RMSE** – Akar dari rata-rata kuadrat error.
-   - **MAPE** – Persentase kesalahan absolut rata-rata.
+**2. Gated Recurrent Unit (GRU)**
+GRU adalah versi yang lebih ringan dari LSTM dengan hanya dua gerbang (update dan reset). Algoritma ini lebih efisien secara komputasi dan cocok untuk dataset dengan kompleksitas sedang, dengan tetap mampu menangkap pola temporal yang relevan untuk prediksi harga saham jangka pendek.
+
+Kedua algoritma tersebut dibandingkan performanya dalam konteks forecasting harga saham 7 hari ke depan untuk menentukan model terbaik berdasarkan evaluasi metrik seperti MAE, RMSE, dan MAPE.
 
 ---
 
@@ -214,7 +207,7 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 
 #### 3. EDA - Menangani Outlier
    
-### 🚨 Jumlah Outlier per Kolom (Metode IQR)
+***Jumlah Outlier per Kolom (Metode IQR)**
 
 | No | Kolom      | Jumlah Outlier |
 |----|------------|----------------|
@@ -225,13 +218,52 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 | 5  | Open       | 0              |
 | 6  | Volume     | 64             |
 
-![BoxPlot Outlier Volume](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/BoxPlot_Outlier_Volume.png)
+##### 1. Outlier pada Data Volume Asli
 
-![ScatterPlot Outlier Volume Before](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/ScatterPlot_Outlier_Volume_Before.png)
+**Visualisasi Outlier Sebelum Penanganan**
 
-![ScatterPlot Outlier Volume After](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/ScatterPlot_Outlier_Volume_After.png)
+- Boxplot Outlier Volume  
+  ![BoxPlot Outlier Volume](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/BoxPlot_Outlier_Volume.png)
 
-### Jumlah Outlier `Close` per Bulan dan Tahun
+- Scatterplot Volume Sebelum Penanganan  
+  ![ScatterPlot Outlier Volume Before](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/ScatterPlot_Outlier_Volume_Before.png)
+
+Titik merah pada scatterplot menandai data yang terdeteksi sebagai outlier karena berada jauh di atas mayoritas nilai volume lainnya.
+
+
+### Penanganan Outlier dengan Transformasi Logaritmik
+
+Karena distribusi volume sangat condong ke kanan (positively skewed), dilakukan transformasi logaritmik natural (`log1p`) untuk menormalkan distribusi:
+
+\[
+Volume_{log} = \log(Volume + 1)
+\]
+
+Setelah transformasi, dilakukan kembali deteksi outlier dengan metode IQR terhadap kolom `Volume_log`.
+
+
+**Visualisasi Outlier Setelah Transformasi**
+
+- Scatterplot Volume Setelah Transformasi Log  
+  ![ScatterPlot Outlier Volume After](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/ScatterPlot_Outlier_Volume_After.png)
+
+Setelah transformasi logaritmik, jumlah outlier berkurang signifikan dan sebaran data menjadi lebih seragam.
+
+
+**Insight dari Visualisasi**
+
+- Data volume saham TLKM memiliki distribusi yang tidak normal dan mengandung sejumlah outlier signifikan.
+- Deteksi awal menunjukkan adanya outlier dengan nilai volume yang sangat besar.
+- Dengan menerapkan transformasi logaritmik, distribusi menjadi lebih seimbang dan jumlah outlier berkurang.
+- Pendekatan ini mempertahankan seluruh data sambil meminimalkan pengaruh nilai ekstrem terhadap analisis.
+
+
+---
+
+
+##### 2. Outlier pada Harga Close Berdasarkan Waktu
+
+Berikut adalah daftar waktu (berdasarkan kombinasi tahun dan bulan) di mana **nilai `Close` terdeteksi sebagai outlier**:
 
 | No | Tahun | Bulan | Jumlah Outlier |
 |----|-------|-------|----------------|
@@ -255,9 +287,51 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 | 18 | 2024  | 1     | 2              |
 | 19 | 2024  | 3     | 4              |
 
-![LinePlot Oulier Before vs After](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/LinePlot_Oulier_Before_vs_After.png)
+**Catatan penting**:
+> Ini berarti bahwa dalam bulan dan tahun yang disebutkan, terdapat nilai `Close` yang secara statistik terdeteksi sebagai outlier. Nilai tersebut menyimpang dari distribusi harga normal di bulan tersebut.
+
+
+**Penanganan Outlier dengan Metode Capping**
+
+- Nilai `Close` yang lebih kecil dari `Lower Bound` digantikan dengan batas bawah.
+- Nilai `Close` yang lebih besar dari `Upper Bound` digantikan dengan batas atas.
+
+Tujuan dari capping ini adalah **menyesuaikan nilai ekstrim tanpa membuang data**.
+
+
+**Visualisasi: Sebelum vs Sesudah Penanganan Outlier**
+
+![LinePlot Outlier Before vs After](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/LinePlot_Oulier_Before_vs_After.png)
+
+**Penjelasan grafik:**
+- Garis **biru**: nilai `Close` **sebelum penanganan**, tampak banyak titik merah (outlier).
+- Garis **oranye**: nilai `Close_Capped` **setelah penanganan**, lebih halus dan stabil.
+- **Titik merah** menghilang setelah proses capping, menandakan bahwa outlier telah diatasi.
+
+
+**Insight dari Visualisasi**
+
+- Outlier terdeteksi di banyak titik antara tahun 2020 hingga 2024.
+- Paling banyak terjadi pada tahun 2021 dan 2023.
+- Setelah penanganan, grafik menunjukkan tren yang lebih realistis dan bebas gangguan titik ekstrem.
+- Ini membuat data lebih akurat untuk analisis lanjutan dan pemodelan machine learning.
+
+
+---
+
 
 ![LinePlot Distribuasi Date](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/LinePlot_Distribuasi_Date.png)
+
+**Penjelasan:**
+
+Grafik ini menunjukkan distribusi data berdasarkan tanggal, dengan asumsi satu data per hari.
+
+**Insight:**
+
+- Data tersebar merata sepanjang waktu, tanpa adanya hari kosong atau gap yang signifikan.
+- Ini menunjukkan bahwa data dikumpulkan secara teratur dan konsisten dalam konteks time-series.
+- Distribusi yang stabil ini sangat penting untuk pelatihan model LSTM, karena model akan belajar dari urutan waktu yang berkesinambungan.
+- Konsistensi juga membantu model mengenali pola tren dan musiman dengan lebih baik.
 
 
 ---
@@ -343,35 +417,111 @@ Dengan tidak adanya missing value, proses analisis dapat langsung dilanjutkan ke
 ---
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
-
-### 🧪 Contoh Data Setelah Pra-Pemrosesan (`df_final_scaled` - untuk LSTM/GRU)
-
-| Year | Month     | Day       | Adj Close | Close_Capped | Open     | High     | Low      | Volume_log |
-|------|-----------|-----------|-----------|--------------|----------|----------|----------|------------|
-| 0.0  | 0.909091  | 0.200000  | 0.515033  | 0.683258     | 0.695652 | 0.690265 | 0.678414 | 0.893524   |
-| 0.0  | 0.909091  | 0.233333  | 0.529240  | 0.701357     | 0.634783 | 0.676991 | 0.678414 | 0.865904   |
-| 0.0  | 0.909091  | 0.333333  | 0.525689  | 0.696833     | 0.647826 | 0.676991 | 0.700441 | 0.855849   |
-| 0.0  | 0.909091  | 0.366667  | 0.554107  | 0.733032     | 0.652174 | 0.707965 | 0.704846 | 0.876730   |
-| 0.0  | 0.909091  | 0.400000  | 0.543451  | 0.719457     | 0.686957 | 0.699115 | 0.726872 | 0.878685   |
-
-### 🌲 Contoh Data Setelah Pra-Pemrosesan (`df_final_tree` - untuk XGBoost/LightGBM)
-
-| Year | Month | Day | Adj Close | Close_Capped | Open   | High   | Low    | Volume_log |
-|------|-------|-----|-----------|--------------|--------|--------|--------|-------------|
-| 2019 | 11    | 7   | 3216.63   | 4070.0       | 4150.0 | 4150.0 | 3990.0 | 18.646151   |
-| 2019 | 11    | 8   | 3248.24   | 4110.0       | 4010.0 | 4120.0 | 3990.0 | 18.069772   |
-| 2019 | 11    | 11  | 3240.34   | 4100.0       | 4040.0 | 4120.0 | 4040.0 | 17.859961   |
-| 2019 | 11    | 12  | 3303.57   | 4180.0       | 4050.0 | 4190.0 | 4050.0 | 18.295697   |
-| 2019 | 11    | 13  | 3279.86   | 4150.0       | 4130.0 | 4170.0 | 4100.0 | 18.336491   |
-
-
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+Data preparation merupakan tahap penting yang menjembatani proses data understanding dengan modeling. Kualitas dan ketepatan pada tahap ini akan sangat berpengaruh terhadap performa akhir model. Dalam proyek ini, data preparation dilakukan melalui beberapa tahap terstruktur berikut:
 
 ---
+
+### 1. Menyalin Data Awal ke Variabel Baru
+
+**Proses:**  
+Dataset awal hasil pembersihan (`df_clean`) disalin ke dalam variabel baru (`df_final`) untuk memastikan data asli tetap aman dari perubahan yang mungkin terjadi pada proses selanjutnya.
+
+**Alasan:**  
+Praktik ini penting untuk menjaga *data integrity*. Jika terjadi kesalahan pada transformasi berikutnya, kita masih memiliki versi bersih yang bisa digunakan kembali tanpa perlu mengulang proses dari awal. Ini juga meningkatkan efisiensi saat iterasi model.
+
+---
+
+### 2. Feature Engineering: Ekstraksi Fitur Date
+
+**Proses:**  
+Dari kolom `Date`, diekstrak tiga fitur baru yaitu:
+- `Year` (tahun),
+- `Month` (bulan), dan
+- `Day` (tanggal).
+
+Setelah itu, kolom `Date` dihapus karena tidak dibutuhkan lagi dalam format datetime.
+
+**Alasan:**  
+Model machine learning, termasuk LSTM dan GRU, tidak dapat secara langsung memahami konteks waktu dari format tanggal. Dengan mengubah `Date` menjadi fitur numerik seperti tahun, bulan, dan hari, kita membantu model mengenali pola temporal, seperti musiman atau tren tahunan.  
+Menghapus kolom `Date` diperlukan karena tipe data datetime tidak dapat diolah secara langsung oleh model numerik tanpa diubah menjadi representasi angka yang bermakna.
+
+---
+
+### 2. Feature Engineering: Ekstraksi Komponen Waktu
+
+**Proses:**
+
+- Dari kolom `Date`, tiga fitur waktu utama diekstraksi:
+  - `Year` (tahun),
+  - `Month` (bulan),
+  - `Day` (tanggal).
+- Setelah ekstraksi selesai, kolom `Date` dihapus dari dataframe karena informasinya sudah terdistribusi dalam tiga fitur baru.
+
+**Alasan:**
+
+Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci dalam pemodelan data deret waktu (time-series). Dengan menguraikan `Date` menjadi `Year`, `Month`, dan `Day`, model memiliki konteks temporal eksplisit yang memungkinkan pembelajaran pola musiman, tren tahunan, atau efek harian. Ini sangat krusial dalam memprediksi harga atau perilaku data yang berubah terhadap waktu.
+
+
+---
+
+
+### 3. Data Splitting dan Normalisasi
+
+**Proses:**
+
+1. **Pemilihan Fitur dan Target**
+   - Fitur yang digunakan untuk pelatihan adalah `Open`, `High`, dan `Low`.
+   - Target yang akan diprediksi adalah `Close_Capped` (harga penutupan yang telah dikap).
+
+2. **Pemisahan Data Berdasarkan Waktu**
+   - Data dibagi menjadi dua subset:
+     - **Training set**: 80% pertama dari data secara kronologis.
+     - **Testing set**: 20% sisanya.
+   - Pembagian ini **tidak dilakukan secara acak (no shuffle)** untuk menjaga urutan waktu agar konteks historis tetap terpelihara.
+
+3. **Normalisasi (Min-Max Scaling)**
+   - Fitur dan target dalam training set dilakukan **fit dan transform** menggunakan `MinMaxScaler`.
+   - Data testing hanya di-**transform** menggunakan skala dari data training (tanpa fit ulang) untuk menghindari data leakage.
+
+**Alasan:**
+
+- **Pemisahan data** secara waktu sangat penting dalam masalah time-series. Jika data diacak, model bisa mempelajari informasi dari masa depan yang seharusnya tidak diketahui saat pelatihan, sehingga menghasilkan estimasi performa yang tidak realistis.
+- **Normalisasi** diperlukan karena algoritma deep learning sensitif terhadap skala fitur. Jika rentang nilai berbeda-beda (misalnya `Open` ratusan dan `Low` puluhan), maka proses pembelajaran akan tidak seimbang. MinMaxScaler mengubah semua fitur ke skala yang sama (0–1), mempercepat konvergensi, dan meningkatkan stabilitas pelatihan.
+- **Transformasi hanya pada data test** mencegah kebocoran informasi dari data uji ke pelatihan yang bisa membuat model tampak lebih baik dari kenyataannya.
+
+---
+
+### 4. Pembentukan Sequence (Time Series Windowing)
+
+**Proses:**
+
+- Data diubah menjadi bentuk urutan (sequence) agar sesuai dengan format input model LSTM atau GRU.
+- Setiap sampel input (`X`) dibentuk dari 60 langkah waktu sebelumnya. Misalnya, `X[60]` berisi data dari waktu ke-0 hingga ke-59, dan targetnya adalah `y[60]`.
+- Fungsi `create_sequences` membentuk pasangan input-output dalam bentuk array tiga dimensi:
+  - `X_train_seq`: `(jumlah sample, 60, 3)` — 60 langkah, 3 fitur.
+  - `y_train_seq`: `(jumlah sample, 1)` — target yang sesuai.
+  - Hal yang sama dilakukan pada data testing.
+
+**Alasan:**
+
+Model seperti LSTM, GRU, dan arsitektur time-series lainnya tidak bekerja dengan data tabular biasa, tetapi membutuhkan input dalam bentuk urutan agar dapat mengenali pola historis. Tanpa pembentukan sequence ini, model tidak akan dapat memahami dinamika waktu yang merupakan inti dari masalah prediksi dalam deret waktu. Jumlah langkah waktu (60) dipilih berdasarkan eksperimen dan representasi konteks temporal yang cukup panjang.
+
+---
+
+### ✅ Struktur Output Akhir
+
+Setelah semua tahap preparation selesai, struktur akhir data adalah sebagai berikut:
+
+| Dataset       | Shape (Contoh)             |
+|---------------|-----------------------------|
+| X_train_seq   | (936, 60, 3)                |
+| y_train_seq   | (936, 1)                    |
+| X_test_seq    | (234, 60, 3)                |
+| y_test_seq    | (234, 1)                    |
+
+
+---
+
 
 ## Modeling
 
@@ -381,50 +531,55 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 **Tahapan Pemodelan**
 1. Persiapan Data Input
-    - Input berbentuk data sekuensial: setiap sampel memuat **60 hari terakhir** data harga saham.
-    - Bentuk input (`X_train_lstm`): `(jumlah_sampel, 60, jumlah_fitur)`
-    - Target (`y_train_lstm`): harga saham hari ke-61.
+    - Data disusun dalam bentuk sekuensial untuk memodelkan pola deret waktu (time series).
+    - Setiap sampel input merepresentasikan 60 hari terakhir dari tiga fitur harga saham: Open, High, dan Low.
+    - Bentuk input (X_train_seq): (jumlah_sampel, 60, 3), di mana 3 adalah jumlah fitur.
+    - Target (y_train_seq): harga Close_Capped pada hari ke-61, yang diprediksi berdasarkan urutan 60 hari sebelumnya.
   
 2. Membangun Arsitektur Model
    
    ![arsitektur model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/arsitektur_model_lstm.png)
 
-   Model disusun dengan layer sebagai berikut:
-   - **LSTM Layer**: 64 unit, `return_sequences=False`
-     Tidak perlu output sequence karena hanya memprediksi 1 nilai.
-   - **Dropout Layer**: 0.2 (20%) untuk mencegah overfitting.
-   - **Dense Layer**: 1 unit (regresi harga saham).
+   Model LSTM dibangun dengan susunan layer berikut:
+   - LSTM Layer: 64 unit dengan return_sequences=False, artinya hanya menghasilkan satu output (prediksi untuk satu waktu).
+   - Dropout Layer: 0.2 (20%) untuk mengurangi risiko overfitting dengan menonaktifkan sebagian neuron saat training.
+   - Dense Layer: 1 unit output sebagai hasil prediksi harga
   
 4. Kompilasi Model
 
    ![compile model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/compile_model_ltsm.png)
    
-   Model dikompilasi dengan:
-   - Loss Function: Mean Squared Error (MSE)
-     -> Karena ini adalah regresi numerik.
-   - Optimizer: Adam dengan learning rate 0.0005
-     -> Adam menggabungkan keunggulan dari RMSprop dan momentum.
+   Model dikompilasi menggunakan:  
+   - Loss Function: Mean Squared Error (MSE) — metrik umum untuk regresi yang mengukur rata-rata kuadrat dari selisih antara nilai aktual dan prediksi.
+   - Optimizer: Adam dengan learning_rate = 0.0005 — optimizer yang adaptif dan efisien untuk model deep learning.  
   
 5. EarlyStopping Callback
    
    ![EarlyStopping model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/EarlyStopping_model_lstm.png)
 
-   Untuk mencegah overfitting:
-   - Mengamati val_loss
-   - Menghentikan pelatihan jika val_loss tidak membaik selama 5 epoch berturut-turut.
-   - Mengembalikan bobot model terbaik dari epoch sebelumnya..
+   Digunakan untuk mencegah overfitting selama training dengan ketentuan:  
+   - Memantau nilai val_loss (validasi).
+   - Jika tidak terjadi peningkatan selama 5 epoch berturut-turut, proses pelatihan dihentikan.
+   - Opsi restore_best_weights=True memastikan model mengembalikan bobot terbaik (dengan val_loss terendah).
 
 6. Training Model
 
    ![training model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/training_model_lstm.png)
    
-   Model dilatih dengan parameter:
-   - Epochs: Maksimal 60
-   - Batch Size: 16
-   - Validation Split: 10% dari data latih
-   - Callback: EarlyStopping
+   Model dilatih dengan parameter:  
+   - Epochs: maksimum 60 iterasi pelatihan.
+   - Batch Size: 16 (jumlah data dalam satu mini-batch).
+   - Validation Split: 10% dari data pelatihan digunakan sebagai data validasi.
+   - Callback: EarlyStopping digunakan untuk mengontrol proses pelatihan.
 
 **Parameter Model**
+
+![model summary lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/model_summary_lstm.png)
+
+- LSTM Layer: Terdiri dari 64 unit dengan total 17.408 parameter, menjadikan LSTM lebih kompleks dari GRU karena 4 gerbang internal (forget, input, candidate, output).
+- Dropout Layer: Tidak memiliki parameter, digunakan untuk mengurangi overfitting, dan meneruskan 64 output dari layer sebelumnya dengan beberapa unit dinonaktifkan (drop) secara acak saat training.
+- Dense Layer: Menerima input dari 64 unit sebelumnya dan menghasilkan 1 output prediksi dengan total 65 parameter (64 bobot + 1 bias).
+
 
 | Parameter             | Nilai                         |
 |-----------------------|-------------------------------|
@@ -434,11 +589,11 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 | Loss Function         | Mean Squared Error (MSE)      |
 | Optimizer             | Adam                          |
 | Learning Rate         | 0.0005                        |
-| Epochs                | 60                            |
+| Epochs                | 100                            |
 | Batch Size            | 16                            |
 | Early Stopping        | Patience = 5, Restore Best    |
 | Validation Split      | 10%                           |
-| Input Shape           | (60, 1)                       |
+| Input Shape           | (60, 3)                       |
 
 ---
 
@@ -447,47 +602,54 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 **Tahapan Pemodelan**
 
 1. **Persiapan Data Input**  
-   - Input berbentuk data sekuensial: setiap sampel memuat **60 hari terakhir** data harga saham.  
-   - Bentuk input (`X_train_gru`): `(jumlah_sampel, 60, jumlah_fitur)`  
-   - Target (`y_train_gru`): harga saham hari ke-61.  
+    - Data disusun dalam bentuk sekuensial untuk memodelkan pola deret waktu (time series).
+    - Setiap sampel input merepresentasikan 60 hari terakhir dari tiga fitur harga saham: Open, High, dan Low.
+    - Bentuk input (X_train_seq): (jumlah_sampel, 60, 3), di mana 3 adalah jumlah fitur.
+    - Target (y_train_seq): harga Close_Capped pada hari ke-61, yang diprediksi berdasarkan urutan 60 hari sebelumnya.
 
 2. **Membangun Arsitektur Model**  
 
    ![arsitektur model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/arsitektur_model_gru.png)
 
-   Model disusun dengan layer sebagai berikut:  
-   - **GRU Layer**: 64 unit, `return_sequences=False` (output satu nilai).  
-   - **Dropout Layer**: 0.2 (20 %) untuk mengurangi overfitting.  
-   - **Dense Layer**: 1 unit (regresi harga saham).  
+   Model GRU dibangun dengan susunan layer berikut:
+   - GRU Layer: 64 unit dengan return_sequences=False, artinya hanya menghasilkan satu output (prediksi untuk satu waktu).
+   - Dropout Layer: 0.2 (20%) untuk mengurangi risiko overfitting dengan menonaktifkan sebagian neuron saat training.
+   - Dense Layer: 1 unit output sebagai hasil prediksi harga.
 
 3. **Kompilasi Model**  
 
    ![compile model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/compile_model_gru.png)
 
-   Model dikompilasi dengan:  
-   - **Loss Function**: Mean Squared Error (MSE) → cocok untuk regresi numerik.  
-   - **Optimizer**: Adam dengan learning rate 0.0005 → adaptif & cepat konvergen.  
+   Model dikompilasi menggunakan:  
+   - Loss Function: Mean Squared Error (MSE) — metrik umum untuk regresi yang mengukur rata-rata kuadrat dari selisih antara nilai aktual dan prediksi.
+   - Optimizer: Adam dengan learning_rate = 0.0005 — optimizer yang adaptif dan efisien untuk model deep learning.  
 
 4. **EarlyStopping Callback**  
 
    ![EarlyStopping model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/EarlyStopping_model_gru.png)
 
-   Untuk mencegah overfitting:  
-   - Memantau `val_loss`.  
-   - Menghentikan pelatihan apabila `val_loss` tidak membaik selama **5 epoch**.  
-   - Mengembalikan bobot terbaik secara otomatis (`restore_best_weights=True`).  
+   Digunakan untuk mencegah overfitting selama training dengan ketentuan:  
+   - Memantau nilai val_loss (validasi).
+   - Jika tidak terjadi peningkatan selama 5 epoch berturut-turut, proses pelatihan dihentikan.
+   - Opsi restore_best_weights=True memastikan model mengembalikan bobot terbaik (dengan val_loss terendah).
 
 5. **Training Model**  
 
    ![training model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/training_model_gru.png)
 
    Model dilatih dengan parameter:  
-   - **Epochs**: maksimum 60  
-   - **Batch Size**: 16  
-   - **Validation Split**: 10 % data latih  
-   - **Callback**: EarlyStopping  
+   - Epochs: maksimum 60 iterasi pelatihan.
+   - Batch Size: 16 (jumlah data dalam satu mini-batch).
+   - Validation Split: 10% dari data pelatihan digunakan sebagai data validasi.
+   - Callback: EarlyStopping digunakan untuk mengontrol proses pelatihan.
 
 **Parameter Model GRU**
+
+![model summary gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/model_summary_gru.png)
+
+- GRU Layer: Terdiri dari 64 unit dengan total 13.248 parameter, lebih ringan dari LSTM karena hanya memiliki 3 gerbang internal (reset, update).
+- Dropout Layer: Tidak memiliki parameter, digunakan untuk mengurangi overfitting, dan meneruskan 64 output dari layer sebelumnya dengan beberapa unit dinonaktifkan secara acak saat training.
+- Dense Layer: Menerima input dari 64 unit sebelumnya dan menghasilkan 1 output prediksi dengan total 65 parameter (64 bobot + 1 bias).
 
 | Parameter          | Nilai                                   |
 |--------------------|-----------------------------------------|
@@ -497,11 +659,11 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 | Loss Function      | Mean Squared Error (MSE)                |
 | Optimizer          | Adam                                    |
 | Learning Rate      | 0.0005                                  |
-| Epochs             | 60                                      |
+| Epochs             | 100                                      |
 | Batch Size         | 16                                      |
 | Early Stopping     | Patience = 5, Restore Best              |
 | Validation Split   | 10 %                                    |
-| Input Shape        | (60, 1)                                 |
+| Input Shape        | (60, 3)                                 |
 
 ---
 
@@ -558,15 +720,15 @@ Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik
 
 | Model |     MAE      |     RMSE      |
 |-------|--------------|---------------|
-| LSTM  |    0.0257    |    0.0324     |
-| GRU   |    0.0265    |    0.0334     |
+| LSTM  |    0.0384    |    0.0469     |
+| GRU   |    0.0245    |    0.0313     ||
 
 **Data Asli**
 
 | Model | MAE (Rupiah) | RMSE (Rupiah) | MAPE (%) |
 |-------|--------------|---------------|----------|
-| LSTM  |     56.75    |     71.71     |   1.82   |
-| GRU   |     58.61    |     73.91     |   1.88   |
+| LSTM  |     84.76    |     103.71    |   2.69   |
+| GRU   |     54.18    |     69.13     |   1.73   |
 
 
 #### Model Terbaik: **GRU**
@@ -640,7 +802,53 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji meng
     - RMSE GRU juga lebih kecil (69.13 vs 103.71 Rupiah), menunjukkan bahwa error GRU lebih stabil dan tidak menyimpang jauh.
     - MAPE GRU juga lebih rendah (1.73% vs 2.69%), berarti prediksi GRU secara relatif lebih akurat terhadap nilai aktual.
 - Secara keseluruhan, GRU lebih unggul dalam memprediksi harga saham pada data asli, sehingga layak dipertimbangkan untuk forecasting jangka pendek.
+
+
+#### Visualisasi Hasil Evaluasi 
+
+![Grafik LSTM Training Loss](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_LSTM_Training_Loss.png)
+
+**Insight:** 
+- Grafik menunjukkan penurunan training loss dan validation loss secara bertahap, menandakan proses pelatihan berjalan dengan baik.
+- Namun, jarak antara training loss dan validation loss mulai melebar di akhir pelatihan, yang mengindikasikan potensi overfitting ringan.
+- Model LSTM cenderung terlalu menyesuaikan dengan data pelatihan dan kurang fleksibel saat menghadapi data baru (validasi).
+- Ini dapat menjelaskan mengapa prediksi LSTM terlihat terlalu datar dan tidak mengikuti fluktuasi harga yang tajam.
+
+
+![Grafik GRU Training Loss](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_GRU_Training_Loss.png)
+
+**Insight:** 
+- Baik training loss maupun validation loss menurun secara konsisten dan beriringan, menandakan model GRU belajar dengan stabil dan tidak overfitting.
+- Perbedaan antara training dan validation loss sangat kecil, menunjukkan generalisasi model yang baik terhadap data baru.
+- GRU lebih cepat konvergen dibanding LSTM dan mempertahankan akurasi yang lebih tinggi di data validasi.
+- Hal ini memperkuat temuan bahwa GRU lebih efektif untuk prediksi jangka pendek pada data harga saham TLKM.
   
+  
+![Grafik Evaluasi Aktual vs LSTM GRU1](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_GRU1..png)
+
+**Insight:** 
+- Garis prediksi GRU tampak lebih mengikuti pola harga aktual dibandingkan LSTM.
+- LSTM menghasilkan garis prediksi yang lebih datar, cenderung mengabaikan fluktuasi harga yang tajam.
+- GRU lebih adaptif terhadap tren penurunan pada hari ke-6 dan 7, meskipun belum sepenuhnya tepat.
+  
+  
+![Grafik Evaluasi Aktual vs LSTM GRU2](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_GRU2..png)
+
+**Insight:** 
+- Grafik ini menguatkan bahwa GRU lebih akurat dalam mengikuti arah tren harga aktual.
+- LSTM memiliki jeda respons terhadap perubahan mendadak, terutama saat harga mengalami penurunan signifikan.
+- Kedua model cenderung memiliki prediksi yang mendekati rata-rata, tetapi GRU lebih fleksibel dalam mengikuti tren aktual.
+  
+
+![Grafik Distribusi Eror Prediksi](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Distribusi_Eror_Prediksis.png)
+
+**Insight:** 
+- Distribusi error menunjukkan sebagian besar nilai error berada dekat dengan nol, menandakan prediksi cukup akurat secara umum.
+- GRU menghasilkan error yang lebih sempit dan simetris dibandingkan LSTM, mengindikasikan konsistensi model.
+- Tidak ada error ekstrem yang dominan, yang berarti model mampu menahan dampak outlier dengan baik.
+
+---
+
 
 #### Table Hasil Forecasting (7 hari kedepan)
 
@@ -657,62 +865,17 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji meng
 
 **Insight:**
 
-- Kedua model (GRU dan LSTM) menghasilkan prediksi yang cenderung stabil di kisaran 2780-an, sedangkan harga aktual mengalami penurunan bertahap dari 2900 ke 2740.
-- GRU cenderung underpredict (meremehkan) harga di awal (Hari ke-1 dan ke-2), tetapi tetap mendekati tren penurunan.
-- LSTM juga underpredict namun sedikit lebih responsif terhadap perubahan arah tren, terutama dari Hari ke-3 ke bawah.
-- Meskipun kedua model belum mengikuti penurunan aktual secara tajam, LSTM menunjukkan pola prediksi yang lebih adaptif dibandingkan GRU.
-- **Kesimpulan**: Untuk horizon 7 hari ke depan, LSTM memberikan prediksi yang sedikit lebih dinamis, sedangkan GRU menghasilkan output yang lebih konservatif dan stabil, namun kurang mengikuti penurunan aktual secara tajam.
-
-
-#### Visualisasi Hasil Evaluasi 
-
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
-
-**Insight:** 
-- Prediksi LSTM tidak akurat untuk jangka pendek.
-- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
-- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
-
-
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
-
-**Insight:** 
-- Prediksi LSTM tidak akurat untuk jangka pendek.
-- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
-- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
-  
-  
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
-
-**Insight:** 
-- Prediksi LSTM tidak akurat untuk jangka pendek.
-- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
-- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
-  
-  
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
-
-**Insight:** 
-- Prediksi LSTM tidak akurat untuk jangka pendek.
-- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
-- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
-- 
-
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
-
-**Insight:** 
-- Prediksi LSTM tidak akurat untuk jangka pendek.
-- Garis prediksi tampak terlalu datar, tidak mampu mengikuti fluktuasi tajam harga aktual.
-- Terjadi penyimpangan besar terutama di hari ke-6 dan 7, saat harga aktual turun tajam, tetapi prediksi tetap datar.
-
----
-
+Baik model LSTM maupun GRU berhasil mengenali dan mengikuti pola tren penurunan harga saham Telkom selama 7 hari ke depan. Meskipun terdapat selisih nilai absolut dibandingkan harga aktual, arah pergerakan harga yang diprediksi kedua model sejalan dengan kenyataan — yaitu penurunan bertahap dari hari ke hari.
+    - Model tidak hanya menghafal data historis, tapi mampu menangkap pola tren menurun secara konsisten.
+    - Model GRU menghasilkan prediksi yang lebih tajam dan stabil, sedangkan LSTM memberikan hasil yang lebih moderat namun tetap mengikuti arah yang sama.
+    - Hal ini menunjukkan bahwa kedua model cukup andal dalam memahami pola pergerakan harga, yang merupakan aspek penting dalam forecasting saham berbasis tren.
+    
 
 #### Visualisasi Hasil Forecasting
 
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
+![Grafik GRU Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_GRU_Next7Days.png)
 
-![Grafik Evaluasi Aktual vs LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_Next7Days.png)
+![Grafik LSTM Next7Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_LSTM_Next7Days.png)
 
 ---
 
@@ -770,22 +933,23 @@ $$
 
 **KESIMPULAN HASIL EVALUASI**
 
-- **GRU** menunjukkan performa lebih baik dari **LSTM** untuk semua horizon prediksi (7, 30, 60 hari), berdasarkan MAE, RMSE, dan MAPE.
-- Nilai **MAPE < 1%** menunjukkan bahwa kedua model sangat akurat dalam memprediksi harga saham TLKM.
-- Perbedaan nilai MAE dan RMSE menunjukkan bahwa **kesalahan besar** (outlier) dapat dikendalikan cukup baik oleh model.
-- Model tetap stabil saat prediksi diperluas dari 7 ke 60 hari, menandakan potensi penggunaan untuk prediksi menengah.
+- GRU menunjukkan performa lebih baik dibandingkan LSTM berdasarkan nilai MAE, RMSE, dan MAPE.
+- Nilai MAPE < 10% pada kedua model menunjukkan bahwa model memiliki tingkat akurasi yang sangat baik dalam memprediksi harga saham TLKM.
+- Perbedaan antara nilai MAE dan RMSE mengindikasikan bahwa kesalahan besar (outlier) dapat dikendalikan dengan cukup baik.
+- Model GRU lebih konsisten dalam mengikuti arah tren harga aktual, meskipun harga prediksi sedikit lebih rendah. LSTM juga mengikuti pola, tetapi cenderung memiliki fluktuasi lebih tinggi.
+- Secara keseluruhan, model GRU memberikan hasil yang lebih stabil dan presisi, cocok untuk digunakan dalam forecasting jangka pendek.
 
 ---
 
 ## Conclusion
-1. Proyek berhasil membangun dua model deep learning berbasis time series, yaitu LSTM dan GRU, untuk memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) menggunakan data historis.
-2. Evaluasi model dilakukan dengan metrik MAE, RMSE, dan MAPE untuk mengukur akurasi dan stabilitas prediksi. Hasilnya menunjukkan bahwa:
-3. Kedua model memiliki performa prediksi yang baik.
-    - GRU menunjukkan efisiensi lebih tinggi dari segi waktu pelatihan.
-    - LSTM lebih unggul dalam menangkap pola jangka panjang.
-4. Prediksi dilakukan untuk tiga skenario waktu: 7 hari, 30 hari, dan 60 hari ke depan, yang menunjukkan bahwa model mampu beradaptasi dengan horizon waktu berbeda.
-5. Hasil prediksi menunjukkan bahwa model dapat menangkap tren harga dengan cukup baik, dan prediksi mendekati nilai aktual, terutama dalam jangka pendek (7 hari).
-6. Kedua model memberikan insight yang berguna bagi investor dan analis pasar, khususnya dalam pengambilan keputusan berbasis data yang lebih akurat dan informatif.
+
+1. Proyek ini berhasil membangun dua model deep learning berbasis time series dan forecasting, yaitu LSTM dan GRU, untuk memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) menggunakan data historis.
+2. Evaluasi dilakukan dengan menggunakan metrik MAE, RMSE, dan MAPE untuk mengukur tingkat akurasi dan kestabilan hasil prediksi. Hasil evaluasi menunjukkan bahwa:
+    - Kedua model memiliki performa yang baik, dengan MAPE < 10%, yang menunjukkan tingkat akurasi sangat tinggi untuk prediksi harga saham.
+    - GRU menunjukkan hasil prediksi yang lebih stabil dan akurat dibandingkan LSTM, serta lebih efisien dari segi waktu pelatihan.
+    - Sementara itu, LSTM tetap unggul dalam menangkap pola jangka panjang, meskipun prediksinya lebih fluktuatif dalam jangka pendek.
+3. Prediksi dilakukan untuk horizon waktu 7 hari ke depan, dan hasilnya menunjukkan bahwa model mampu mengikuti arah tren harga aktual secara konsisten.
+4. Kesimpulannya, kedua model dapat memberikan insight yang bermanfaat bagi investor dan analis pasar, terutama dalam mendukung pengambilan keputusan berbasis data yang lebih akurat dan terukur.
 
 **---Ini adalah bagian akhir laporan---**
 
