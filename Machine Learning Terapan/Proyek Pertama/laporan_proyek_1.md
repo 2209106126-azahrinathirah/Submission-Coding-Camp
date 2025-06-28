@@ -526,7 +526,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
   
 4. Kompilasi Model
 
-   ![compile model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/compile_model_ltsm.png)
+   ![compile model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/compile_model_lstm.png)
    
    Model dikompilasi menggunakan:  
    - Loss Function: Mean Squared Error (MSE) — metrik umum untuk regresi yang mengukur rata-rata kuadrat dari selisih antara nilai aktual dan prediksi.
