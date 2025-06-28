@@ -40,13 +40,13 @@ Melalui proyek ini, saya mengembangkan dan membandingkan model LSTM dan GRU untu
 ## Hasil Riset Terkait (Referensi)
 
 <a name="1">[1]</a> T. Prasetyo dan M. Faisal, *Penerapan Data Mining dalam Prediksi Harga Saham di Indonesia Menggunakan Algoritma LSTM*, IJCIT, vol. 4, no. 2, pp. 116–120, 2019.  
-[https://doi.org/10.31294/ijcit.v4i2.7712](https://doi.org/10.31294/ijcit.v4i2.7712)
+[https://repository.bsi.ac.id/repo/51717/](https://repository.bsi.ac.id/repo/51717/)
 
 <a name="2">[2]</a> H. K. Alfredo, *Analysis of Fama and French 3-Factor Model Variables in the Formation of Expected Stock Returns (Issuers of LQ-45 Index Member Stocks for the Period 2020–2022)*, Edunity, vol. 2, no. 7, 2023.  
 [https://doi.org/10.57096/edunity.v2i7.122](https://doi.org/10.57096/edunity.v2i7.122)
 
 <a name="3">[3]</a> M. Ridwan et al., *Comparison of ARIMA and GRU Models for High-Frequency Time Series Forecasting*, Scientific Journal of Informatics, vol. 10, no. 3, 2023.  
-[https://doi.org/10.15294/sji.v10i3.45965](https://doi.org/10.15294/sji.v10i3.45965)
+[https://journal.unnes.ac.id/nju/sji/article/view/45965](https://journal.unnes.ac.id/nju/sji/article/view/45965)
 
 <a name="4">[4]</a> R. Yavasani dan F. Wang, *Comparative Analysis of LSTM, GRU, and ARIMA Models for Stock Market Price Prediction*, Journal of Student Research, vol. 12, no. 4, 2023.  
 [https://doi.org/10.47611/jsrhs.v12i4.5888](https://doi.org/10.47611/jsrhs.v12i4.5888)
@@ -64,7 +64,7 @@ Berdasarkan latar belakang, proyek ini difokuskan untuk menjawab pertanyaan-pert
 
 1. Bagaimana membangun model machine learning berbasis deep learning yang mampu memprediksi harga penutupan saham secara akurat berdasarkan data historis?
 2. Apakah model Long Short-Term Memory (LSTM) dan Gated Recurrent Unit (GRU) dapat memberikan hasil prediksi yang akurat
-3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari, 30 hari, dan 60 hari ke depan?
+3. Seberapa akurat model yang dibangun dalam memprediksi harga penutupan saham PT Telekomunikasi Indonesia Tbk (TLKM) untuk horizon waktu 7 hari ke depan?
 
 ### Goals
 
@@ -86,7 +86,7 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
    Membangun dua model prediksi berbasis jaringan saraf berulang (RNN):
    - **Long Short-Term Memory (LSTM)**
    - **Gated Recurrent Unit (GRU)**  
-   Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi: 7 hari, 30 hari, dan 60 hari.
+   Model dilatih dengan data harga historis saham TLKM dan diuji berdasarkan tiga skenario horizon waktu prediksi 7 hari ke depan?
 
 2. **Evaluasi dan Optimasi Model**  
    Evaluasi dilakukan terhadap performa model dengan metrik:
@@ -100,7 +100,7 @@ Untuk mencapai tujuan di atas secara terukur dan optimal, dua pendekatan utama a
 
 ### Deskripsi Dataset
 
-Dataset yang digunakan dalam proyek ini adalah data historis harga saham PT Telekomunikasi Indonesia Tbk (TLKM) yang diperoleh dari situs resmi Yahoo Finance. Data mencakup periode harian dari tahun 2016 hingga 2023, dan terdiri dari informasi harga saham yang biasa digunakan dalam analisis teknikal.
+Dataset yang digunakan dalam proyek ini adalah data historis harga saham PT Telekomunikasi Indonesia Tbk (TLKM) yang diperoleh dari situs resmi Yahoo Finance. Data mencakup periode harian dari tahun 2019 hingga 2024, dan terdiri dari informasi harga saham yang biasa digunakan dalam analisis teknikal.
 
 🔗 **Sumber Data:**  
 [Dataset Saham Bursa Efek - Kaggle (oleh Agung Pambudi)](https://www.kaggle.com/datasets/agungpambudi/dataset-saham-bursa-efek/data)
@@ -387,7 +387,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
   
 2. Membangun Arsitektur Model
    
-   ![image](https://github.com/user-attachments/assets/495ff868-4982-48c2-8308-9d4cc3df200e)
+   ![arsitektur model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/arsitektur_model_lstm.png)
 
    Model disusun dengan layer sebagai berikut:
    - **LSTM Layer**: 64 unit, `return_sequences=False`
@@ -397,7 +397,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
   
 4. Kompilasi Model
 
-   ![image](https://github.com/user-attachments/assets/d7276206-2e66-4ffd-993f-27ca4d1a398f)
+   ![compile model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/compile_model_ltsm.png)
    
    Model dikompilasi dengan:
    - Loss Function: Mean Squared Error (MSE)
@@ -407,7 +407,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
   
 5. EarlyStopping Callback
    
-   ![image](https://github.com/user-attachments/assets/6aa88ab2-5f6d-48b6-9eec-efe3c96fc9cc)
+   ![EarlyStopping model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/EarlyStopping_model_lstm.png)
 
    Untuk mencegah overfitting:
    - Mengamati val_loss
@@ -416,7 +416,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 6. Training Model
 
-   ![image](https://github.com/user-attachments/assets/2af83d98-31a9-4a2b-940e-13988d5cabc2)
+   ![training model lstm](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/training_model_lstm.png)
    
    Model dilatih dengan parameter:
    - Epochs: Maksimal 60
@@ -453,7 +453,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 2. **Membangun Arsitektur Model**  
 
-   ![image](https://github.com/user-attachments/assets/fe14cbcb-1690-4012-9fda-da77139b41cf)
+   ![arsitektur model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/arsitektur_model_gru.png)
 
    Model disusun dengan layer sebagai berikut:  
    - **GRU Layer**: 64 unit, `return_sequences=False` (output satu nilai).  
@@ -462,7 +462,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 3. **Kompilasi Model**  
 
-   ![image](https://github.com/user-attachments/assets/bd689bad-a828-4d63-bf6b-0ec2628386f4)
+   ![compile model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/compile_model_gru.png)
 
    Model dikompilasi dengan:  
    - **Loss Function**: Mean Squared Error (MSE) → cocok untuk regresi numerik.  
@@ -470,7 +470,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 4. **EarlyStopping Callback**  
 
-   ![image](https://github.com/user-attachments/assets/8fb2325a-7d97-4de0-9f19-385fb2f4b813)
+   ![EarlyStopping model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/EarlyStopping_model_gru.png)
 
    Untuk mencegah overfitting:  
    - Memantau `val_loss`.  
@@ -479,7 +479,7 @@ Tahapan ini menjelaskan proses pembangunan dua model Deep Learning, yaitu **LSTM
 
 5. **Training Model**  
 
-   ![image](https://github.com/user-attachments/assets/fcaad88a-c321-4664-8678-04eb40ac2823)
+   ![training model gru](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/training_model_gru.png)
 
    Model dilatih dengan parameter:  
    - **Epochs**: maksimum 60  
