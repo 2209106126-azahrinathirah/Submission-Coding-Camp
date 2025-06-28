@@ -759,8 +759,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji dala
 - Beberapa penyimpangan terjadi di awal (hari ke-5 hingga 10), tetapi secara umum arah trennya sesuai.
 - Prediksi mendekati harga aktual di paruh akhir periode.
 
-  
-![image](https://github.com/user-attachments/assets/f96a43d0-1692-4e53-87d3-e29db3ae7741)
+![Grafik Evaluasi Aktual vs GRU Next60Days](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_GRU_Next60Days.png)
 
 **Insight:** 
 - GRU sangat akurat untuk jangka menengah.
