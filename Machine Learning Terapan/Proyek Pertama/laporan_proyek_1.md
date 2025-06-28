@@ -417,9 +417,8 @@ Grafik ini menunjukkan distribusi data berdasarkan tanggal, dengan asumsi satu d
 ---
 
 ## Data Preparation
-Data preparation merupakan tahap penting yang menjembatani proses data understanding dengan modeling. Kualitas dan ketepatan pada tahap ini akan sangat berpengaruh terhadap performa akhir model. Dalam proyek ini, data preparation dilakukan melalui beberapa tahap terstruktur berikut:
 
----
+Dalam proyek ini, data preparation dilakukan melalui beberapa tahap terstruktur berikut:
 
 ### 1. Menyalin Data Awal ke Variabel Baru
 
@@ -428,22 +427,6 @@ Dataset awal hasil pembersihan (`df_clean`) disalin ke dalam variabel baru (`df_
 
 **Alasan:**  
 Praktik ini penting untuk menjaga *data integrity*. Jika terjadi kesalahan pada transformasi berikutnya, kita masih memiliki versi bersih yang bisa digunakan kembali tanpa perlu mengulang proses dari awal. Ini juga meningkatkan efisiensi saat iterasi model.
-
----
-
-### 2. Feature Engineering: Ekstraksi Fitur Date
-
-**Proses:**  
-Dari kolom `Date`, diekstrak tiga fitur baru yaitu:
-- `Year` (tahun),
-- `Month` (bulan), dan
-- `Day` (tanggal).
-
-Setelah itu, kolom `Date` dihapus karena tidak dibutuhkan lagi dalam format datetime.
-
-**Alasan:**  
-Model machine learning, termasuk LSTM dan GRU, tidak dapat secara langsung memahami konteks waktu dari format tanggal. Dengan mengubah `Date` menjadi fitur numerik seperti tahun, bulan, dan hari, kita membantu model mengenali pola temporal, seperti musiman atau tren tahunan.  
-Menghapus kolom `Date` diperlukan karena tipe data datetime tidak dapat diolah secara langsung oleh model numerik tanpa diubah menjadi representasi angka yang bermakna.
 
 ---
 
@@ -461,9 +444,7 @@ Menghapus kolom `Date` diperlukan karena tipe data datetime tidak dapat diolah s
 
 Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci dalam pemodelan data deret waktu (time-series). Dengan menguraikan `Date` menjadi `Year`, `Month`, dan `Day`, model memiliki konteks temporal eksplisit yang memungkinkan pembelajaran pola musiman, tren tahunan, atau efek harian. Ini sangat krusial dalam memprediksi harga atau perilaku data yang berubah terhadap waktu.
 
-
 ---
-
 
 ### 3. Data Splitting dan Normalisasi
 
@@ -505,8 +486,6 @@ Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci 
 **Alasan:**
 
 Model seperti LSTM, GRU, dan arsitektur time-series lainnya tidak bekerja dengan data tabular biasa, tetapi membutuhkan input dalam bentuk urutan agar dapat mengenali pola historis. Tanpa pembentukan sequence ini, model tidak akan dapat memahami dinamika waktu yang merupakan inti dari masalah prediksi dalam deret waktu. Jumlah langkah waktu (60) dipilih berdasarkan eksperimen dan representasi konteks temporal yang cukup panjang.
-
----
 
 ### ✅ Struktur Output Akhir
 
