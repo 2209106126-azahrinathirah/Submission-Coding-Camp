@@ -4,7 +4,7 @@
 
 **Latar Belakang**
 
-![image](https://github.com/user-attachments/assets/972724c2-99cb-4a71-bbbc-b7a557bca366)
+![Latar Belakang](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Latar_Belakang.png)
 
 Prediksi harga saham merupakan tantangan penting dalam dunia keuangan, khususnya di pasar modal Indonesia yang terus berkembang pesat dalam beberapa dekade terakhir. Fluktuasi harga saham yang tinggi disebabkan oleh berbagai faktor seperti kondisi ekonomi makro, kinerja perusahaan, sentimen pelaku pasar, serta situasi geopolitik, menjadikan investasi di pasar saham penuh risiko <a href="#1">[1]</a>. Ketidakstabilan ini menyulitkan investor dalam mengambil keputusan yang optimal, terutama untuk jangka menengah dan panjang. Oleh karena itu, dibutuhkan pendekatan prediktif yang mampu mengenali pola-pola kompleks dalam data historis harga saham guna mendukung pengambilan keputusan yang lebih akurat dan berbasis data <a href="#1">[1]</a>.
 
