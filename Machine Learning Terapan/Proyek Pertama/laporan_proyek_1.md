@@ -235,9 +235,9 @@ Titik merah pada scatterplot menandai data yang terdeteksi sebagai outlier karen
 
 Karena distribusi volume sangat condong ke kanan (positively skewed), dilakukan transformasi logaritmik natural (`log1p`) untuk menormalkan distribusi:
 
-\[
-Volume_{log} = \log(Volume + 1)
-\]
+$$
+\text{Volume}_{\text{log}} = \log(\text{Volume} + 1)
+$$
 
 Setelah transformasi, dilakukan kembali deteksi outlier dengan metode IQR terhadap kolom `Volume_log`.
 
