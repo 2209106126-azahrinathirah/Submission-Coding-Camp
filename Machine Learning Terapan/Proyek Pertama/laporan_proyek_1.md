@@ -487,16 +487,16 @@ Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci 
 
 Model seperti LSTM, GRU, dan arsitektur time-series lainnya tidak bekerja dengan data tabular biasa, tetapi membutuhkan input dalam bentuk urutan agar dapat mengenali pola historis. Tanpa pembentukan sequence ini, model tidak akan dapat memahami dinamika waktu yang merupakan inti dari masalah prediksi dalam deret waktu. Jumlah langkah waktu (60) dipilih berdasarkan eksperimen dan representasi konteks temporal yang cukup panjang.
 
-### ✅ Struktur Output Akhir
+### Struktur Output Akhir
 
 Setelah semua tahap preparation selesai, struktur akhir data adalah sebagai berikut:
 
-| Dataset       | Shape (Contoh)             |
-|---------------|-----------------------------|
-| X_train_seq   | (909, 60, 3)                |
-| y_train_seq   | (909, 1)                    |
-| X_test_seq    | (183, 60, 3)                |
-| y_test_seq    | (183, 1)                    |
+| Variabel      | Bentuk (Shape) | Deskripsi                                                   |
+|---------------|----------------|--------------------------------------------------------------|
+| X_train_seq   | (909, 60, 3)   | Data input untuk pelatihan: 909 sampel, 60 langkah, 3 fitur  |
+| y_train_seq   | (909, 1)       | Target pelatihan: nilai yang ingin diprediksi setelah 60 langkah |
+| X_test_seq    | (183, 60, 3)   | Data input untuk pengujian                                   |
+| y_test_seq    | (183, 1)       | Target pengujian                                             |
 
 
 ---
