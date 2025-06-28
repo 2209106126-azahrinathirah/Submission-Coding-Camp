@@ -803,7 +803,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji meng
 - Hal ini memperkuat temuan bahwa GRU lebih efektif untuk prediksi jangka pendek pada data harga saham TLKM.
   
   
-![Grafik Evaluasi Aktual vs LSTM GRU1](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_GRU1..png)
+![Grafik Evaluasi Aktual vs LSTM GRU1](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_GRU1.png)
 
 **Insight:** 
 - Garis prediksi GRU tampak lebih mengikuti pola harga aktual dibandingkan LSTM.
@@ -811,7 +811,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji meng
 - GRU lebih adaptif terhadap tren penurunan pada hari ke-6 dan 7, meskipun belum sepenuhnya tepat.
   
   
-![Grafik Evaluasi Aktual vs LSTM GRU2](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_GRU2..png)
+![Grafik Evaluasi Aktual vs LSTM GRU2](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Evaluasi_Aktual_vs_LSTM_GRU2.png)
 
 **Insight:** 
 - Grafik ini menguatkan bahwa GRU lebih akurat dalam mengikuti arah tren harga aktual.
