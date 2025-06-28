@@ -169,7 +169,7 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
   Semua fitur harga memiliki jumlah entri yang sama, yaitu 1212 baris data, menandakan tidak ada missing value pada kelima fitur ini.
 
 - **Nilai Rata-Rata (Mean)**
-  - Harga penutupan (Close) rata-rata berada di sekitar **Rp 3.648**, sedikit lebih tinggi dibanding harga open rata-rata sebesar **Rp 3.651**.  
+  - Harga penutupan (Close) rata-rata berada di sekitar Rp 3.648, sedikit lebih tinggi dibanding harga open rata-rata sebesar Rp 3.651.  
    - Hal ini menunjukkan bahwa secara umum, harga saham TLKM cenderung stabil atau mengalami kenaikan tipis dalam satu hari perdagangan.
 
 - **Volatilitas (Standar Deviasi)**
@@ -178,10 +178,10 @@ Dari tabel statistik deskriptif di atas, diperoleh beberapa insight penting meng
 
 - **Rentang Harga (Min - Max)**
   
-  Harga terendah (Low) menyentuh **Rp 2.450**, sedangkan harga tertinggi (High) mencapai **Rp 4.850**, menunjukkan rentang fluktuasi sekitar **98%** selama periode data.
+  Harga terendah (Low) menyentuh Rp 2.450, sedangkan harga tertinggi (High) mencapai Rp 4.850, menunjukkan rentang fluktuasi sekitar **98%** selama periode data.
 
 - **Distribusi Harga (25% - 75%)**
-  - Harga Close 50% dari data berada di antara **Rp 3.190** (Q1) dan **Rp 4.030** (Q3), dengan nilai tengah (median) di **Rp 3.720**.  
+  - Harga Close 50% dari data berada di antara Rp 3.190 (Q1) dan Rp 4.030 (Q3), dengan nilai tengah (median) di Rp 3.720.  
    - Distribusi yang tidak terlalu simetris ini menunjukkan bahwa saham TLKM lebih sering berada dalam kisaran menengah ke atas dari rentang harganya.
 
 ---
@@ -296,7 +296,7 @@ Berikut adalah daftar waktu (berdasarkan kombinasi tahun dan bulan) di mana **ni
 - Nilai `Close` yang lebih kecil dari `Lower Bound` digantikan dengan batas bawah.
 - Nilai `Close` yang lebih besar dari `Upper Bound` digantikan dengan batas atas.
 
-Tujuan dari capping ini adalah **menyesuaikan nilai ekstrim tanpa membuang data**.
+Tujuan dari capping ini adalah menyesuaikan nilai ekstrim tanpa membuang data.
 
 
 **Visualisasi: Sebelum vs Sesudah Penanganan Outlier**
@@ -456,13 +456,13 @@ Ekstraksi waktu dilakukan karena elemen waktu merupakan salah satu faktor kunci 
 
 2. **Pemisahan Data Berdasarkan Waktu**
    - Data dibagi menjadi dua subset:
-     - **Training set**: 80% pertama dari data secara kronologis.
-     - **Testing set**: 20% sisanya.
-   - Pembagian ini **tidak dilakukan secara acak (no shuffle)** untuk menjaga urutan waktu agar konteks historis tetap terpelihara.
+     - Training set: 80% pertama dari data secara kronologis.
+     - Testing set: 20% sisanya.
+   - Pembagian ini tidak dilakukan secara acak (no shuffle) untuk menjaga urutan waktu agar konteks historis tetap terpelihara.
 
 3. **Normalisasi (Min-Max Scaling)**
-   - Fitur dan target dalam training set dilakukan **fit dan transform** menggunakan `MinMaxScaler`.
-   - Data testing hanya di-**transform** menggunakan skala dari data training (tanpa fit ulang) untuk menghindari data leakage.
+   - Fitur dan target dalam training set dilakukan fit dan transform menggunakan `MinMaxScaler`.
+   - Data testing hanya di transform menggunakan skala dari data training (tanpa fit ulang) untuk menghindari data leakage.
 
 **Alasan:**
 
@@ -713,9 +713,9 @@ Setelah dilakukan pelatihan dan evaluasi terhadap kedua model menggunakan metrik
 #### Model Terbaik: **GRU**
 
 **Alasan Pemilihan:**
-- GRU memberikan hasil **error yang lebih rendah** pada ketiga metrik utama (MAE, RMSE, dan MAPE), menunjukkan performa prediksi yang lebih akurat dan stabil.
-- GRU memiliki arsitektur yang **lebih sederhana dan lebih cepat dilatih** dibanding LSTM, namun tetap mampu menangkap pola urutan data dengan baik.
-- GRU lebih **efisien secara komputasi** dan cocok untuk penggunaan produksi atau deployment karena waktu inferensi yang lebih cepat.
+- GRU memberikan hasil error yang lebih rendah pada ketiga metrik utama (MAE, RMSE, dan MAPE), menunjukkan performa prediksi yang lebih akurat dan stabil.
+- GRU memiliki arsitektur yang lebih sederhana dan lebih cepat dilatih dibanding LSTM, namun tetap mampu menangkap pola urutan data dengan baik.
+- GRU lebih efisien secara komputasi dan cocok untuk penggunaan produksi atau deployment karena waktu inferensi yang lebih cepat.
 
 Dengan pertimbangan performa dan efisiensi, **model GRU dipilih sebagai model terbaik** untuk menyelesaikan permasalahan prediksi harga saham pada proyek ini.
 
@@ -731,7 +731,7 @@ Dengan pertimbangan performa dan efisiensi, **model GRU dipilih sebagai model te
 ## Evaluation
 
 ### Metrik Evaluasi yang Digunakan
-Dalam proyek ini, jenis data yang digunakan adalah **time series** berupa harga historis saham harian PT Telekomunikasi Indonesia Tbk (TLKM). Oleh karena itu, metrik evaluasi yang digunakan harus mampu mengukur **akurasi numerik** dari nilai yang diprediksi terhadap nilai aktual dalam dimensi waktu.
+Dalam proyek ini, jenis data yang digunakan adalah **time series** berupa harga historis saham harian PT Telekomunikasi Indonesia Tbk (TLKM). Oleh karena itu, metrik evaluasi yang digunakan harus mampu mengukur akurasi numerik dari nilai yang diprediksi terhadap nilai aktual dalam dimensi waktu.
 
 Pemilihan metrik dilakukan berdasarkan kesesuaian dengan konteks data, rumusan permasalahan (problem statement), dan solusi yang ingin dicapai, yaitu prediksi nilai kontinu (harga saham). Untuk itu, proyek ini menggunakan tiga metrik evaluasi berikut:
 
@@ -819,7 +819,7 @@ Berikut adalah hasil evaluasi performa model LSTM dan GRU terhadap data uji meng
 - Kedua model cenderung memiliki prediksi yang mendekati rata-rata, tetapi GRU lebih fleksibel dalam mengikuti tren aktual.
   
 
-![Grafik Distribusi Eror Prediksi](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Distribusi_Eror_Prediksis.png)
+![Grafik Distribusi Eror Prediksi](https://raw.githubusercontent.com/2209106126-azahrinathirah/Submission-Coding-Camp/main/Machine%20Learning%20Terapan/Proyek%20Pertama/images/Grafik_Distribusi_Eror_Prediksi.png)
 
 **Insight:** 
 - Distribusi error menunjukkan sebagian besar nilai error berada dekat dengan nol, menandakan prediksi cukup akurat secara umum.
